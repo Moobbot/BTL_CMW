@@ -13,7 +13,7 @@
                         <div class="col-md-6">
                             <div class="page-header text-center">
                                 <h1>
-                                    <small>Tên môn học</small>
+                                    <small>Tên môn học 1</small>
                                 </h1>
                             </div>
                         </div>
