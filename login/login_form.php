@@ -2,8 +2,6 @@
 
 <link rel="stylesheet" href="css/style.css">
 
-<!--https://bbbootstrap.com/snippets/bootstrap-5-bootstrap5-login-form-91540645-->
-
 <div class="loginbox position-absolute">
     <h1 class="text-center">Login Here</h1>
     <form method="post" action="#">
