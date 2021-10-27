@@ -7,6 +7,11 @@
     font-family: Arial, Helvetica, sans-serif;
 }
 
+body {
+    background: url('img/img_index.jfif') top center / cover no-repeat;
+    color: #fff;
+}
+
 header,
 footer {
     background: url('img/bg_star.jfif') top center / cover no-repeat;
