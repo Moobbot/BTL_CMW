@@ -132,8 +132,8 @@
                         </div>
                     </div>
                 </div>
-                <?php include 'footer_body.php' ?>
             </div>
+            <?php include 'footer_body.php' ?>
         </div>
     </div>
 
