@@ -9,20 +9,17 @@
             <div class="col-md-12">
                 <!-- Header -->
                 <header>
-                    <div class="row text-white">
-                        <div class="col-md-6">
-                            <div class="page-header text-center">
-                                <h1>
-                                    <small>Tên môn học 1</small>
-                                </h1>
-                            </div>
+                    <nav class="navbar navbar-expand-lg navbar-light">
+                        <div class="container-fluid">
+                            <a class="navbar-brand" href="http://www.tlu.edu.vn/">
+                                <img src="assets/img/logo.jfif" alt="" width="48" height="48"
+                                    class="d-inline-block align-text-top p-0 m-0">
+                            </a>
                         </div>
 
-                        <div class="col-md-6 text-center align-self-md-center">
-                            <input type="search" name="search" id="search"><i class="fas fa-search p-2"
-                                aria-hidden="true"></i>
-                        </div>
-                    </div>
+                        <i class="fa fa-user-circle svg-inline--fa fa-w-16 fa-3x p-2" aria-hidden="true"></i>
+                    </nav>
+
                 </header>
                 <!-- Body -->
                 <!-- Bao gồm bảng tài liệu và phản hồi của sinh viên -->
