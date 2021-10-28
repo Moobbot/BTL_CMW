@@ -15,4 +15,4 @@
     <link rel="stylesheet" href="assets/style.css">
 </head>
 
-<body class="position-relative vh-100">
+<body class="position-relative min-vh-100 bg-light">

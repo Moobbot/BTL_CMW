@@ -1,30 +1,30 @@
 <?php include 'header.php' ?>
-
-<main>
-    <header class="p-3 bg-dark text-white">
+<div class="container-fluid ps-0 pe-0">
+    <header class="p-2 bg-dark text-white mb-md-4">
         <div class="container-fluid">
-            <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-                <a href="http://www.tlu.edu.vn/"
-                    class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+            <div class="d-flex flex-wrap align-items-center justify-content-between">
+                <a href="http://www.tlu.edu.vn/" class="d-flex align-items-center mb-lg-0 text-white">
                     <img src="assets/img/logo.jfif" alt="" width="40" height="32"
                         class="d-inline-block align-text-top p-0 m-0 me-2">
                 </a>
 
-                <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-                    <li><a href="#" class="nav-link px-2 text-secondary">Home</a></li>
-                    <li><a href="#" class="nav-link px-2 text-white">Features</a></li>
-                    <li><a href="#" class="nav-link px-2 text-white">Pricing</a></li>
-                    <li><a href="#" class="nav-link px-2 text-white">FAQs</a></li>
-                    <li><a href="#" class="nav-link px-2 text-white">About</a></li>
-                </ul>
-
                 <div class="text-end">
-                    <button type="button" class="btn btn-outline-light me-2">Login</button>
-                    <button type="button" class="btn btn-warning">Sign-up</button>
-
+                    <a href="login/" class="btn btn-outline-light me-2">Login</a>
+                    <a href="signup/" class="btn btn-warning me-2">Sign-up</a>
                 </div>
             </div>
         </div>
     </header>
-</main>
+
+    <!-- Body -->
+    <div class="row p-0 m-0 mt-4">
+        <div class="col">
+            <h2>Các khóa học hiện tại</h2>
+            <?php include 'subject.php'; ?>
+        </div>
+    </div>
+</div>
+
+
+
 <?php include 'footer.php' ?>
