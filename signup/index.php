@@ -1,8 +1,5 @@
 <?php include '../header.php' ?>
-<?php
-session_start();
-if(empty($_SESSION['current_user'])){
- ?>
+
 <section class="vh-100" style="background-color: #eee;">
   <div class="container h-100">
     <div class="row d-flex justify-content-center align-items-center h-100">
@@ -86,16 +83,5 @@ if(empty($_SESSION['current_user'])){
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="app.js"></script>
-<?php
-}else{
-    $currentUser = $_SESSION['current_user'];
-?>
-<div id="login-notify" class="box-content">
-    Xin Chào <?= $currentUser['User_FullName']?><br>
-    <a href="#">Đổi mật khẩu</a>
-    <a href="./logout.php">Đăng xuất</a>
-</div>
-<?php
-}
-?>
+
  <?php include '../footer.php' ?>

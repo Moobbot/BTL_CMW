@@ -1,10 +1,16 @@
 /* Common */
 
-* {
+*,
+html {
     margin: 0;
     padding: 0;
     list-style-type: none;
     font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    background: url('img/img_index.jfif') top center / cover no-repeat;
+    color: #fff;
 }
 
 header,
