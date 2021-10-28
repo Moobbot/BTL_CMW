@@ -1,5 +1,6 @@
 <?php
     
+    session_start();
     if(isset($_POST['sbmRegister'])){
         $level ;
         $user  = $_POST['txtUser'];
@@ -16,7 +17,7 @@
         $pass1 = $_POST['txtPass1'];
         $pass2 = $_POST['txtPass2'];
     }
-        echo $position;
+      
 
     // Kiểm tra Email hoặc Username đã tồn tại chưa?
     //1. Kết nối tới Server
@@ -29,7 +30,8 @@
 
     // 3. XỬ lý kết quả
     if(mysqli_num_rows($result) > 0){
-        echo 'Email hoặc Username đã tồn tại';
+       
+        exit;
     }else{
         // Băm mật khẩu
         $pass_hash = password_hash($pass1, PASSWORD_DEFAULT);
@@ -39,6 +41,7 @@
         $sql_2 = "INSERT INTO db_users  (user_name,user_email, user_pass,user_level,user_code) VALUES ('$user','$email','$pass_hash','$level','$code');";
     
         $result_2 = mysqli_query($conn,$sql_2);
+        $_SESSION['current_user'] = $user;
         if($result_2>0)
         {
             echo'Gửi thành công!';
