@@ -68,9 +68,13 @@ CREATE TABLE `db_users` (
 --
 
 INSERT INTO `db_users` (`user_id`, `user_name`, `user_email`, `user_pass`, `user_regis_date`, `user_status`, `user_level`, `user_code`) VALUES
+<<<<<<< HEAD
 (19, 'thuyduong', 'nguyenthuyduong542001@gmail.com', '$2y$10$r/XRsf/8kAJ/a9MKo0doMeaIUwpjGvIomEul37J737a4AmUoBQBLW', '2021-10-27 15:08:42', 0, 0, 'a9f03c0f1e757a946d1c3f31f1b90636'),
 (20, 'Ngô Đức Tâm', '123@gmail.com', '$2y$10$cMPyQnPegdF7kXommXUaK.egvFBDmPnWR3EAgEnNtihZ1mssuyZ3.', '2021-10-27 21:50:02', 0, 0, '166baecfa4ada65a7cdb2e02952e0f48'),
 (21, 'ngoductam', '234@gmail.com', '$2y$10$pyLBEz7FKAEx5iJcvWR5ludGdMd3BAy4p2IGNug1bT43Ro9Je.xfu', '2021-10-27 21:51:21', 0, 0, '5181754278ea5a0855a8fdc5a6e35288');
+=======
+(19, 'thuyduong', 'nguyenthuyduong542001@gmail.com', '$2y$10$r/XRsf/8kAJ/a9MKo0doMeaIUwpjGvIomEul37J737a4AmUoBQBLW', '2021-10-27 15:08:42', 0, 0, 'a9f03c0f1e757a946d1c3f31f1b90636');
+>>>>>>> 1248c401932b035e9ed9a1b51840e508e45b669e
 
 -- --------------------------------------------------------
 
