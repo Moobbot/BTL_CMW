@@ -72,7 +72,6 @@ INSERT INTO `db_users` (`user_id`, `user_name`, `user_email`, `user_pass`, `user
 (20, 'Ngô Đức Tâm', '123@gmail.com', '$2y$10$cMPyQnPegdF7kXommXUaK.egvFBDmPnWR3EAgEnNtihZ1mssuyZ3.', '2021-10-27 21:50:02', 0, 0, '166baecfa4ada65a7cdb2e02952e0f48'),
 (21, 'ngoductam', '234@gmail.com', '$2y$10$pyLBEz7FKAEx5iJcvWR5ludGdMd3BAy4p2IGNug1bT43Ro9Je.xfu', '2021-10-27 21:51:21', 0, 0, '5181754278ea5a0855a8fdc5a6e35288');
 
-
 -- --------------------------------------------------------
 
 --
@@ -129,6 +128,7 @@ ALTER TABLE `db_offices`
 --
 ALTER TABLE `db_users`
   MODIFY `user_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+
 
 --
 -- AUTO_INCREMENT cho bảng `db_user_inf`
