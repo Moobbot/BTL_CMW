@@ -1,30 +1,84 @@
-<?php include 'header.php' ?>
+<?php include 'reuse/header.php' ?>
 <div class="container-fluid ps-0 pe-0">
-    <header class="p-2 bg-dark text-white mb-md-4">
-        <div class="container-fluid">
+    <!-- Header -->
+    <header class="bg-dark text-white p-2 mb-4">
+        <div class="container-fluid p-0 m-0">
             <div class="d-flex flex-wrap align-items-center justify-content-between">
-                <a href="http://www.tlu.edu.vn/" class="d-flex align-items-center mb-lg-0 text-white">
+                <a href="http://www.tlu.edu.vn/" class="d-flex align-items-center mb-md-0 text-start">
                     <img src="assets/img/logo.jfif" alt="" width="40" height="32"
                         class="d-inline-block align-text-top p-0 m-0 me-2">
                 </a>
+
+                <?php
+                session_start();
+                if (empty($_SESSION['current_user'])) {
+                ?>
 
                 <div class="text-end">
                     <a href="login/" class="btn btn-outline-light me-2">Login</a>
                     <a href="signup/" class="btn btn-warning me-2">Sign-up</a>
                 </div>
+
+                <?php
+                } else {
+                    $currentUser = $_SESSION['current_user'];
+                ?>
+
+                <div class="text-end">
+                    <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+
+                            <!-- Tên người đăng nhập -->
+                            <?= $currentUser['User_FullName'] ?>
+
+                            <i class="fa fa-user-circle fa-w-16 fa-2x p-2" aria-hidden="true"></i>
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                            <li><a class="dropdown-item" href="#">Thông tin tài khoản</a></li>
+                            <li><a class="dropdown-item" href="#">Đổi mật khẩu</a></li>
+                            <li><a class="dropdown-item" href="./login/logout.php">Đăng xuất</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <?php
+                }
+                ?>
             </div>
         </div>
     </header>
 
     <!-- Body -->
+    <?php
+    if (empty($_SESSION['current_user'])) {
+    ?>
     <div class="row p-0 m-0 mt-4">
         <div class="col">
             <h2>Các khóa học hiện tại</h2>
             <?php include 'subject.php'; ?>
         </div>
     </div>
+
+    <?php
+    } else {
+        if ($currentUser['user_level'] == 0) {
+            // Hiện thị body admin
+            include 'admin.php';
+        ?>
+
+    <?php
+        }
+        if ($currentUser['user_level'] == 1) {
+            // Hiện thị form teacher_full.php
+            include 'teacher_full.php';
+        ?>
+    <?php
+        }
+    }
+    ?>
 </div>
 
 
 
-<?php include 'footer.php' ?>
+<?php include 'reuse/footer.php' ?>
