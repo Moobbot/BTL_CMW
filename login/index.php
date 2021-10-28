@@ -1,6 +1,6 @@
 <?php include '../header.php' ?>
 <?php
-session_start();
+session_start(); // bắt đầu session cho người đăng nhập
 if(empty($_SESSION['current_user'])){
  ?>
 <section class="vh-100" style="background-color: #eee;">
@@ -12,7 +12,7 @@ if(empty($_SESSION['current_user'])){
                         <div class="row justify-content-center">
                             <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
                                 <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Login</p>
-                                <form action="process.php" method="POST" class="mx-1 mx-md-4" id="login-form">
+                                <form  class="mx-1 mx-md-4" id="login-form">
                                     <div class="d-flex flex-row align-items-center mb-4">
                                         <i class="fas fa-user fa-lg me-3 fa-fw"></i>
                                         <div class="form-outline flex-fill mb-0">
@@ -54,33 +54,29 @@ if(empty($_SESSION['current_user'])){
 <?php
 }else{
     $currentUser = $_SESSION['current_user'];
-?>
-<div id="login-notify" class="box-content">
-    Xin Chào <?= $currentUser['User_FullName']?><br>
-    <a href="#">Đổi mật khẩu</a>
-    <a href="./logout.php">Đăng xuất</a>
-</div>
-<?php
+    if($currentUser['user_level'] == 0){ // đăng nhập phân quyền để head đến trang của người dùng
+        header("Location:../index.php"); // tạm thời head đến trang index cơ bản vì lv người dùng trong db = 0 và chưa phân chia form rõ ràng bên index 
+    }
 }
 ?>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
-$("#login-form").submit(function(event){
+$("#login-form").submit(function(event) {
     event.preventDefault();
-        $.ajax({
-            type: "POST",
-            url: './process.php',
-            data: $(this).serializeArray(),
-            success: function (response){
-                response = JSON.parse(response);
-                if(response.status == 0 ){ // đăng nhập thất bại
-                    alert(response.message);
-                }else{ // đăng nhập thành công
-                    alert(response.message);
-                    location.reload();
-                }
+    $.ajax({
+        type: "POST",
+        url: './process.php',
+        data: $(this).serializeArray(),
+        success: function(response) {
+            response = JSON.parse(response);
+            if (response.status == 0) { // đăng nhập thất bại
+                alert(response.message);
+            } else { // đăng nhập thành công
+                alert(response.message);
+                location.reload();
             }
-        })
+        }
+    })
 });
 </script>
 
