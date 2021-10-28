@@ -1,5 +1,8 @@
 <?php include '../header.php' ?>
-
+<?php
+session_start();
+if(empty($_SESSION['current_user'])){
+ ?>
 <section class="vh-100" style="background-color: #eee;">
     <div class="container h-100">
         <div class="row d-flex justify-content-center align-items-center h-100">
@@ -9,24 +12,27 @@
                         <div class="row justify-content-center">
                             <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
                                 <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Login</p>
-                                <form action="process.php" method="POST" class="mx-1 mx-md-4">
+                                <form action="process.php" method="POST" class="mx-1 mx-md-4" id="login-form">
                                     <div class="d-flex flex-row align-items-center mb-4">
                                         <i class="fas fa-user fa-lg me-3 fa-fw"></i>
                                         <div class="form-outline flex-fill mb-0">
-                                            <input type="text" id="form3Example1c" class="form-control" name="txtUser"/>
-                                            <label class="form-label" for="form3Example1c" >Your Name</label>
+                                            <input type="text" id="form3Example1c" class="form-control"
+                                                name="txtUser" />
+                                            <label class="form-label" for="form3Example1c">Your Name</label>
                                         </div>
                                     </div>
                                     <div class="d-flex flex-row align-items-center mb-4">
                                         <i class="fas fa-lock fa-lg me-3 fa-fw"></i>
                                         <div class="form-outline flex-fill mb-0">
-                                            <input type="password" id="form3Example4c" class="form-control" name="txtPass"/>
-                                            <label class="form-label" for="form3Example4c" >Password</label>
+                                            <input type="password" id="form3Example4c" class="form-control"
+                                                name="txtPass" />
+                                            <label class="form-label" for="form3Example4c">Password</label>
                                         </div>
                                     </div>
 
                                     <div class="d-flex justify-content-start mx-5 mb-3 mb-lg-4">
-                                        <a href="../signup/index.php" class="text-decoration-none text-center">Click here to register</a>
+                                        <a href="../signup/index.php" class="text-decoration-none text-center">Click
+                                            here to register</a>
                                     </div>
 
                                     <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
@@ -45,4 +51,37 @@
         </div>
     </div>
 </section>
+<?php
+}else{
+    $currentUser = $_SESSION['current_user'];
+?>
+<div id="login-notify" class="box-content">
+    Xin Chào <?= $currentUser['User_FullName']?><br>
+    <a href="#">Đổi mật khẩu</a>
+    <a href="./logout.php">Đăng xuất</a>
+</div>
+<?php
+}
+?>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+$("#login-form").submit(function(event){
+    event.preventDefault();
+        $.ajax({
+            type: "POST",
+            url: './process.php',
+            data: $(this).serializeArray(),
+            success: function (response){
+                response = JSON.parse(response);
+                if(response.status == 0 ){ // đăng nhập thất bại
+                    alert(response.message);
+                }else{ // đăng nhập thành công
+                    alert(response.message);
+                    location.reload();
+                }
+            }
+        })
+});
+</script>
+
 <?php include '../footer.php' ?>
