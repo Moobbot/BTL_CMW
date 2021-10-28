@@ -1,4 +1,5 @@
 <?php
+<<<<<<< HEAD
     session_start();
     include '../reuse/config.php';
     $username = $_POST['txtUser'];
@@ -44,3 +45,19 @@
     // }else{
     //     header("Location:index.php");
     // }
+=======
+    $username = $_POST['txtUser'];
+    $password = $_POST['txtPass'];
+
+    include '../config.php';
+
+    $sql = "SELECT * FROM db_users WHERE user_name = '$username' AND user_pass = '$password'";
+    $result = mysqli_query($conn,$sql);
+
+    if(mysqli_num_rows($result) >0){
+        header("Location:test.php");
+    }else{
+        header("Location:index.php");
+    }
+?>
+>>>>>>> cc70452450e2d51fe74ed6553d6146c644cae5be

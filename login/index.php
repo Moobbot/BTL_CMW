@@ -12,6 +12,7 @@ if (empty($_SESSION['current_user'])) {
                         <div class="row justify-content-center">
                             <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
                                 <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Login</p>
+<<<<<<< HEAD
                                 <form class="mx-1 mx-md-4" id="login-form">
                                     <div class="d-flex flex-row align-items-center mb-4">
                                         <i class="fas fa-user fa-lg me-3 fa-fw"></i>
@@ -19,20 +20,37 @@ if (empty($_SESSION['current_user'])) {
                                             <input type="text" id="form3Example1c" class="form-control"
                                                 name="txtUser" />
                                             <label class="form-label" for="form3Example1c">Your Name</label>
+=======
+                                <form action="process.php" method="POST" class="mx-1 mx-md-4">
+                                    <div class="d-flex flex-row align-items-center mb-4">
+                                        <i class="fas fa-user fa-lg me-3 fa-fw"></i>
+                                        <div class="form-outline flex-fill mb-0">
+                                            <input type="text" id="form3Example1c" class="form-control" name="txtUser"/>
+                                            <label class="form-label" for="form3Example1c" >Your Name</label>
+>>>>>>> cc70452450e2d51fe74ed6553d6146c644cae5be
                                         </div>
                                     </div>
                                     <div class="d-flex flex-row align-items-center mb-4">
                                         <i class="fas fa-lock fa-lg me-3 fa-fw"></i>
                                         <div class="form-outline flex-fill mb-0">
+<<<<<<< HEAD
                                             <input type="password" id="form3Example4c" class="form-control"
                                                 name="txtPass" />
                                             <label class="form-label" for="form3Example4c">Password</label>
+=======
+                                            <input type="password" id="form3Example4c" class="form-control" name="txtPass"/>
+                                            <label class="form-label" for="form3Example4c" >Password</label>
+>>>>>>> cc70452450e2d51fe74ed6553d6146c644cae5be
                                         </div>
                                     </div>
 
                                     <div class="d-flex justify-content-start mx-5 mb-3 mb-lg-4">
+<<<<<<< HEAD
                                         <a href="../signup/index.php" class="text-decoration-none text-center">Click
                                             here to register</a>
+=======
+                                        <a href="../signup/index.php" class="text-decoration-none text-center">Click here to register</a>
+>>>>>>> cc70452450e2d51fe74ed6553d6146c644cae5be
                                     </div>
 
                                     <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
