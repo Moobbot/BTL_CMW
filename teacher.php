@@ -4,36 +4,68 @@
 <?php include 'header.php' ?>
 
 <div class="container-fluid bg-light h-100 p-0 m-0">
-    <!-- Đầu -->
-    <header class="mb-4">
-        <nav class="navbar navbar-expand-lg navbar-light p-0">
-            <div class="container-fluid">
-                <a class="navbar-brand" href="http://www.tlu.edu.vn/">
-                    <img src="assets/img/logo.jfif" alt="" width="48" height="48"
-                        class="d-inline-block align-text-top p-0 m-0">
+    <header class="bg-dark text-white p-2">
+        <div class="container-fluid p-0 m-0">
+            <div class="d-flex flex-wrap align-items-center justify-content-md-start justify-content-between">
+                <a href="http://www.tlu.edu.vn/" class="d-flex align-items-center mb-md-0 text-start">
+                    <img src="assets/img/logo.jfif" alt="" width="40" height="32"
+                        class="d-inline-block align-text-top p-0 m-0 me-2">
                 </a>
+
+                <ul class="nav col-12 col-md-auto me-md-auto mb-2 justify-content-center mb-md-0 d-md-flex d-none">
+                    <li><a href="#" class="nav-link px-2 text-secondary">Home</a></li>
+                    <li><a href="#" class="nav-link px-2 text-white">Features</a></li>
+                    <li><a href="#" class="nav-link px-2 text-white">Pricing</a></li>
+                    <li><a href="#" class="nav-link px-2 text-white">FAQs</a></li>
+                    <li><a href="#" class="nav-link px-2 text-white">About</a></li>
+                </ul>
+
+                <div class="text-end">
+                    <i class="fa fa-user-circle fa-w-16 fa-3x p-2" aria-hidden="true"></i>
+                </div>
             </div>
-
-            <div class="page-header text-center">
-                <h1>
-                    <small>Tên môn học 1</small>
-                </h1>
-            </div>
-
-            <!-- Dropdow -->
-            <i class="fa fa-user-circle svg-inline--fa fa-w-16 fa-3x p-2" aria-hidden="true"></i>
-        </nav>
-
+        </div>
     </header>
 
-    <!-- Thân -->
     <!-- Body -->
-    <!-- Bao gồm bảng tài liệu và phản hồi của sinh viên -->
-    <div class="row d-flex justify-content-center mt-sm-5">
-        <div class="col-md-10">
+    <!-- Bao gồm bảng tài liệu, thông báo và thông báo  -->
+    <div class="row d-flex justify-content-center mt-sm-5 p-0 m-0">
+        <div class="col-10">
+            <!-- Thông báo -->
+            <div class="row">
+                <table class="table">
+                    <thead>
+                        <h2>Thông báo</h2>
+                    </thead>
+                    <tbody>
+                        <th class="col">
+                            <p class="bg-warning">
+                                Quickly design and customize responsive mobile-first sites with
+                                Bootstrap, the world’s most popular front-end open source toolkit, featuring Sass
+                                variables
+                                and
+                                mixins, responsive grid system, extensive prebuilt components, and powerful JavaScript
+                                plugins.
+                            </p>
+                        </th>
+                        <th class="col">
+                            <a href="" class="btn btn-success">Thêm</a>
+                        </th>
+                        <th class="col">
+                            <a href="" class="btn btn-success">Sửa</a>
+                        </th>
+                        <th class="col">
+                            <a href="" class="btn btn-success">Xóa</a>
+                        </th>
+                    </tbody>
+                </table>
+            </div>
+
             <!-- Bảng thông tin tài liệu -->
             <div class="row">
                 <div class="col-md-12">
+                    <h2>Tài liệu môn học</h2>
+
                     <table class="table text-center">
                         <thead>
                             <tr>
@@ -92,9 +124,7 @@
                                     Default
                                 </td>
                                 <th>
-                                    <a href="" class="btn btn-success">
-                                        Thêm
-                                    </a>
+                                    <a href="" class="btn btn-success">Thêm</a>
                                 </th>
                             </tr>
                         </tbody>

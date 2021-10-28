@@ -1,23 +1,30 @@
 <?php include 'header.php' ?>
 
 <main>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <header class="p-3 bg-dark text-white">
         <div class="container-fluid">
-            <a class="navbar-brand" href="http://www.tlu.edu.vn/">
-                <img src="assets/img/logo.jfif" alt="" width="48" height="48"
-                    class="d-inline-block align-text-top p-0 m-0">
-            </a>
+            <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+                <a href="http://www.tlu.edu.vn/"
+                    class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+                    <img src="assets/img/logo.jfif" alt="" width="40" height="32"
+                        class="d-inline-block align-text-top p-0 m-0 me-2">
+                </a>
+
+                <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+                    <li><a href="#" class="nav-link px-2 text-secondary">Home</a></li>
+                    <li><a href="#" class="nav-link px-2 text-white">Features</a></li>
+                    <li><a href="#" class="nav-link px-2 text-white">Pricing</a></li>
+                    <li><a href="#" class="nav-link px-2 text-white">FAQs</a></li>
+                    <li><a href="#" class="nav-link px-2 text-white">About</a></li>
+                </ul>
+
+                <div class="text-end">
+                    <button type="button" class="btn btn-outline-light me-2">Login</button>
+                    <button type="button" class="btn btn-warning">Sign-up</button>
+
+                </div>
+            </div>
         </div>
-
-        <a href="signup/" class="navbar-brand">
-            <h4>Đăng ký</h4>
-        </a>
-
-        <a href="login/" class="navbar-brand">
-            <h4>Đăng nhập
-                <i class="fa fa-user-circle" aria-hidden="true"></i>
-            </h4>
-        </a>
-    </nav>
+    </header>
 </main>
 <?php include 'footer.php' ?>
