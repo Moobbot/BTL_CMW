@@ -1,5 +1,4 @@
-<?php include '../header.php' ?>
-
+<?php include '../reuse/header.php' ?>
 <section class="vh-100" style="background-color: #eee;">
   <div class="container h-100">
     <div class="row d-flex justify-content-center align-items-center h-100">
@@ -33,7 +32,6 @@
                     </div>
                   </div>
 
-
                   <div class="d-flex flex-row align-items-center mb-4">
                     <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
                     <div class="form-outline flex-fill mb-0">
@@ -58,11 +56,9 @@
                     </div>
                   </div>
 
-
                   <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
                     <button  type="submit" class="btn btn-primary btn-lg submit" name="sbmRegister">Register</button>
                   </div>
-
 
 
                 </form>
@@ -82,6 +78,6 @@
 </section>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="app.js"></script>
+<script src = '../assets/script.js'> </script>
 
- <?php include '../footer.php' ?>
+<?php include '../reuse/footer.php' ?>
