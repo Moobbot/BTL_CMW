@@ -1,5 +1,6 @@
 <?php
 session_start();
+include 'send.php';
 if(isset($_POST['signup'])){
     $level ;
     $user  = $_POST['username'];
@@ -44,6 +45,7 @@ if(mysqli_num_rows($result) > 0){
     if($result_2>0)
     {
         echo 'Gửi thành công!';
+        sendEmail($email,$code);
     }
     else{
         include '../login/index.php';
@@ -51,5 +53,3 @@ if(mysqli_num_rows($result) > 0){
 
 
 }
-
-?>
