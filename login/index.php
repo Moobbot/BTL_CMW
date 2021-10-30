@@ -28,8 +28,7 @@ if (empty($_SESSION['current_user'])) {
 
                                             <input type="password" id="form3Example4c" class="form-control"
                                                 name="txtPass" />
-                                            <label class="form-label" for="form3Example4c"
-                                                name="txtPass">Password</label>
+                                            <label class="form-label" for="form3Example4c">Password</label>
                                         </div>
                                     </div>
                                     <div class="d-flex justify-content-start mx-5 mb-3 mb-lg-4">
