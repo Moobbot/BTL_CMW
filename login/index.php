@@ -55,9 +55,7 @@ if (empty($_SESSION['current_user'])) {
 }
 ?>
 
-
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
 
 <script>
 $("#login-form").submit(function(event) {

@@ -29,8 +29,8 @@
                         <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1"
                             data-bs-toggle="dropdown" aria-expanded="false">
 
-                            <!-- Tên người đăng nhập -->
-                            <?= $currentUser['User_FullName'] ?>
+                            <!-- Tên người đăng nhập / cách viết khác của php echo -->
+                            <?= $currentUser['User_FullName'] ?> 
 
                             <i class="fa fa-user-circle fa-w-16 fa-2x p-2" aria-hidden="true"></i>
                         </button>
