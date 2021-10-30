@@ -17,21 +17,25 @@ if (empty($_SESSION['current_user'])) {
                                     <div class="d-flex flex-row align-items-center mb-4">
                                         <i class="fas fa-user fa-lg me-3 fa-fw"></i>
                                         <div class="form-outline flex-fill mb-0">
-                                            <input type="text" id="form3Example1c" class="form-control" name="txtUser"/>
-                                            <label class="form-label" for="form3Example1c" >Your Name</label>
+                                            <input type="text" id="form3Example1c" class="form-control"
+                                                name="txtUser" />
+                                            <label class="form-label" for="form3Example1c">Your Name</label>
                                         </div>
                                     </div>
                                     <div class="d-flex flex-row align-items-center mb-4">
                                         <i class="fas fa-lock fa-lg me-3 fa-fw"></i>
                                         <div class="form-outline flex-fill mb-0">
 
-                                            <input type="password" id="form3Example4c" class="form-control" name="txtPass"/>
-                                            <label class="form-label" for="form3Example4c" >Password</label>
+                                            <input type="password" id="form3Example4c" class="form-control"
+                                                name="txtPass" />
+                                            <label class="form-label" for="form3Example4c"
+                                                name="txtPass">Password</label>
                                         </div>
                                     </div>
                                     <div class="d-flex justify-content-start mx-5 mb-3 mb-lg-4">
 
-                                        <a href="../signup/index.php" class="text-decoration-none text-center">Click here to register</a>
+                                        <a href="../signup/index.php" class="text-decoration-none text-center">Click
+                                            here to register</a>
                                     </div>
                                     <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
                                         <button type="submit" class="btn btn-primary btn-lg">Login</button>
@@ -57,24 +61,26 @@ if (empty($_SESSION['current_user'])) {
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
+
+
 <script>
 $("#login-form").submit(function(event) {
     event.preventDefault();
-    $.ajax({
-        type: "POST",
-        url: './process.php',
-        data: $(this).serializeArray(),
-        success: function(response) {
-            response = JSON.parse(response);
-            if (response.status == 0) { // đăng nhập thất bại
-                alert(response.message);
-            } else { // đăng nhập thành công
-                alert(response.message);
-                location.reload();
+        $.ajax({
+            type: "POST",
+            url: './process.php',
+            data: $(this).serializeArray(),
+            success: function(response) {
+                response = JSON.parse(response);
+                if (response.status == 0) { // đăng nhập thất bại
+                    alert(response.message);
+                } else { // đăng nhập thành công
+                    alert(response.message);
+                    location.reload();
+                }
             }
-        }
-    })
+        })
 });
 </script>
 
-<?php include '../reuser/footer.php' ?>
+<?php include '../reuse/footer.php' ?>
