@@ -1,4 +1,8 @@
 <?php include '../reuse/header.php' ?>
+<?php
+session_start(); // bắt đầu session cho người đăng nhập
+(empty($_SESSION['signup_user']))
+?>
 <section class="vh-100" style="background-color: #eee;">
   <div class="container h-100">
     <div class="row d-flex justify-content-center align-items-center h-100">

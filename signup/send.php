@@ -1,4 +1,6 @@
 <?php
+    session_start();
+    $sigup_user =  $_SESSION['signup_user'];
     use PHPMailer\PHPMailer\PHPMailer;
     use PHPMailer\PHPMailer\SMTP;   
     use PHPMailer\PHPMailer\Exception;
@@ -7,7 +9,7 @@
     require '../phpmailer/PHPMailer.php';
     require '../phpmailer/SMTP.php';
     // Đóng gói đoạn xử lý gửi Email vào Function
-    function sendEmail($recipient,$code){
+    // function sendEmail($recipient,$code){
         // 1. Cài đặt môi trường sử dụng phpmailer
         // 2. Tạo ra đối tượng PHPMailer
         $mail = new PHPMailer(true); //Biến $mail đang là 1 object
@@ -33,19 +35,20 @@
 
             $mail->addReplyTo('nguyenthuyduong542001@gmail.com', 'Xác nhận đăng kí tài khoản');
 
-            $mail->addAddress($recipient); // Đây là địa chỉ Email người nhận > sau này sẽ là BIẾN
+            $mail->addAddress($sigup_user['user_email']); // Đây là địa chỉ Email người nhận > sau này sẽ là BIẾN
            
             // Tiêu đề Email là gì?
             $mail->isHTML(true);   // Set email format to HTML
             $mail->Subject = '[localhost] Kích hoạt tài khoản';
             // Nội dung Email
            
-            $mail->Body = 'Nhấp vào đây để kích hoạt: <a href="http://localhost/BTL/BTL_CNW/signup/activation.php?email='.$recipient.'&code='.$code.'">Nhấp vào đây</a>';
+            $mail->Body = 'Nhấp vào đây để kích hoạt: <a href="http://localhost/BTL/BTL_CNW/signup/activation.php?email='.$sigup_user['user_email'].'&code='.$sigup_user['user_code'].'">Nhấp vào đây</a>';
             // Tệp tên đính kèm Email gửi đi
             // $mail->addAttachment('pdf/Giay_bao_mat_sau.pdf'); // Nếu bạn muốn đính kèm tệp tin gửi đi
 
             // Gửi thư
             if($mail->send()){
+                unset($_SESSION['signup_user']);
                 echo 'Thư đã gửi đi thành công!';
             }
 
@@ -53,6 +56,6 @@
             echo "Lỗi ".$e->getMessage();
         }
 
-    }
+    // }
 
 ?>

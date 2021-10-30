@@ -36,13 +36,15 @@ if (isset($_POST['signup'])) {
         //Nếu chưa tồn tại, thì chúng ta mới LƯU vào CSDL và GỬI email xác nhận
 
         $sql_2 = "INSERT INTO db_users  (user_name,user_email, user_pass,user_level,user_code) VALUES ('$user','$email','$pass_hash','$level','$code');";
-
         $result_2 = mysqli_query($conn, $sql_2);
-      
+        $sql_3 = "SELECT * FROM db_users WHERE user_email='$email' OR user_name='$user' ";
+        $result_3 = mysqli_query($conn, $sql_3);
+        $user = mysqli_fetch_assoc($result_3);
+        $_SESSION['signup_user'] = $user;
         if ($result_2 > 0) {
-       
             echo 'Gửi thành công!';
             
+          
         } else {
             include '../login/index.php';
         }
