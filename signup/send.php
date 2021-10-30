@@ -41,7 +41,7 @@
             $mail->isHTML(true);   // Set email format to HTML
             $mail->Subject = '[localhost] Kích hoạt tài khoản';
             // Nội dung Email
-           
+            $mail->Body = 'Sau khi ấn vào link kích hoạt tài khoản của bạn';
             $mail->Body = 'Nhấp vào đây để kích hoạt: <a href="http://localhost/BTL/BTL_CNW/signup/activation.php?email='.$sigup_user['user_email'].'&code='.$sigup_user['user_code'].'">Nhấp vào đây</a>';
             // Tệp tên đính kèm Email gửi đi
             // $mail->addAttachment('pdf/Giay_bao_mat_sau.pdf'); // Nếu bạn muốn đính kèm tệp tin gửi đi
@@ -50,6 +50,7 @@
             if($mail->send()){
                 unset($_SESSION['signup_user']);
                 echo 'Thư đã gửi đi thành công!';
+                // include '../index.php';
             }
 
         }catch(Exception $e){
