@@ -27,6 +27,8 @@ $(document).ready(function () {
                             window.location.href="index.php";
                         }else if(response=="Gửi thành công!"){
                             alert("Đăng kí thành công");
+                         
+                            
                             window.location.href="../login/index.php";
                         }
                     }

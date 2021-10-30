@@ -1,14 +1,14 @@
 <?php
 session_start();
-include 'send.php';
+// include 'send.php';
 if (isset($_POST['signup'])) {
     $level;
     $user  = $_POST['username'];
     $position = $_POST['position'];
     if ($position == "Giảng Viên") {
-        $level = true;
+        $level = true; // trả về là 1 
     } else {
-        $level = false;
+        $level = false; // trả về là 0
     }
     $email = $_POST['email'];
     $pass1 = $_POST['pass1'];
@@ -38,11 +38,11 @@ if (isset($_POST['signup'])) {
         $sql_2 = "INSERT INTO db_users  (user_name,user_email, user_pass,user_level,user_code) VALUES ('$user','$email','$pass_hash','$level','$code');";
 
         $result_2 = mysqli_query($conn, $sql_2);
-       
+      
         if ($result_2 > 0) {
-            
-            sendEmail($email, $code);
+       
             echo 'Gửi thành công!';
+            
         } else {
             include '../login/index.php';
         }
