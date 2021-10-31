@@ -32,7 +32,7 @@
     <?php
         }
         if ($currentUser['user_level'] == 2) {
-            // Hiện thị foder teacher
+            // Hiện thị foder student
             include './student/index.php';
         }
     }
