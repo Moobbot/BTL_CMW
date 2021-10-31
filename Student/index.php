@@ -80,11 +80,13 @@
             </div>
         </div>
         <!-- Comments của sinh viên-->
-        <div class="row">
-            <div class="col-md-12 flex-column m-md-5">
+        <div class="row mb-md-0 mb-5">
+            <div class="col-md-12 flex-md-row flex-column m-md-5">
                 <input type="text" class="w-75 p-5">
-                <input type="submit" value="Gửi" class="btn btn-success ps-4 pe-4 pt-2 pb-2">
+                <input type="submit" value="Gửi" class="btn btn-success px-4 py-2 my-2">
             </div>
         </div>
     </div>
 </div>
+
+<?php include './reuse/footer_body.php';

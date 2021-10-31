@@ -14,9 +14,6 @@ if (isset($_POST['signup'])) {
     $pass1 = $_POST['pass1'];
     $pass2 = $_POST['pass2'];
 
-
-
-
     // Kiểm tra Email hoặc Username đã tồn tại chưa?
     //1. Kết nối tới Server
     include '../reuse/config.php';
@@ -43,8 +40,6 @@ if (isset($_POST['signup'])) {
         $_SESSION['signup_user'] = $user;
         if ($result_2 > 0) {
             echo 'Gửi thành công!';
-            
-          
         } else {
             include '../login/index.php';
         }
