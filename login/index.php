@@ -80,4 +80,4 @@ $("#login-form").submit(function(event) {
 });
 </script>
 
-<?php include '../reuser/footer.php' ?>
+<?php include '../reuse/footer.php' ?>
