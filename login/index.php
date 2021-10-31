@@ -1,6 +1,7 @@
 <?php include '../reuse/header.php' ?>
 
 <?php
+
 session_start(); // bắt đầu session cho người đăng nhập
 if (empty($_SESSION['current_user'])) {
 ?>

@@ -1,7 +1,11 @@
 <?php include '../reuse/header.php' ?>
+
 <?php
-session_start(); // bắt đầu session cho người đăng nhập
-(empty($_SESSION['signup_user']))
+    if(!isset($_SESSION)) 
+    { 
+        session_start();
+        (empty($_SESSION['signup_user']));
+    } 
 ?>
 <section class="vh-100" style="background-color: #eee;">
   <div class="container h-100">
@@ -64,9 +68,7 @@ session_start(); // bắt đầu session cho người đăng nhập
                     <button  type="submit" class="btn btn-primary btn-lg submit" name="sbmRegister">Register</button>
                   </div>
 
-                  <div id = 'ketqua'>
-
-                  </div>
+              
                 </div>
 
               </div>

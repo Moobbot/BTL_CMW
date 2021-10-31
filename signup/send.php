@@ -50,7 +50,9 @@
             if($mail->send()){
                 unset($_SESSION['signup_user']);
                 echo 'Thư đã gửi đi thành công!';
-                // include '../index.php';
+                session_destroy(); 
+                include '../login/index.php';
+               
             }
 
         }catch(Exception $e){
