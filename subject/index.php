@@ -5,7 +5,7 @@
             <img src="assets/img/logo.jfif" class="card-img-top m-2" style="max-width: 10rem;" alt="...">
         </a>
         <h4 class="card-title p-4 align-self-center">
-            <a href="teacher.php" class="text-decoration-none">
+            <a href="./teacher/detail.php" class="text-decoration-none">
                 Tên môn học</a>
         </h4>
     </div>
