@@ -61,20 +61,6 @@
                                 Default
                             </td>
                         </tr>
-                        <tr>
-                            <td>
-                                2
-                            </td>
-                            <td>
-                                Ex: Giáo trình mạng máy tính
-                            </td>
-                            <td>
-                                date_timestamp_get
-                            </td>
-                            <td>
-                                Default
-                            </td>
-                        </tr>
                     </tbody>
                 </table>
             </div>
