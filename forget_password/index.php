@@ -2,7 +2,7 @@
 
 <?php
 session_start();
-if(empty($_SESSION['changepass'])){
+if(empty($_SESSION['changepass'])){ // Form nhập email quên mật khẩu
 ?>
 <section class="vh-100" style="background-color: #eee;">
     <div class="container h-100">
@@ -35,7 +35,8 @@ if(empty($_SESSION['changepass'])){
     </div>
 </section>
 <?php
-}else
+}else // Sau khi process đã chạy xong và chạy đến send_activation điều kiện hoàn hảo thì thư được gửi và unset cái session để form này ko bị lộ ra
+      // Điều kiện ngoại lệ trường hợp send activation ko hoạt động người dùng có thể đổi mật khẩu ngay tại bước process do vòng lặp đầu đã set session (hiện tại chưa có phương án fix)
 {?>
 <section class="vh-100" style="background-color: #eee;">
     <div class="container h-100">
@@ -81,6 +82,7 @@ if(empty($_SESSION['changepass'])){
 
 
 <script>
+    // Script này sẽ bắt sự kiện submit gửi các biến của change-form đi qua kiểu post và nhận các biến respon trở về
 $("#change-form").submit(function(event) {
     event.preventDefault();
     $.ajax({
@@ -89,14 +91,14 @@ $("#change-form").submit(function(event) {
         data: $(this).serializeArray(),
         success: function(response) {
             response = JSON.parse(response);
-            if (response.status == 0) { // 
+            if (response.status == 0) { // Bắt các sự kiện chỉ in ra aleart
                 alert(response.message);
             }
-            if (response.status == 1) { // 
+            if (response.status == 1) { // Bắt các sự kiện có thay đổi về form giao diện hiện tại và in ra aleart
                 alert(response.message);
                 location.reload();
             }
-            if (response.status == 2){
+            if (response.status == 2){// In ra aleart và điều hướng lại sang một trang khác
                 alert(response.message);
                 window.location.href="../index.php";
             }
