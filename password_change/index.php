@@ -50,13 +50,13 @@ if(empty($_SESSION['changepass'])){
                                     <div class="mx-1 mx-md-4 signup-form">
                                         <div class="d-flex flex-row align-items-center mb-4">
                                             <div class="form-outline flex-fill mb-0">
-                                                <input type="text" id="txtPass" class="form-control " name="txtPass"
+                                                <input type="password" id="txtPass" class="form-control " name="txtPass"
                                                     placeholder="New password" />
                                             </div>
                                         </div>
                                         <div class="d-flex flex-row align-items-center mb-4">
                                             <div class="form-outline flex-fill mb-0">
-                                                <input type="text" id="txtPass1" class="form-control " name="txtPass1"
+                                                <input type="password" id="txtPass1" class="form-control " name="txtPass1"
                                                     placeholder="Type your password again" />
                                             </div>
                                         </div>
@@ -89,12 +89,16 @@ $("#change-form").submit(function(event) {
         data: $(this).serializeArray(),
         success: function(response) {
             response = JSON.parse(response);
-            if (response.status == 0) { // email không tồn tại
+            if (response.status == 0) { // 
                 alert(response.message);
             }
-            if (response.status == 1) { // email không tồn tại
+            if (response.status == 1) { // 
                 alert(response.message);
                 location.reload();
+            }
+            if (response.status == 2){
+                alert(response.message);
+                window.location.href="../index.php";
             }
         }
     })

@@ -50,7 +50,7 @@ try {
     // Nội dung Email
     $mail->Body = 'Sau khi ấn vào link kích hoạt tài khoản của bạn';
     // $mail->Body = 'Mã kích hoạt của bạn: '.$code.'';
-    $mail->Body = 'Nhấp vào đây để kích hoạt: <a href="http://localhost/BTL_CNW/password_change/activation.php?email=' . $email . '&?code='.$code['user_code'].'">Nhấp vào đây</a>';
+    $mail->Body = 'Nhấp vào đây để kích hoạt: <a href="http://localhost/BTL_CNW/password_change/activation.php?email=' . $email . '&code='.$code['user_code'].'&">Nhấp vào đây</a>';
     // Tệp tên đính kèm Email gửi đi
     // $mail->addAttachment('pdf/Giay_bao_mat_sau.pdf'); // Nếu bạn muốn đính kèm tệp tin gửi đi
 
