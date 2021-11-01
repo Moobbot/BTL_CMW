@@ -65,7 +65,7 @@ if(empty($_SESSION['changepass'])){
         unset($_SESSION['changepass']);
         echo json_encode(array(
             'status' => 1,
-            'message' => 'Đường link đã hết hạn'
+            'message' => 'Đường link đã hết hạn, vui lòng nhập lại email để nhận lại tin nhắn kích hoạt'
         ));
         exit;
     }

@@ -31,7 +31,7 @@ try {
     $mail->SMTPAuth = true; // Enable SMTP authentication
     $mail->Username = 'duckest1003@gmail.com'; // SMTP username
     // Thay bằng tài khoản của các bạn
-    $mail->Password = '100320014'; // SMTP password bqicengzsrdwtrdf
+    $mail->Password = ''; // SMTP password bqicengzsrdwtrdf
     $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS; // Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` also accepted
     $mail->Port = 587; // TCP port to connect to
     $mail->CharSet = 'UTF-8';
