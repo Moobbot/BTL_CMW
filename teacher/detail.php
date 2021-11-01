@@ -3,6 +3,8 @@
 -->
 <?php include '../reuse/header.php' ?>
 
+<?php include '../reuse/header_body.php' ?>
+
 <!-- Chưa có $_SESSION check vẫn vào được không cần section -->
 <div class="container-fluid bg-light h-100 p-0 m-0">
 
@@ -113,6 +115,7 @@
             <!-- Comments của sinh viên-->
             <div class="row">
                 <div class="col-md-12 flex-column m-md-5">
+                    <h2>Comments</h2>
                     <input type="text" class="w-75 p-5">
                     <input type="submit" value="Gửi" class="btn btn-success ps-4 pe-4 pt-2 pb-2">
                 </div>

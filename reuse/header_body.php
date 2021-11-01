@@ -3,7 +3,7 @@
     <div class="container-fluid p-0 m-0">
         <div class="d-flex flex-wrap align-items-center justify-content-between">
             <a href="http://www.tlu.edu.vn/" class="d-flex align-items-center mb-md-0 text-start">
-                <img src="assets/img/logo.jfif" alt="" width="40" height="32"
+                <img src="http://www.tlu.edu.vn/Portals/0/2014/Logo-WRU.png" alt="" width="40" height="32"
                     class="d-inline-block align-text-top p-0 m-0 me-2">
             </a>
 

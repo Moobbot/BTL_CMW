@@ -2,9 +2,11 @@
         Giao diện cho Giảng viên
 -->
 <!-- Body -->
-<div class="row p-0 m-0">
-    <div class="col">
-        <h2>Các khóa học đang dạy</h2>
-        <?php include './subject/index.php'; ?>
-    </div>
-</div>
+<!-- </?php if (isset($_GET['id']) && $_GET('id') != '') {
+    include './teacher/detail.php';
+} else {
+?> -->
+<h2>Các khóa học đang dạy</h2>
+<?php include './subject/index.php'; ?>
+<!-- </?php }
+?> -->
