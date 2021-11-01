@@ -25,13 +25,13 @@ $mail = new PHPMailer(true); //Biến $mail đang là 1 object
 // Quá trình này có thể có lỗi phát sinh, dừng thực thi chương trình.
 try {
     // Cấu hình tài khoản (Server) để gửi Email
-    $mail->SMTPDebug = 0; // Enable verbose debug output
+    $mail->SMTPDebug = SMTP::DEBUG_OFF; // Enable verbose debug output
     $mail->isSMTP(); // gửi mail SMTP
     $mail->Host = 'smtp.gmail.com'; // Set the SMTP server to send through
     $mail->SMTPAuth = true; // Enable SMTP authentication
     $mail->Username = 'duckest1003@gmail.com'; // SMTP username
     // Thay bằng tài khoản của các bạn
-    $mail->Password = '100320014'; // SMTP password bqicengzsrdwtrdf
+    $mail->Password = ''; // SMTP password bqicengzsrdwtrdf
     $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS; // Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` also accepted
     $mail->Port = 587; // TCP port to connect to
     $mail->CharSet = 'UTF-8';
@@ -50,16 +50,18 @@ try {
     // Nội dung Email
     $mail->Body = 'Sau khi ấn vào link kích hoạt tài khoản của bạn';
     // $mail->Body = 'Mã kích hoạt của bạn: '.$code.'';
-    $mail->Body = 'Nhấp vào đây để kích hoạt: <a href="http://localhost/BTL_CNW/password_change/activation.php?email=' . $email . '?code='.$code.'">Nhấp vào đây</a>';
+    $mail->Body = 'Nhấp vào đây để kích hoạt: <a href="http://localhost/BTL_CNW/password_change/activation.php?email=' . $email . '?code='.$code['user_code'].'">Nhấp vào đây</a>';
     // Tệp tên đính kèm Email gửi đi
     // $mail->addAttachment('pdf/Giay_bao_mat_sau.pdf'); // Nếu bạn muốn đính kèm tệp tin gửi đi
 
     // Gửi thư
-    if ($mail->send()) {
-        unset($_SESSION['changepass']);
-        echo 'Đã gửi kích hoạt';
-        // include '../index.php';
-    }
+    $mail->send();
+    echo json_encode(array(
+            'status' => 1,
+            'message' => 'Gửi kích hoạt thành công'
+    ));
+    // include '../index.php';
+    
 } catch (Exception $e) {
     echo "Lỗi " . $e->getMessage();
 }
