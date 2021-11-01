@@ -29,7 +29,7 @@ try {
     $mail->isSMTP(); // gửi mail SMTP
     $mail->Host = 'smtp.gmail.com'; // Set the SMTP server to send through
     $mail->SMTPAuth = true; // Enable SMTP authentication
-    $mail->Username = 'duckest1003@gmail.com'; // SMTP username
+    $mail->Username = ''; // SMTP username
     // Thay bằng tài khoản của các bạn
     $mail->Password = ''; // SMTP password bqicengzsrdwtrdf
     $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS; // Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` also accepted
