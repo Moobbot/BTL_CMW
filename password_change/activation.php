@@ -9,13 +9,17 @@
             $sql = "UPDATE db_users SET user_code = '$code' WHERE user_email = $email";
 
             $result = mysqli_query($conn,$sql);
+            
+            mysqli_close($conn);
 
-            if(mysqli_num_rows($result) > 0){
-                header("Location:../password_change/send_activation.php");
-                mysqli_close($conn);
-            }
+            header("Location:../password_change/send_activation.php");
+                
         }else{
-            $_SESSION['current_user'] = $_GET['email'];
+            include '../reuse/config.php';
+            $email = $_GET['email'];
+            $sql = "UPDATE passchange_status SET passchange_status = 1 FROM db_users WHERE user_email = '$email'";
+            $result = mysqli_query($conn,$sql);
+
             header("Location:index.php");
         }
 ?>
