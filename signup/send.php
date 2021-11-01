@@ -54,7 +54,7 @@ try {
         // include '../index.php';
     }
 } catch (Exception $e) {
-    echo "Lỗi " . $e->getMessage();
+    echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
 }
 
     // }

@@ -16,9 +16,7 @@
                 
         }else{
             include '../reuse/config.php';
-            $email = $_GET['email'];
-            $sql = "UPDATE passchange_status SET passchange_status = 1 FROM db_users WHERE user_email = '$email'";
-            $result = mysqli_query($conn,$sql);
+            $_SESSION['changepass'] = $_GET['email'];
 
             header("Location:index.php");
         }

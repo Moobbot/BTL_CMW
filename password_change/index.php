@@ -94,8 +94,7 @@ $("#change-form").submit(function(event) {
             }
             if (response.status == 1) { // email không tồn tại
                 alert(response.message);
-                unset($_SESSION['current_user']);
-                header("Location:../index.php");
+                location.reload();
             }
         }
     })

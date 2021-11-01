@@ -22,12 +22,19 @@ if(empty($_SESSION['changepass'])){
 }else{
     $pass = $_POST['txtPass'];
     $pass1 = $_POST['txtPass1'];
+    $email = $_SESSION['changepass'];
+    $password_hash = password_hash($pass,PASSWORD_DEFAULT);
     if($pass == $pass1){
+        $sql = "UPDATE db_users SET user_pass = '$password_hash' WHERE user_email = '$email'";
+    
+        $result = mysqli_query($conn,$sql);
+        
+        unset($_SESSION['changepass']);
         echo json_encode(array(
             'status' => 1,
             'message' => 'Thay đổi thành công'
         ));
-        exit;
+        exit;   
     }else{
         echo json_encode(array(
             'status' => 0,

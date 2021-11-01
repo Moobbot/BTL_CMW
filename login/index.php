@@ -30,9 +30,11 @@ if (empty($_SESSION['current_user'])) {
                                         </div>
                                     </div>
                                     <div class="d-flex justify-content-start mx-5 mb-3 mb-lg-4">
-
                                         <a href="../signup/index.php" class="text-decoration-none text-center">Click
                                             here to register</a>
+                                    </div>
+                                    <div class="d-flex justify-content-start mx-5 mb-3 mb-lg-4">
+                                        <a href="../password_change/index.php" class="text-decoration-none text-center">Forget your password? Click here</a>
                                     </div>
                                     <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
                                         <button type="submit" class="btn btn-primary btn-lg">Login</button>
