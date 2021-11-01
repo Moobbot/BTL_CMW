@@ -1,6 +1,12 @@
 <?php
 session_start();
-$sigup_user =  $_SESSION['signup_user'];
+$email =  $_SESSION['changepass'];
+
+include '../reuse/config.php';
+
+$sql = "SELECT user_code FROM db_users WHERE user_email = '$email'";
+$result = mysqli_query($conn,$sql);
+$code = mysqli_fetch_assoc($result);
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
@@ -19,40 +25,45 @@ $mail = new PHPMailer(true); //Biến $mail đang là 1 object
 // Quá trình này có thể có lỗi phát sinh, dừng thực thi chương trình.
 try {
     // Cấu hình tài khoản (Server) để gửi Email
-    $mail->SMTPDebug = 0; // Enable verbose debug output
+    $mail->SMTPDebug = SMTP::DEBUG_OFF; // Enable verbose debug output
     $mail->isSMTP(); // gửi mail SMTP
     $mail->Host = 'smtp.gmail.com'; // Set the SMTP server to send through
     $mail->SMTPAuth = true; // Enable SMTP authentication
-    $mail->Username = 'ngotamCv01@gmail.com'; // SMTP username
+    $mail->Username = 'duckest1003@gmail.com'; // SMTP username
     // Thay bằng tài khoản của các bạn
-    $mail->Password = 'M$V1951060993'; // SMTP password bqicengzsrdwtrdf
+    $mail->Password = ''; // SMTP password bqicengzsrdwtrdf
     $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS; // Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` also accepted
     $mail->Port = 587; // TCP port to connect to
     $mail->CharSet = 'UTF-8';
 
     // Cấu hình thuộc tính hiển thị của người gửi - người nhận
-    $mail->setFrom('ngotamCv01@gmail.com', 'Xác nhận đăng kí tài khoản');
+    // $mail->setFrom('ngotamCv01@gmail.com', 'Xác nhận đăng kí tài khoản');
     // Tên hiển thị: TÊN CÁC BẠN, ví dụ: Nguyễn Sơn Lâm
 
-    $mail->addReplyTo('ngotamCv01@gmail.com', 'Xác nhận đăng kí tài khoản');
+    // $mail->addReplyTo('ngotamCv01@gmail.com', 'Xác nhận đăng kí tài khoản');
 
-    $mail->addAddress($sigup_user['user_email']); // Đây là địa chỉ Email người nhận > sau này sẽ là BIẾN
+    $mail->addAddress($email); // Đây là địa chỉ Email người nhận > sau này sẽ là BIẾN
 
     // Tiêu đề Email là gì?
     $mail->isHTML(true);   // Set email format to HTML
     $mail->Subject = '[localhost] Kích hoạt tài khoản';
     // Nội dung Email
     $mail->Body = 'Sau khi ấn vào link kích hoạt tài khoản của bạn';
-    $mail->Body = 'Nhấp vào đây để kích hoạt: <a href="http://localhost/BTL_CNW/signup/activation.php?email=' . $sigup_user['user_email'] . '&code=' . $sigup_user['user_code'] . '">Nhấp vào đây</a>';
+    // $mail->Body = 'Mã kích hoạt của bạn: '.$code.'';
+    $mail->Body = 'Nhấp vào đây để kích hoạt: <a href="http://localhost/BTL_CNW/forget_password/activation.php?email=' . $email . '&code='.$code['user_code'].'&">Nhấp vào đây</a>';
     // Tệp tên đính kèm Email gửi đi
     // $mail->addAttachment('pdf/Giay_bao_mat_sau.pdf'); // Nếu bạn muốn đính kèm tệp tin gửi đi
 
     // Gửi thư
-    if ($mail->send()) {
-        unset($_SESSION['signup_user']);
-        echo 'Thư đã gửi đi thành công!';
-        // include '../index.php';
+    if($mail->send()){
+        unset($_SESSION['changepass']);
+        echo json_encode(array(
+                'status' => 1,
+                'message' => 'Đã gửi email xác nhận vui lòng kiểm tra hòm thư'
+        ));
     }
+    // include '../index.php';
+    
 } catch (Exception $e) {
     echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
 }

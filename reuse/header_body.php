@@ -35,7 +35,7 @@
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                         <li><a class="dropdown-item" href="#">Thông tin tài khoản</a></li>
                         <li><a class="dropdown-item" href="#">Đổi mật khẩu</a></li>
-                        <li><a class="dropdown-item" href="./login/logout.php">Đăng xuất</a></li>
+                        <li><a class="dropdown-item" href="/BTL_CNW/logout/index.php">Đăng xuất</a></li>
                     </ul>
                 </div>
             </div>
