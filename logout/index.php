@@ -1,6 +1,6 @@
 <?php
     session_start();
-    unset($_SESSION['changepass']);
+    unset($_SESSION['current_user']);
 
     header('Location:../index.php');
 ?>
