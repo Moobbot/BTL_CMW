@@ -27,6 +27,7 @@
                     // Hiện thị foder teacher
                     include 'teacher/index.php';
                 ?>
+
             <?php
                 }
                 if ($currentUser['user_level'] == 2) {
@@ -38,8 +39,7 @@
 
         </div>
     </div>
+
     <?php include './reuse/footer_body.php' ?>
 </div>
-
-
 <?php include 'reuse/footer.php' ?>
