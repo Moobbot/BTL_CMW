@@ -42,13 +42,13 @@ if(empty($_SESSION['changepass'])){ // Kiểm tra nếu session mang tên có tr
     if(mysqli_num_rows($result) > 0){ // Kiểm tra code kích hoạt có tồn tại trong bảng db_users ko 
         $password_hash = password_hash($pass,PASSWORD_DEFAULT);
         if($pass == $pass1){
+            $sql1 = "UPDATE db_users SET user_pass = '$password_hash' WHERE user_email = '$email'"; // Thay đổi mật khẩu
+            $result1 = mysqli_query($conn,$sql1);
+            
             $newcode = md5(uniqid(rand(), true)); //tạo ra một code mới coi như chấm dứt việc vòng lặp sử dụng link cũ mà vẫn đổi mật khẩu ms 
             $sql2 = "UPDATE db_users SET user_code = '$newcode' WHERE user_email = '$email'";
             $result2 = mysqli_query($conn,$sql2);
-            if(mysqli_num_rows($result2) > 0){
-                $sql1 = "UPDATE db_users SET user_pass = '$password_hash' WHERE user_email = '$email'"; // Thay đổi mật khẩu
-                $result1 = mysqli_query($conn,$sql1);
-            }
+
             unset($_SESSION['changepass']);
             echo json_encode(array(
                 'status' => 2,
