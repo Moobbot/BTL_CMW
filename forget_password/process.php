@@ -18,7 +18,7 @@ if(empty($_SESSION['changepass'])){
     
         mysqli_close($conn);
 
-        header("Location:../password_change/send_activation.php");
+        header("Location:../forget_password/send_activation.php");
         // $_SESSION['changepass'] = $email;
         // mysqli_close($conn);
         // header("Location:./activation.php"); // Chuyển sang trang xác thực tài khoản

@@ -13,8 +13,8 @@ if(empty($_SESSION['changepass'])){
                         <div class="row justify-content-center">
                             <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
                                 <p class="text-center h3 fw-bold mb-5 mx-1 mx-md-4 mt-4">Change password</p>
-                                <div class="mx-1 mx-md-4 signup-form">
-                                    <form id="change-form" >
+                                <div class="mx-1 mx-md-4">
+                                    <form id="change-form">
                                         <div class="d-flex flex-row align-items-center mb-4">
                                             <div class="form-outline flex-fill mb-0">
                                                 <input type="email" id="txtEmail" class="form-control " name="txtEmail"
@@ -22,7 +22,7 @@ if(empty($_SESSION['changepass'])){
                                             </div>
                                         </div>
                                         <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
-                                            <button type="submit" class="btn btn-primary btn-lg submit">Submit</button>
+                                            <button type="submit" class="btn btn-primary btn-lg">Submit</button>
                                         </div>
                                     </form>
                                 </div>
@@ -47,7 +47,7 @@ if(empty($_SESSION['changepass'])){
                             <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
                                 <p class="text-center h3 fw-bold mb-5 mx-1 mx-md-4 mt-4">Change password</p>
                                 <form id="change-form" >
-                                    <div class="mx-1 mx-md-4 signup-form">
+                                    <div class="mx-1 mx-md-4">
                                         <div class="d-flex flex-row align-items-center mb-4">
                                             <div class="form-outline flex-fill mb-0">
                                                 <input type="password" id="txtPass" class="form-control " name="txtPass"
@@ -61,7 +61,7 @@ if(empty($_SESSION['changepass'])){
                                             </div>
                                         </div>
                                         <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
-                                            <button type="submit" class="btn btn-primary btn-lg submit">Confirm</button>
+                                            <button type="submit" class="btn btn-primary btn-lg">Confirm</button>
                                         </div>
                                     </div>
                                 </form>
