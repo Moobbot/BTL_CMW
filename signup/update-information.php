@@ -15,7 +15,7 @@
                   <div class="d-flex flex-row align-items-center mb-4">
                     <i class="fas fa-user fa-lg me-3 fa-fw"></i>
                     <div class="form-outline flex-fill mb-0">
-                      <input type="text" id="txtName" class="form-control " name="txtName" placeholder="Full Name"/>
+                      <input type="text" id="fullname" class="form-control " name="fullname" placeholder="Full Name"/>
                
                     </div>
                   </div>
@@ -40,10 +40,15 @@
                     </div>
                   </div>
 
-                  
-
+                  <div class="d-flex flex-row align-items-center mb-4">
+                    <i class="fas fa-id-card-alt fa-lg me-3 fa-fw"></i>
+                    <div class="form-outline flex-fill mb-0">
+                      <input type="text" id="office_id" class="form-control" name="office_id" placeholder="Office ID"/>
+                      
+                    </div>
+                  </div>
                   <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
-                    <button  type="submit" class="btn btn-primary btn-lg submit" name="sbmRegister">Register</button>
+                    <button  type="submit" class="btn btn-primary btn-lg submit" name="sbmRegister">Cập nhập</button>
                   </div>
 
                
@@ -58,4 +63,7 @@
     </div>
   </div>
 </section>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src = '../assets/update.js'> </script>
+
 <?php include '../reuse/footer.php' ?>
