@@ -2,7 +2,7 @@
 
 <?php
 session_start();
-if(empty($_SESSION['current_user'])){
+if(empty($_SESSION['changepass'])){
 ?>
 <section class="vh-100" style="background-color: #eee;">
     <div class="container h-100">
@@ -14,7 +14,7 @@ if(empty($_SESSION['current_user'])){
                             <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
                                 <p class="text-center h3 fw-bold mb-5 mx-1 mx-md-4 mt-4">Change password</p>
                                 <div class="mx-1 mx-md-4 signup-form">
-                                    <form id="change-form">
+                                    <form id="change-form" >
                                         <div class="d-flex flex-row align-items-center mb-4">
                                             <div class="form-outline flex-fill mb-0">
                                                 <input type="email" id="txtEmail" class="form-control " name="txtEmail"
@@ -46,7 +46,7 @@ if(empty($_SESSION['current_user'])){
                         <div class="row justify-content-center">
                             <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
                                 <p class="text-center h3 fw-bold mb-5 mx-1 mx-md-4 mt-4">Change password</p>
-                                <form id="change-form">
+                                <form id="change-form" >
                                     <div class="mx-1 mx-md-4 signup-form">
                                         <div class="d-flex flex-row align-items-center mb-4">
                                             <div class="form-outline flex-fill mb-0">
@@ -77,6 +77,7 @@ if(empty($_SESSION['current_user'])){
 }
 ?>
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 
 <script>

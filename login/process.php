@@ -27,6 +27,7 @@ if (mysqli_num_rows($result) > 0) { // vòng if kiểm tra câu lệnh truy vấ
                 'status' => 0,
                 'message' => 'Tài khoản chưa xác thực'
             ));
+            exit;
         }
     } else {
         echo json_encode(array(
