@@ -7,10 +7,9 @@ if(empty($_SESSION['changepass'])){ // Kiểm tra nếu session mang tên có tr
     $sql = "SELECT user_name FROM db_users WHERE user_email = '$email';"; // Câu lệnh tìm username ứng với email đã nhận qua post
     $result = mysqli_query($conn, $sql); // Kết quả trả ra số hàng của câu lệnh sql
     // $row = mysqli_fetch_assoc($result);
-    
     if (mysqli_num_rows($result) > 0) { // Kiểm tra email đi kèm tài khoản có tồn tại hay ko 
         $code = md5(uniqid(rand(), true)); //Tạo luôn code xác thực đổi mật khẩu
-        $_SESSION['changepass'] = $email; // Đặt session với biến email 
+        //$_SESSION['changepass'] = $email; // Đặt session với biến email 
             
         $sql1 = "UPDATE db_users SET user_code = '$code' WHERE user_email = '$email'"; //Cập nhật code lần 1 để tạo ra một code mới xác thực thay đổi mật khẩu
 
@@ -18,7 +17,9 @@ if(empty($_SESSION['changepass'])){ // Kiểm tra nếu session mang tên có tr
     
         mysqli_close($conn); // đóng kết nối
 
-        header("Location:../forget_password/send_activation.php"); // điều hướng đến trang email
+        
+
+        header("Location:../forget_password/send_activation.php?email=$email"); // điều hướng đến trang email
         // $_SESSION['changepass'] = $email;
         // mysqli_close($conn);
         // header("Location:./activation.php"); // Chuyển sang trang xác thực tài khoản
