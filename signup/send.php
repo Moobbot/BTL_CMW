@@ -19,7 +19,7 @@ $mail = new PHPMailer(true); //Biến $mail đang là 1 object
 // Quá trình này có thể có lỗi phát sinh, dừng thực thi chương trình.
 try {
     // Cấu hình tài khoản (Server) để gửi Email
-    $mail->SMTPDebug = 0; // Enable verbose debug output
+    $mail->SMTPDebug = SMTP::DEBUG_OFF; // Enable verbose debug output
     $mail->isSMTP(); // gửi mail SMTP
     $mail->Host = 'smtp.gmail.com'; // Set the SMTP server to send through
     $mail->SMTPAuth = true; // Enable SMTP authentication

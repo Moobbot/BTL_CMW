@@ -52,28 +52,43 @@ if (empty($_SESSION['current_user'])) {
             <div class="row bg-warning">
                 <table class="table">
                     <thead>
-                        <h2>Thông báo</h2>
-                        <th>
-                            <a href="" class="btn btn-success">Thêm</a>
-                        </th>
+                        <h2 class="text-center">Thông báo</h2>
                     </thead>
                     <tbody>
                         <!-- Dữ liệu thay đổi theo CSDL -->
-                        <?php
-                            $id = $_GET['id'];
-                            $sql = "SELECT `note_id`, `note_mes` FROM db_note WHERE teach_learn_id = '$id'";
-                            $result = mysqli_query($conn, $sql);
-                            $row = mysqli_fetch_assoc($result);
-                            ?>
                         <th class="col">
                             <p class="">
-                                <?= $row['note_mes'] ?>
+                                <?php
+                                    $id = $_GET['id'];
+                                    $sql = "SELECT `note_id`, `note_mes` FROM db_note WHERE teach_learn_id = '$id'";
+                                    $result = mysqli_query($conn, $sql);
+                                    $row = mysqli_fetch_assoc($result);
+                                    if ($row > 0) {
+                                        $row['note_mes']
+                                    ?>
                             </p>
                         </th>
                         <th class="col-1">
                             <a href="" class="btn btn-success">Sửa</a>
                             <a href="" class="btn btn-success">Xóa</a>
                         </th>
+                        <?php
+                                    } else {
+                                        echo "Không có thông báo";
+                        ?>
+                        </p>
+                        </th>
+                        <tr>
+                            <th class="col">
+                                <input type="text" placertrolder="Thông báo">
+                            </th>
+                            <th>
+                                <a href="" class="btn btn-success">Thêm</a>
+                            </th>
+                        </tr>
+                        <?php
+                                    }
+                        ?>
                     </tbody>
                 </table>
             </div>
@@ -128,14 +143,15 @@ if (empty($_SESSION['current_user'])) {
                                     <?= $STT += 1 ?>
                                 </th>
                                 <td>
-                                    <input type="text" placeholder="Tên tài liệu" class="text-center">
-                                    <input type="text" placeholder="Link tài liệu" class="text-center">
+                                    <input type="text" id="" placeholder="Tên tài liệu" class="text-center">
+                                    <input type="text" id="" placeholder="Link tài liệu" class="text-center">
                                 </td>
                                 <td>
-                                    <input type="text" placeholder="Là ngày thêm" disabled class="text-center">
+                                    <input type="text" id="" placeholder="Là ngày thêm" disabled class="text-center">
                                 </td>
                                 <td>
-                                    <input type="text" placeholder="Ghi chú" class="text-center">
+                                    <input type="text" id="" placeholder="Ghi chú" class="text-center">
+
                                 </td>
                                 <th>
                                     <a href="" class="btn btn-success">Thêm</a>
