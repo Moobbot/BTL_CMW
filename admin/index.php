@@ -61,61 +61,62 @@
                 <div class="col-md-12">
                     <h2>Tài liệu môn học</h2>
 
-            <!-- Bảng thông tin tài liệu -->
-            <main>
-                <!-- Hiển thị BẢNG DỮ LIỆU DANH BẠ CÁ NHÂN -->
-                <!-- Kết nối tới Server, truy vấn dữ liệu (SELECT) từ Bảng db_employees -->
-                <!-- Quy trình 4 bước -->
-            
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th scope="col">User ID</th>
-                            <th scope="col">User Name</th>
-                            <th scope="col">Email</th>
-                            <th scope="col">Register Date</th>
-                            <th scope="col">Full Name</th>
-                            <th scope="col">Position</th>
-                            <th scope="col">Phone</th>
-                            <th scope="col">Sửa thông tin</th>
-                            <th scope="col">Xóa thông tin</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <!-- Đoạn này thay đổi theo Dữ liệu trong CSDL -->
-                        <?php
-                        // Quy trình 4 bước
-                        // Bước 01: Đã tạo sẵn, gọi lại thôi
-                        include '../reuse/config.php';
-                        // Bước 02: Thực hiện TRUY VẤN
-                        $sql = "SELECT db_users.user_id, db_users.user_name, db_users.user_email, db_users.user_regis_date ,db_user_inf.User_FullName, db_user_inf.User_Position,db_user_inf.User_Phone FROM db_users,db_user_inf WHERE db_users.user_id =db_user_inf.ID" ;
-                        $result = mysqli_query($conn, $sql); //Lưu kết quả trả về vào result
-                        // Bước 03: Phân tích và xử lý kết quả
-                        if (mysqli_num_rows($result) > 0) {
-                            while ($row = mysqli_fetch_assoc($result)) {
-                        ?>
-                                <tr>
-                                    <th scope="row"><?php echo $row['user_id']; ?> </th>
-                                    <td><?php echo $row['user_name']; ?></td>
-                                    <td><?php echo $row['user_email']; ?></td>
-                                    <td><?php echo $row['user_regis_date']; ?></td>
-                                    <td><?php echo $row['User_FullName']; ?></td>
-                                    <td><?php echo $row['User_Position']; ?></td>
-                                    <td><?php echo $row['User_Phone']; ?></td>
-                                    <td><a href="edit.php?id=<?php echo $row['user_id']; ?>"><i class="fas fa-user-edit"></i></a></td>
-                                    <td><a href="delete.php?id=<?php echo $row['user_id']; ?>"><i class="fas fa-user-times"></i></a></td>
-                                </tr>
-                        <?php
-                            }
-                        }
-                        ?>
+                    <!-- Bảng thông tin tài liệu -->
+                    <main>
+                        <!-- Hiển thị BẢNG DỮ LIỆU DANH BẠ CÁ NHÂN -->
+                        <!-- Kết nối tới Server, truy vấn dữ liệu (SELECT) từ Bảng db_employees -->
+                        <!-- Quy trình 4 bước -->
 
-                        <!-- Đoạn này thay đổi theo Dữ liệu trong CSDL -->
-                    </tbody>
-                </table>
-            </main>
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">User ID</th>
+                                    <th scope="col">User Name</th>
+                                    <th scope="col">Email</th>
+                                    <th scope="col">Register Date</th>
+                                    <th scope="col">Full Name</th>
+                                    <th scope="col">Position</th>
+                                    <th scope="col">Phone</th>
+                                    <th scope="col">Sửa thông tin</th>
+                                    <th scope="col">Xóa thông tin</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- Đoạn này thay đổi theo Dữ liệu trong CSDL -->
+                                <?php
+                                // Quy trình 4 bước
+                                // Bước 01: Đã tạo sẵn, gọi lại thôi
+                                include '../reuse/config.php';
+                                // Bước 02: Thực hiện TRUY VẤN
+                                $sql = "SELECT db_users.user_id, db_users.user_name, db_users.user_email, db_users.user_regis_date ,db_user_inf.User_FullName, db_user_inf.User_Position,db_user_inf.User_Phone
+                                 FROM db_users,db_user_inf WHERE db_users.user_id =db_user_inf.ID";
+                                $result = mysqli_query($conn, $sql); //Lưu kết quả trả về vào result
+                                // Bước 03: Phân tích và xử lý kết quả
+                                if (mysqli_num_rows($result) > 0) {
+                                    while ($row = mysqli_fetch_assoc($result)) {
+                                ?>
+                                        <tr>
+                                            <th scope="row"><?php echo $row['user_id']; ?> </th>
+                                            <td><?php echo $row['user_name']; ?></td>
+                                            <td><?php echo $row['user_email']; ?></td>
+                                            <td><?php echo $row['user_regis_date']; ?></td>
+                                            <td><?php echo $row['User_FullName']; ?></td>
+                                            <td><?php echo $row['User_Position']; ?></td>
+                                            <td><?php echo $row['User_Phone']; ?></td>
+                                            <td><a href="edit.php?id=<?php echo $row['user_id']; ?>"><i class="fas fa-user-edit"></i></a></td>
+                                            <td><a href="delete.php?id=<?php echo $row['user_id']; ?>"><i class="fas fa-user-times"></i></a></td>
+                                        </tr>
+                                <?php
+                                    }
+                                }
+                                ?>
+
+                                <!-- Đoạn này thay đổi theo Dữ liệu trong CSDL -->
+                            </tbody>
+                        </table>
+                    </main>
+                </div>
             </div>
-    </div>
         </div>
     </div>
     <!-- Footer -->
