@@ -58,29 +58,12 @@
             <!-- Thông báo -->
 
             <main class="container">
-        <h2>Sửa thông tin người dùng</h2>
+        <h2>Update user information</h2>
         
         
         <form action="process-edit.php?id=<?php echo $_GET['id']; ?>"method="post">
         
-            <div class="form-group row">
-                <label for="user_name" class="col-sm-2 col-form-label">User Name</label>
-                <div class="col-sm-10">
-                <input type="tel" class="form-control" id="user_name" name="user_name">
-                </div>
-            </div>
-            <div class="form-group row">
-                <label for="user_email" class="col-sm-2 col-form-label">Email</label>
-                <div class="col-sm-10">
-                <input type="tel" class="form-control" id="user_email" name="user_email">
-                </div>
-            </div>
-            <div class="form-group row">
-                <label for="user_regis_date" class="col-sm-2 col-form-label">Register Date</label>
-                <div class="col-sm-10">
-                <input type="Date" class="form-control" id="user_regis_date" name="user_regis_date">
-                </div>
-            </div>
+           
             <div class="form-group row">
                 <label for="User_FullName" class="col-sm-2 col-form-label">Full Name</label>
                 <div class="col-sm-10">

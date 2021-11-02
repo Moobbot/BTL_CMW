@@ -59,7 +59,7 @@
 
             <div class="row">
                 <div class="col-md-12">
-                    <h2>User Information</h2>
+                    <h2>User Information Details</h2>
 
                     <!-- Bảng thông tin tài liệu -->
                     <main>
@@ -70,13 +70,15 @@
                         <table class="table">
                             <thead>
                                 <tr>
-                                    
+                                    <th scope="col">User ID</th>
+                                    <th scope="col">User Name</th>
+                                    <th scope="col">Email</th>
+                                    <th scope="col">Register Date</th>
                                     <th scope="col">Full Name</th>
                                     <th scope="col">Position</th>
                                     <th scope="col">Phone</th>
-                                    <th scope="col">Edit Information</th>
-                                    <th scope="col">Delete Information</th>
-                                    <th scope="col">Details Information</th>
+                                    
+                                    <th scope="col">Xóa thông tin</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -96,16 +98,15 @@
                                        
                                 ?>
                                         <tr>
-                                            <!-- <th scope="row"><?php echo $row['user_id']; ?> </th>
+                                            <th scope="row"><?php echo $row['user_id']; ?> </th>
                                             <td><?php echo $row['user_name']; ?></td>
                                             <td><?php echo $row['user_email']; ?></td>
-                                            <td><?php echo $row['user_regis_date']; ?></td> -->
+                                            <td><?php echo $row['user_regis_date']; ?></td>
                                             <td><?php echo $row['User_FullName']; ?></td>
                                             <td><?php echo $row['User_Position']; ?></td>
                                             <td><?php echo $row['User_Phone']; ?></td>
-                                            <td><a href="edit.php?id=<?php echo $row['user_id']; ?>"><i class="fas fa-user-edit"></i></a></td>
+                                           
                                             <td><a href="delete.php?id=<?php echo $row['user_id']; ?>"><i class="fas fa-user-times"></i></a></td>
-                                            <td><a href="details-admin.php?id=<?php echo $row['user_id']; ?>"><i class="fas fa-user-plus"></i></a></td>
                                         </tr>
                                 <?php
                                     }
