@@ -72,6 +72,7 @@
                                 <tr>
                                     <th scope="col">User ID</th>
                                     <th scope="col">User Name</th>
+                                    
                                     <th scope="col">Email</th>
                                     <th scope="col">Register Date</th>
                                     <th scope="col">Full Name</th>
@@ -89,7 +90,7 @@
                                 include '../reuse/config.php';
                                 // Bước 02: Thực hiện TRUY VẤN
                                 $sql = "SELECT db_users.user_id, db_users.user_name, db_users.user_email, db_users.user_regis_date ,db_user_inf.User_FullName, db_user_inf.User_Position,db_user_inf.User_Phone
-                                 FROM db_users,db_user_inf WHERE db_users.user_id =db_user_inf.ID";
+                                 FROM db_users, db_user_inf WHERE db_users.user_id = db_user_inf.ID";
                                 $result = mysqli_query($conn, $sql); //Lưu kết quả trả về vào result
                                 // Bước 03: Phân tích và xử lý kết quả
 

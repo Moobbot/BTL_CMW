@@ -18,13 +18,13 @@
         // Quá trình này có thể có lỗi phát sinh, dừng thực thi chương trình.
         try{
             // Cấu hình tài khoản (Server) để gửi Email
-            $mail->SMTPDebug = 0;// Enable verbose debug output
+            $mail->SMTPDebug = SMTP::DEBUG_OFF;// Enable verbose debug output
             $mail->isSMTP();// gửi mail SMTP
             $mail->Host = 'smtp.gmail.com';// Set the SMTP server to send through
             $mail->SMTPAuth = true;// Enable SMTP authentication
             $mail->Username = 'nguyenthuyduong542001@gmail.com';// SMTP username
             // Thay bằng tài khoản của các bạn
-            $mail->Password = 'daicaratu123'; // SMTP password bqicengzsrdwtrdf
+            $mail->Password = 'phamquangduong123'; // SMTP password bqicengzsrdwtrdf
             $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;// Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` also accepted
             $mail->Port = 587; // TCP port to connect to
             $mail->CharSet = 'UTF-8';
