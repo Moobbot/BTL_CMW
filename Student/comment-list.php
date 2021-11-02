@@ -1,5 +1,5 @@
 <?php
-require_once ("db.php");
+require_once ("../reuse/config.php");
 
 $sql = "SELECT * FROM tbl_comment ORDER BY parent_comment_id asc, comment_id asc";
 
