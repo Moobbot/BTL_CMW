@@ -34,7 +34,8 @@ if (empty($_SESSION['current_user'])) {
                                             here to register</a>
                                     </div>
                                     <div class="d-flex justify-content-start mx-5 mb-3 mb-lg-4">
-                                        <a href="../forget_password/index.php" class="text-decoration-none text-center">Forget your password?</a>
+                                        <a href="../forget_password/index.php"
+                                            class="text-decoration-none text-center">Forget your password?</a>
                                     </div>
                                     <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
                                         <button type="submit" class="btn btn-primary btn-lg">Login</button>

@@ -12,7 +12,7 @@
             if (empty($_SESSION['current_user'])) {
             ?>
 
-            <div class="text-end">
+            <div class="">
                 <a href="login/" class="btn btn-outline-light me-2">Login</a>
                 <a href="signup/" class="btn btn-warning me-2">Sign-up</a>
             </div>
@@ -22,7 +22,7 @@
                 $currentUser = $_SESSION['current_user'];
             ?>
 
-            <div class="text-end">
+            <div class="">
                 <div class="dropdown">
                     <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1"
                         data-bs-toggle="dropdown" aria-expanded="false">
