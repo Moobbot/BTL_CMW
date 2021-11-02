@@ -1,7 +1,7 @@
 <!-- Giao diện từng môn học
         Giao diện cho Giảng viên
 -->
-<?php include 'reuse/header.php' ?>
+<?php include '../reuse/header.php' ?>
 
 <div class="container-fluid bg-light h-100 p-0 m-0">
 
@@ -167,7 +167,7 @@
         </div>
     </div>
     <!-- Footer -->
-    <?php include 'footer_body.php' ?>
+    <?php include '../reuse/footer_body.php' ?>
 </div>
 
-<?php include 'reuse/footer.php' ?>
+<?php include '../reuse/footer.php' ?>
