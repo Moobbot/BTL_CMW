@@ -1,6 +1,6 @@
 <?php
 session_start(); //Bắt đầu phiên làm việc
-$email =  $_SESSION['changepass']; // Lấy email đã gán từ process qua biến session
+$email =  $_GET['email']; // Lấy email đã gán từ process qua biến session
 
 include '../reuse/config.php';
 
@@ -29,7 +29,7 @@ try {
     $mail->isSMTP(); // gửi mail SMTP
     $mail->Host = 'smtp.gmail.com'; // Set the SMTP server to send through
     $mail->SMTPAuth = true; // Enable SMTP authentication
-    $mail->Username = 'duckest1003@gmail.com'; // SMTP username
+    $mail->Username = ''; // SMTP username
     // Thay bằng tài khoản của các bạn
     $mail->Password = ''; // SMTP password 
     $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS; // Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` also accepted
@@ -57,7 +57,7 @@ try {
 
     // Gửi thư
     if($mail->send()){ //Gửi thành công thì unset session để form  index lại thay đổi theo giá trị của session tương ứng và gửi respon về cho ajax.
-        unset($_SESSION['changepass']);
+        // unset($_SESSION['changepass']);
         echo json_encode(array(
                 'status' => 1,
                 'message' => 'Đã gửi email xác nhận vui lòng kiểm tra hòm thư'
