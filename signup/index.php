@@ -89,9 +89,7 @@ session_start(); // bắt đầu session cho người đăng nhập
                                         <button type="submit" class="btn btn-primary btn-lg submit" name="sbmRegister">Register</button>
                                     </div>
 
-                                    <div id='ketqua'>
-
-                                    </div>
+                              
                                 </div>
 
                             </div>
