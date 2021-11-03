@@ -19,8 +19,7 @@ session_start(); // bắt đầu session cho người đăng nhập
                                     <div class="d-flex flex-row align-items-center mb-4">
                                         <i class="fas fa-user fa-lg me-3 fa-fw"></i>
                                         <div class="form-outline flex-fill mb-0">
-                                            <input type="text" id="txtUser" class="form-control " name="txtUser"
-                                                placeholder="User Name" />
+                                            <input type="text" id="txtUser" class="form-control " name="txtUser" placeholder="User Name" />
 
                                         </div>
                                     </div>
@@ -28,8 +27,7 @@ session_start(); // bắt đầu session cho người đăng nhập
                                         <i class="fas fa-user-cog fa-lg me-3 fa-fw"></i>
                                         <div class="form-outline flex-fill mb-0">
 
-                                            <select class="form-select" aria-label="Default select example"
-                                                name="txtPosition" id="txtPosition">
+                                            <select class="form-select" aria-label="Default select example" name="txtPosition" id="txtPosition">
                                                 <label class="form-label" for="form3Example4c">Chức Vụ</label>
                                                 <option value="Giảng Viên">Giảng Viên</option>
                                                 <option value="Sinh Viên">Sinh Viên</option>
@@ -41,8 +39,7 @@ session_start(); // bắt đầu session cho người đăng nhập
                                     <div class="d-flex flex-row align-items-center mb-4">
                                         <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
                                         <div class="form-outline flex-fill mb-0">
-                                            <input type="email" id="txtEmail" class="form-control" name="txtEmail"
-                                                placeholder="example@gmail.com" />
+                                            <input type="email" id="txtEmail" class="form-control" name="txtEmail" placeholder="example@gmail.com" />
 
                                         </div>
                                     </div>
@@ -50,8 +47,7 @@ session_start(); // bắt đầu session cho người đăng nhập
                                     <div class="d-flex flex-row align-items-center mb-4">
                                         <i class="fas fa-lock fa-lg me-3 fa-fw"></i>
                                         <div class="form-outline flex-fill mb-0">
-                                            <input type="password" id="txtPass1" class="form-control" name="txtPass1"
-                                                placeholder="Your Password" />
+                                            <input type="password" id="txtPass1" class="form-control" name="txtPass1" placeholder="Your Password" />
 
                                         </div>
                                     </div>
@@ -59,15 +55,38 @@ session_start(); // bắt đầu session cho người đăng nhập
                                     <div class="d-flex flex-row align-items-center mb-4">
                                         <i class="fas fa-key fa-lg me-3 fa-fw"></i>
                                         <div class="form-outline flex-fill mb-0">
-                                            <input type="password" id="txtPass2" class="form-control" name="txtPass2"
-                                                placeholder="Repeat Your Password" />
+                                            <input type="password" id="txtPass2" class="form-control" name="txtPass2" placeholder="Repeat Your Password" />
+
+                                        </div>
+                                    </div>
+                                    <div class="d-flex flex-row align-items-center mb-4">
+                                        <i class="fas fa-user-tie fa-lg me-3 fa-fw"></i>
+                                        <div class="form-outline flex-fill mb-0">
+                                            <input type="text" id="fullname" class="form-control " name="fullname" placeholder="Full Name" />
+
+                                        </div>
+                                    </div>
+                                   
+
+                                    <div class="d-flex flex-row align-items-center mb-4">
+                                        <i class="fas fa-phone-alt fa-lg me-3 fa-fw"></i>
+                                        <div class="form-outline flex-fill mb-0">
+                                            <input type="phone" id="phone" class="form-control" name="phone" placeholder="Your Phone" />
 
                                         </div>
                                     </div>
 
+                                    <div class="d-flex flex-row align-items-center mb-4">
+                                        <i class="fas fa-id-card-alt fa-lg me-3 fa-fw"></i>
+                                        <div class="form-outline flex-fill mb-0">
+                                            <input type="text" id="office_id" class="form-control" name="office_id" placeholder="Office ID" />
+
+                                        </div>
+
+                                    </div>
+
                                     <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
-                                        <button type="submit" class="btn btn-primary btn-lg submit"
-                                            name="sbmRegister">Register</button>
+                                        <button type="submit" class="btn btn-primary btn-lg submit" name="sbmRegister">Register</button>
                                     </div>
 
                                     <div id='ketqua'>
@@ -78,8 +97,7 @@ session_start(); // bắt đầu session cho người đăng nhập
                             </div>
                             <div class="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2">
 
-                                <img src="https://mdbootstrap.com/img/Photos/new-templates/bootstrap-registration/draw1.png"
-                                    class="img-fluid" alt="Sample image">
+                                <img src="https://mdbootstrap.com/img/Photos/new-templates/bootstrap-registration/draw1.png" class="img-fluid" alt="Sample image">
 
                             </div>
                         </div>
