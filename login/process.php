@@ -19,7 +19,7 @@ if (mysqli_num_rows($result) > 0) { // vòng if kiểm tra câu lệnh truy vấ
         
         $user = mysqli_fetch_assoc($result1);
         if ($row['user_status'] > 0) { // Kiểm tra tài khoản xác thực
-            if(mysqli_num_rows($result2) > 0){
+            if(mysqli_num_rows($result2) > 0){ // Kiểm tra đã nhập đủ thông tin chưa (vẫn cho phép đăng nhập)
                 $_SESSION['current_user'] = $user;
                 mysqli_close($conn);
                 echo json_encode(array(
@@ -28,7 +28,7 @@ if (mysqli_num_rows($result) > 0) { // vòng if kiểm tra câu lệnh truy vấ
                 ));
                 exit;
             }else{
-                if($row['user_level'] > 0){
+                if($row['user_level'] > 0){ // Ngoại lệ thông báo cho người dùng admin
                     $_SESSION['current_user'] = $user;
                     mysqli_close($conn);
                     echo json_encode(array(
