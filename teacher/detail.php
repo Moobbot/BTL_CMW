@@ -40,9 +40,9 @@
                                     $id = $_GET['id'];
                                     $sql = "SELECT `note_id`, `note_mes` FROM db_note WHERE teach_learn_id = '$id'";
                                     $result = mysqli_query($conn, $sql);
-                                    $row = mysqli_fetch_assoc($result);
-                                    if ($row > 0) {
-                                        $row['note_mes']
+                                    if ($result->num_rows > 0) {
+                                        $row = mysqli_fetch_assoc($result);
+                                        echo $row['note_mes'];
                                     ?>
                             </p>
                         </th>
