@@ -13,8 +13,8 @@
         if($pass == $pass1){
             $password_hash = password_hash($pass,PASSWORD_DEFAULT);
             $user = $_SESSION['current_user'];
-            $email = $user['user_email'];
-            $sql = "UPDATE db_users SET user_pass = '$password_hash' WHERE user_email = '$email'";
+            $username = $user['user_name'];
+            $sql = "UPDATE db_users SET user_pass = '$password_hash' WHERE user_name = '$username'";
             $result = mysqli_query($conn,$sql);
             unset($_SESSION['current_user']);
             echo json_encode(array(
