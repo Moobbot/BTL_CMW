@@ -5,8 +5,10 @@ $(document).ready(function() {
         $pass2 = $("#txtPass2").val();
         $position = $("#txtPosition").val();
         $email = $("#txtEmail").val();
-
-        if ($userName == "" || $pass1 == "" || $pass2 == "" || $position == "" || $email == "") {
+        $phone =$("#phone").val();
+        $office_id = $("#office_id").val();
+        $fullname = $("#fullname").val();
+        if ($userName == "" || $pass1 == "" || $pass2 == "" || $position == "" || $email == ""||$fullname =="" || $office_id == ""|| $phone=="") {
             alert("Vui lòng nhập đầy đủ thông tin đăng kí của bạn");
             return false;
         } else {
@@ -20,7 +22,11 @@ $(document).ready(function() {
                     pass1: $pass1,
                     pass2: $pass2,
                     username: $userName,
-                    position: $position
+                    position: $position,
+                    phone : $phone,
+                    fullname:$fullname,
+                    office_id:$office_id
+
                 },
                 success: function(response) {
                     if (response == "Wrong") {

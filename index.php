@@ -27,7 +27,6 @@
                 if ($currentUser['user_level'] == 0) {
                     // Hiện thị body admin
                     include './admin/index.php';
-
                 ?>
 
             <?php

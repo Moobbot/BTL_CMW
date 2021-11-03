@@ -40,7 +40,9 @@
                         <th class="col">
                             <p class="">
                                 <?php
+
                                     $sql = "SELECT `note_id`, `note_mes`, User_FullName FROM db_note, db_user_inf WHERE db_note.teach_learn_id = '$id' AND db_user_inf.ID = ( SELECT user_id_inf FROM db_teach_learn WHERE teach_learn_id = '$id');";
+                                    $sql = "SELECT note_id, note_mes, User_FullName, sub_name FROM db_note, db_user_inf, db_teach_learn, db_subjects WHERE db_note.teach_learn_id = db_teach_learn.teach_learn_id AND db_user_inf.ID = db_teach_learn.user_id_inf AND db_subjects.sub_id = db_teach_learn.sub_id;";
                                     $result = mysqli_query($conn, $sql);
                                     if (mysqli_num_rows($result) > 0) {
                                         while ($row = mysqli_fetch_assoc($result)) {
