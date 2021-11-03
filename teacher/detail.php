@@ -3,49 +3,27 @@
 -->
 <?php include '../reuse/header.php' ?>
 
-<?php
-session_start(); // bắt đầu session cho người đăng nhập
-if (empty($_SESSION['current_user'])) {
-    header("Location:../index.php"); // tạm thời head đến trang index cơ bản vì lv người dùng trong db = 0 và chưa phân chia form rõ ràng bên index
-?>
-<?php
-} else {
-    $currentUser = $_SESSION['current_user'];
-?>
 <?php include '../reuse/config.php' ?>
 
 <div class="container-fluid bg-light h-100 p-0 m-0">
-    <!-- Header -->
-    <header class="bg-dark text-white p-2 mb-4">
-        <div class="container-fluid p-0 m-0">
-            <div class="d-flex flex-wrap align-items-center justify-content-between">
-                <a href="http://www.tlu.edu.vn/" class="d-flex align-items-center mb-md-0 text-start">
-                    <img src="http://sinhvien.tlu.edu.vn/assets/images/logo-small.png" alt="" width="40" height="32"
-                        class="d-inline-block align-text-top p-0 m-0 me-2">
-                </a>
+    <?php
+    // BEGIN HEADER
 
-                <div class="text-end">
-                    <div class="dropdown">
-                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1"
-                            data-bs-toggle="dropdown" aria-expanded="false">
+    include '../reuse/header_body.php';
 
-                            <!-- Tên người đăng nhập -->
-                            <?= $currentUser['User_FullName'] ?>
+    // END HEADER
+    ?>
+    <!-- BEGIN CONTAINER -->
 
-                            <i class="fa fa-user-circle fa-w-16 fa-2x p-2" aria-hidden="true"></i>
-                        </button>
-                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                            <li><a class="dropdown-item" href="#">Thông tin tài khoản</a></li>
-                            <li><a class="dropdown-item" href="#">Đổi mật khẩu</a></li>
-                            <li><a class="dropdown-item" href="../login/logout.php">Đăng xuất</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </header>
-    <!-- Body -->
     <!-- Bao gồm bảng tài liệu, thông báo và thông báo  -->
+    <?php
+    if (empty($_SESSION['current_user'])) {
+        header("Location:../index.php"); // tạm thời head đến trang index cơ bản vì lv người dùng trong db = 0 và chưa phân chia form rõ ràng bên index
+    ?>
+    <?php
+    } else {
+        $currentUser = $_SESSION['current_user'];
+    ?>
     <div class="row d-flex justify-content-center mt-sm-5 p-0 m-0">
         <div class="col-10">
             <!-- Thông báo -->
@@ -74,15 +52,14 @@ if (empty($_SESSION['current_user'])) {
                         </th>
                         <?php
                                     } else {
-                                        echo "Không có thông báo";
                         ?>
                         </p>
                         </th>
                         <tr>
-                            <th class="col">
-                                <input type="text" placertrolder="Thông báo">
+                            <th class="col-11">
+                                <input type="text" class="w-100" placertrolder="Thông báo">
                             </th>
-                            <th>
+                            <th class="col">
                                 <a href="" class="btn btn-success">Thêm</a>
                             </th>
                         </tr>
@@ -171,16 +148,16 @@ if (empty($_SESSION['current_user'])) {
             </div>
         </div>
     </div>
-    <!-- Footer -->
-    <footer class="row w-100 position-absolute bottom-0 p-0 m-0">
+    <!-- END CONTAINER -->
 
-        <div class="container-fluid text-center">
-            <h1>Thông tin liên hệ</h1>
-        </div>
-    </footer>
+
+    <!-- BEGIN FOOTER -->
+
+    <?php include '../reuse/footer_body.php' ?>
+
+    <!-- END FOOTER -->
+
 </div>
 
 <?php }
-include '../reuse/footer.php' ?>
-
-<!-- </?php $sql = "SELECT `teach_learn_id` FROM `db_teach_learn` WHERE `user_id_inf` =1 AND `sub_id` =1";?> -->
+    include '../reuse/footer.php' ?>
