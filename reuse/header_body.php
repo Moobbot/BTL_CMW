@@ -1,9 +1,9 @@
 <!-- Header -->
-<header class="bg-dark text-white p-2 mb-4">
+<header class="bg-dark text-white p-2">
     <div class="container-fluid p-0 m-0">
         <div class="d-flex flex-wrap align-items-center justify-content-between">
-            <a href="http://www.tlu.edu.vn/" class="d-flex align-items-center mb-md-0 text-start">
-                <img src="assets/img/logo.jfif" alt="" width="40" height="32"
+            <a href="http://localhost/CNW/" class="d-flex align-items-center mb-md-0 text-start">
+                <img src="http://localhost/CNW/assets/img/logo.jfif" alt="" width="40" height="32"
                     class="d-inline-block align-text-top p-0 m-0 me-2">
             </a>
 
@@ -13,8 +13,8 @@
             ?>
 
             <div class="text-end">
-                <a href="login/" class="btn btn-outline-light me-2">Login</a>
-                <a href="signup/" class="btn btn-warning me-2">Sign-up</a>
+                <a href="http://localhost/CNW/login/" class="btn btn-outline-light me-2">Login</a>
+                <a href="http://localhost/CNW/signup/" class="btn btn-warning me-2">Sign-up</a>
             </div>
 
             <?php
@@ -34,8 +34,9 @@
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                         <li><a class="dropdown-item" href="#">Thông tin tài khoản</a></li>
-                        <li><a class="dropdown-item" href="/BTL_CNW/change_password/index.php">Đổi mật khẩu</a></li>
-                        <li><a class="dropdown-item" href="/BTL_CNW/logout/index.php">Đăng xuất</a></li>
+                        <li><a class="dropdown-item" href="http://localhost/CNW/change_password/index.php">Đổi mật
+                                khẩu</a></li>
+                        <li><a class="dropdown-item" href="http://localhost/CNW/logout/index.php">Đăng xuất</a></li>
                     </ul>
                 </div>
             </div>

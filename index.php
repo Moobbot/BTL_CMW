@@ -1,44 +1,60 @@
 <?php include 'reuse/header.php' ?>
-<div class="container-fluid ps-0 pe-0">
-    <?php include './reuse/header_body.php' ?>
-
-    <!-- Body -->
+<div class="container-fluid px-0">
     <?php
+    // BEGIN HEADER
 
-    // Người dùng chưa đăng nhập
+    include './reuse/header_body.php';
+
+    // END HEADER
+    ?>
+
+    <?php
     if (empty($_SESSION['current_user'])) {
     ?>
 
-    <div class="row p-0 m-0 mt-4">
-        <div class="col">
-            <h2>Các khóa học hiện tại</h2>
-            <?php include 'subject/index.php'; ?>
-        </div>
-    </div>
+    <img src="./assets/img/img_index.jfif" alt="" class="w-100 vh-100">
 
     <?php
     } else {
-        if ($currentUser['user_level'] == 0) {
-            // Hiện thị body admin
-            include 'admin/index.php';
-        ?>
-
-    <?php
-        }
-        if ($currentUser['user_level'] == 1) {
-            // Hiện thị foder teacher
-            include 'teacher/index.php';
-        ?>
-    <?php
-        }
-        if ($currentUser['user_level'] == 2) {
-            // Hiện thị foder student
-            include './student/index.php';
-        }
-    }
+        // $currentUser = $_SESSION['current_user'];
     ?>
+
+    <!-- BEGIN CONTAINER -->
+
+    <Section>
+        <div class="row p-0 m-0 mt-4">
+            <?php
+                if ($currentUser['user_level'] == 0) {
+                    // Hiện thị body admin
+                    include './admin/index.php';
+
+                ?>
+
+            <?php
+                }
+                if ($currentUser['user_level'] == 1) {
+                    // Hiện thị foder teacher
+                    include './teacher/index.php';
+                ?>
+            <?php
+                }
+                if ($currentUser['user_level'] == 2) {
+                    // Hiện thị foder student
+                    include './student/index.php';
+                }
+                ?>
+        </div>
+    </Section>
+
+    <!-- END CONTAINER -->
+
+    <?php } ?>
+
+    <!-- BEGIN FOOTER -->
+
+    <?php include './reuse/footer_body.php' ?>
+
+    <!-- END FOOTER -->
+
 </div>
-
-
-
 <?php include 'reuse/footer.php' ?>
