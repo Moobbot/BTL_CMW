@@ -64,7 +64,8 @@ if ($resultx->num_rows > 0) {
                     <tr>
                         <th scope="row"><?= $STT ?></th>
                         <td><?= $row1['sub_name'] ?></td>
-                        <td><a href="http://localhost/CNW/subject/detail.php?id= <?= $teach_learn_id ?>">Link</a></td>
+                        <td><a href="http://localhost/BTL_CNW/subject/detail.php?id= <?= $teach_learn_id ?>">Link</a>
+                        </td>
 
                         <?php
                                 }
