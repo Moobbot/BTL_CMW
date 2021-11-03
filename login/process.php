@@ -15,13 +15,21 @@ if (mysqli_num_rows($result) > 0) { // vòng if kiểm tra câu lệnh truy vấ
         $result1 = mysqli_query($conn, $sql1); // truy vấn 2 bảng dữ liệu để lấy ra tất cả thông tin người dùng ứng vs user đã nhập vào 
 
         $user = mysqli_fetch_assoc($result1);
-        if ($user['user_status'] > 0) { // Kiểm tra tài khoản xác thực
-            $_SESSION['current_user'] = $user;
-            echo json_encode(array(
-                'status' => 1,
-                'message' => 'Đăng nhập thành công'
-            ));
-            exit;
+        if ($row['user_status'] > 0) { // Kiểm tra tài khoản xác thực
+            if(mysqli_num_rows($result1) > 0){
+                $_SESSION['current_user'] = $user;
+                echo json_encode(array(
+                    'status' => 1,
+                    'message' => 'Đăng nhập thành công'
+                ));
+                exit;
+            }else{
+                $_SESSION['current_user'] = $row['user_email'];
+                echo json_encode(array(
+                    'status' => 2,
+                    'message' => 'Tài khoản chưa điền đầy đủ thông tin'
+                ));
+            }
         } else {
             echo json_encode(array(
                 'status' => 0,
@@ -29,7 +37,7 @@ if (mysqli_num_rows($result) > 0) { // vòng if kiểm tra câu lệnh truy vấ
             ));
             exit;
         }
-    } else {
+    }else {
         echo json_encode(array(
             'status' => 0,
             'message' => 'Sai mật khẩu'
