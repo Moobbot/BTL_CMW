@@ -1,52 +1,187 @@
-<!-- Giao diện từng môn học
-        Giao diện cho sinh viên
--->
-<?php include './reuse/config.php'; ?>
-<div class="row">
-    <div class="col-md-12">
-        <h2>Danh sách Giảng viên</h2>
-        <table class="table text-center">
-            <thead>
-                <tr>
-                    <th>
-                        STT
+<?php include '../reuse/header.php' ?>
+<!-- <link rel="stylesheet" href="./style.css"> -->
+<div class="row d-flex justify-content-center mt-sm-5 p-0 m-0">
+    <div class="col-10">
+        <!-- Thông báo -->
+        <div class="row">
+            <table class="table">
+                <thead>
+                    <h2>Thông báo</h2>
+                </thead>
+                <tbody>
+                    <th class="col">
+                        <p class="bg-warning">
+                            Quickly design and customize responsive mobile-first sites with
+                            Bootstrap, the world’s most popular front-end open source toolkit, featuring Sass
+                            variables
+                            and
+                            mixins, responsive grid system, extensive prebuilt components, and powerful JavaScript
+                            plugins.
+                        </p>
                     </th>
-                    <th>
-                        Tên giảng viên
-                    </th>
-                    <th>
-                        Khoa
-                    </th>
-                    <th>
-                        Link các môn giảng dạy
-                    </th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <!-- Dữ liệu thay đổi theo CSDL -->
-                    <?php
-                    // Lấy tất cả id GV trong dv_users
-                    $sql = "SELECT ID, User_FullName, office_name  FROM db_user_inf, db_users, db_offices  WHERE db_users.user_level = '1' AND db_user_inf.ID = db_users.user_id AND db_offices.office_id = db_user_inf.office_id ;";
-                    $result = mysqli_query($conn, $sql);
-
-                    $STT = 0;
-                    if ($result->num_rows > 0) {
-                        while ($row = $result->fetch_assoc()) {
-                            $STT += 1;
-                            echo '<tr>';
-                            echo '<th scope="row">' . $STT . '</th>';
-                            echo '<td>' . $row['User_FullName'] . '</td>';
-                            echo '<td>' . $row['office_name'] . '</td>';
-                            echo '<td>' . '<a href="./subject/index.php?id=' . $row['ID'] . '">link</a>' . '</td>';
-                            echo '</tr>';
-                        }
-                    } else {
-                        echo '<th>Không có giáo viên nào</th>';
-                    }
-                    ?>
-                </tr>
-            </tbody>
-        </table>
+                </tbody>
+            </table>
+        </div>
+        <!-- Bảng thông tin tài liệu -->
+        <div class="row">
+            <div class="col-md-12">
+                <h2>Tài liệu môn học</h2>
+                <table class="table text-center">
+                    <thead>
+                        <tr>
+                            <th>
+                                STT
+                            </th>
+                            <th>
+                                Tên tài liệu
+                            </th>
+                            <th>
+                                Ngày đăng
+                            </th>
+                            <th>
+                                Status
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                1
+                            </td>
+                            <td>
+                                TB - Monthly
+                            </td>
+                            <td>
+                                01/04/2012
+                            </td>
+                            <td>
+                                Default
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                2
+                            </td>
+                            <td>
+                                Ex: Giáo trình mạng máy tính
+                            </td>
+                            <td>
+                                date_timestamp_get
+                            </td>
+                            <td>
+                                Default
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!-- Comments của sinh viên-->
+        
     </div>
 </div>
+<div class="row d-flex justify-content-center mt-sm-5 p-0 m-0">
+<title>Comment System using PHP and Ajax</title>
+<script src="jquery-3.2.1.min.js"></script>
+
+<style>
+.comment-form-container {
+    width: 60% !important;
+	background: #F0F0F0 ;
+	border: #e0dfdf 1px solid ;
+	padding: 20px ;
+	border-radius: 2px ;
+}
+
+.input-row {
+	margin-bottom: 20px ;
+}
+
+.input-field {
+	width: 100% ;
+	border-radius: 2px ;
+	padding: 10px ;
+	border: #e0dfdf 1px solid ;
+}
+div#output {
+    width: 61% !important;
+}
+.btn-submit {
+	padding: 10px 20px ;
+	background: #333 ;
+	border: #1d1d1d 1px solid ;
+	color: #f0f0f0 ;
+	font-size: 0.9em ;
+	width: 100px ;
+	border-radius: 2px ;
+    cursor:pointer ;
+}
+
+ul {
+	list-style-type: none ;
+}
+
+.comment-row {
+	border-bottom: #e0dfdf 1px solid ;
+	margin-bottom: 15px ;
+	padding: 15px ;
+}
+
+.outer-comment {
+	background: #F0F0F0 ;
+	padding: 20px ;
+	border: #dedddd 1px solid ;
+}
+
+span.commet-row-label {
+	font-style: italic ;
+}
+
+span.posted-by {
+	color: #09F ;
+}
+
+.comment-info {
+	font-size: 0.8em ;
+}
+.comment-text {
+    margin: 10px 0px ;
+}
+.btn-reply {
+    font-size: 0.8em ;
+    text-decoration: underline ;
+    color: #888787 ;
+    cursor:pointer ;
+}
+#comment-message {
+    margin-left: 20px ;
+    color: #189a18 ;
+    display: none ;
+} </style>
+
+    
+    <div class="comment-form-container" >
+        <form id="frm-comment">
+        <h1 class="">Comment</h1>
+            <div class="input-row">
+                <input type="hidden" name="comment_id" id="commentId"
+                    placeholder="Name" /> <input class="input-field"
+                    type="text" name="name" id="name" placeholder="Name" />
+            </div>
+            <div class="input-row">
+                <textarea class="input-field" type="text" name="comment"
+                    id="comment" placeholder="Add a Comment">  </textarea>
+            </div>
+            <div>
+                <input type="button" class="btn-submit" id="submitButton"
+                    value="Publish" /><div id="comment-message">Comments Added Successfully!</div>
+            </div>
+
+        </form>
+    </div>
+    
+    <div id="output"></div>
+    <script src="../assets/jquery-3.2.1.min.js"> </script>
+    <script src="../assets/comment.js"></script>
+</div>
+<?php include '../reuse/footer.php' ?>
