@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 01, 2021 at 01:30 PM
+-- Generation Time: Nov 03, 2021 at 09:30 AM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.10
 
@@ -53,15 +53,17 @@ INSERT INTO `db_doc` (`doc_ID`, `doc_name`, `doc_link`, `date_sub`, `status`, `t
 CREATE TABLE `db_note` (
   `note_id` int(10) UNSIGNED NOT NULL,
   `note_mes` varchar(5000) DEFAULT NULL,
-  `teach_learn_id` int(10) UNSIGNED NOT NULL
+  `teach_learn_id` int(10) UNSIGNED NOT NULL,
+  `node_date` date NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `db_note`
 --
 
-INSERT INTO `db_note` (`note_id`, `note_mes`, `teach_learn_id`) VALUES
-(1, 'Ngày thi 6/11/2021\r\n7h thi.', 1);
+INSERT INTO `db_note` (`note_id`, `note_mes`, `teach_learn_id`, `node_date`) VALUES
+(2, 'Xin chào', 1, '2021-11-03'),
+(3, 'Đi đi', 2, '2021-11-03');
 
 -- --------------------------------------------------------
 
@@ -152,7 +154,10 @@ CREATE TABLE `db_users` (
 
 INSERT INTO `db_users` (`user_id`, `user_name`, `user_email`, `user_pass`, `user_regis_date`, `user_status`, `user_level`, `user_code`) VALUES
 (30, 'abc', 'abc@gmail.com', '$2y$10$YvDo31xFwimk/Wvj54DOROcBzvXKyRNhmwDPx4UA6W9635HCH/Un.', '2021-11-01 08:28:07', 1, 1, '58b68ab05d41ce01c94336ae441d7b73'),
-(31, 'Sinhvien', 'abcd@gmail.com', '$2y$10$YvDo31xFwimk/Wvj54DOROcBzvXKyRNhmwDPx4UA6W9635HCH/Un.', '2021-11-01 08:28:07', 1, 2, '58b68ab05d41ce01c94336ae441d7b73');
+(31, 'Sinhvien', 'abcd@gmail.com', '$2y$10$U8k3a101QxJIeEMUI9826OOpdFqeoYDSIUn8w73UNT9VqNp1WqGWm', '2021-11-01 08:28:07', 1, 2, '58b68ab05d41ce01c94336ae441d7b73'),
+(33, 'abc1', 'abc1@gmail.com', '$2y$10$YvDo31xFwimk/Wvj54DOROcBzvXKyRNhmwDPx4UA6W9635HCH/Un.', '2021-11-01 08:28:07', 1, 1, '58b68ab05d41ce01c94336ae441d7b73'),
+(34, 'abc2', 'abc2@gmail.com', '$2y$10$YvDo31xFwimk/Wvj54DOROcBzvXKyRNhmwDPx4UA6W9635HCH/Un.', '2021-11-01 08:28:07', 1, 1, '58b68ab05d41ce01c94336ae441d7b73'),
+(35, 'abc3', 'abc3@gmail.com', '$2y$10$YvDo31xFwimk/Wvj54DOROcBzvXKyRNhmwDPx4UA6W9635HCH/Un.', '2021-11-01 08:28:07', 1, 1, '58b68ab05d41ce01c94336ae441d7b73');
 
 -- --------------------------------------------------------
 
@@ -174,7 +179,10 @@ CREATE TABLE `db_user_inf` (
 
 INSERT INTO `db_user_inf` (`ID`, `User_FullName`, `User_Position`, `User_Phone`, `office_id`) VALUES
 (30, 'abc', 'hello\r\n', '123', 1),
-(31, 'abcd', 'hellod\r\n', '1233', 1);
+(31, 'abcd', 'hellod\r\n', '1233', 1),
+(33, 'abc1', 'hello\r\n', '123', 1),
+(34, 'abc2', 'hello\r\n', '123', 1),
+(35, 'abc3', 'hello\r\n', '123', 1);
 
 --
 -- Indexes for dumped tables
@@ -245,7 +253,7 @@ ALTER TABLE `db_doc`
 -- AUTO_INCREMENT for table `db_note`
 --
 ALTER TABLE `db_note`
-  MODIFY `note_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `note_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `db_offices`
@@ -269,13 +277,13 @@ ALTER TABLE `db_teach_learn`
 -- AUTO_INCREMENT for table `db_users`
 --
 ALTER TABLE `db_users`
-  MODIFY `user_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `user_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 
 --
 -- AUTO_INCREMENT for table `db_user_inf`
 --
 ALTER TABLE `db_user_inf`
-  MODIFY `ID` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `ID` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 
 --
 -- Constraints for dumped tables
