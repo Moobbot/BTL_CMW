@@ -18,7 +18,6 @@ if ($resultx->num_rows > 0) {
     <?php
     // // Bắt đàu phiên làm việc
     // session_start();
-    $currentUser = $_SESSION['current_user'];
     ?>
 
     <!-- BEGIN HEADER -->
