@@ -40,10 +40,13 @@
                         <th class="col">
                             <p class="">
                                 <?php
-                                    $sql = "SELECT `note_id`, `note_mes` FROM db_note WHERE teach_learn_id = '$id'";
+                                    echo $id;
+                                    $sql = "SELECT `note_id`, `note_mes`, User_FullName FROM db_note, db_user_inf WHERE db_note.teach_learn_id = '$id' AND db_user_inf.ID = ( SELECT user_id_inf FROM db_teach_learn WHERE teach_learn_id = '$id');";
                                     $result = mysqli_query($conn, $sql);
-                                    if ($row = $result->fetch_assoc() > 0) {
-                                        $row['note_mes']
+                                    if (mysqli_num_rows($result) > 0) {
+                                        while ($row = mysqli_fetch_assoc($result)) {
+                                            echo    $row['note_mes'];
+                                        }
                                     ?>
                             </p>
                         </th>
