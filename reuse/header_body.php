@@ -28,7 +28,22 @@
                         data-bs-toggle="dropdown" aria-expanded="false">
 
                         <!-- Tên người đăng nhập -->
-                        <?= $currentUser['User_FullName'] ?>
+                        <?php
+                            $id = $currentUser['user_id'];
+                            include './reuse/config.php';
+
+                            $sql = "SELECT User_FullName FROM db_user_inf WHERE ID = '$id'";
+                            $result = mysqli_query($conn,$sql);
+
+                            if(mysqli_num_rows($result) > 0){
+                                $row = mysqli_fetch_assoc($result);
+                                echo $row['User_FullName'];
+                                mysqli_close($conn);
+                            }else{
+                                echo $currentUser['user_name'];
+                                mysqli_close($conn);
+                            }
+                        ?>
 
                         <i class="fa fa-user-circle fa-w-16 fa-2x p-2" aria-hidden="true"></i>
                     </button>
