@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th10 27, 2021 lúc 04:34 PM
+-- Thời gian đã tạo: Th10 03, 2021 lúc 04:07 AM
 -- Phiên bản máy phục vụ: 10.4.21-MariaDB
 -- Phiên bản PHP: 8.0.10
 
@@ -20,6 +20,48 @@ SET time_zone = "+00:00";
 --
 -- Cơ sở dữ liệu: `db_blog`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `db_doc`
+--
+
+CREATE TABLE `db_doc` (
+  `doc_ID` int(10) UNSIGNED NOT NULL,
+  `doc_name` varchar(100) NOT NULL,
+  `doc_link` varchar(100) NOT NULL,
+  `date_sub` date NOT NULL DEFAULT current_timestamp(),
+  `status` varchar(10000) DEFAULT NULL,
+  `teach_learn_id` int(10) UNSIGNED NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Đang đổ dữ liệu cho bảng `db_doc`
+--
+
+INSERT INTO `db_doc` (`doc_ID`, `doc_name`, `doc_link`, `date_sub`, `status`, `teach_learn_id`) VALUES
+(15, 'Test1', 'https://www.facebook.com/', '2021-11-01', 'Thử nghiệm 1', 1),
+(16, 'Test2', 'http://localhost/phpmyadmin/index.php', '2021-11-01', 'Thử nghiệm 2', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `db_note`
+--
+
+CREATE TABLE `db_note` (
+  `note_id` int(10) UNSIGNED NOT NULL,
+  `note_mes` varchar(5000) DEFAULT NULL,
+  `teach_learn_id` int(10) UNSIGNED NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Đang đổ dữ liệu cho bảng `db_note`
+--
+
+INSERT INTO `db_note` (`note_id`, `note_mes`, `teach_learn_id`) VALUES
+(1, 'Ngày thi 6/11/2021\r\n7h thi.', 1);
 
 -- --------------------------------------------------------
 
@@ -49,6 +91,47 @@ INSERT INTO `db_offices` (`office_id`, `office_name`, `office_phone`, `office_em
 -- --------------------------------------------------------
 
 --
+-- Cấu trúc bảng cho bảng `db_subjects`
+--
+
+CREATE TABLE `db_subjects` (
+  `sub_id` int(10) UNSIGNED NOT NULL,
+  `sub_name` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Đang đổ dữ liệu cho bảng `db_subjects`
+--
+
+INSERT INTO `db_subjects` (`sub_id`, `sub_name`) VALUES
+(1, 'Công nghệ web'),
+(2, 'Mạng máy tính'),
+(3, 'Lập trình nâng cao'),
+(10, 'Giải tích 1');
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `db_teach_learn`
+--
+
+CREATE TABLE `db_teach_learn` (
+  `teach_learn_id` int(10) UNSIGNED NOT NULL,
+  `user_id_inf` int(10) UNSIGNED NOT NULL,
+  `sub_id` int(10) UNSIGNED NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Đang đổ dữ liệu cho bảng `db_teach_learn`
+--
+
+INSERT INTO `db_teach_learn` (`teach_learn_id`, `user_id_inf`, `sub_id`) VALUES
+(1, 30, 1),
+(2, 30, 10);
+
+-- --------------------------------------------------------
+
+--
 -- Cấu trúc bảng cho bảng `db_users`
 --
 
@@ -59,7 +142,7 @@ CREATE TABLE `db_users` (
   `user_pass` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
   `user_regis_date` datetime DEFAULT current_timestamp(),
   `user_status` tinyint(1) DEFAULT 0,
-  `user_level` tinyint(1) DEFAULT 0,
+  `user_level` int(1) DEFAULT 0,
   `user_code` varchar(1000) COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -68,9 +151,11 @@ CREATE TABLE `db_users` (
 --
 
 INSERT INTO `db_users` (`user_id`, `user_name`, `user_email`, `user_pass`, `user_regis_date`, `user_status`, `user_level`, `user_code`) VALUES
-(19, 'thuyduong', 'nguyenthuyduong542001@gmail.com', '$2y$10$r/XRsf/8kAJ/a9MKo0doMeaIUwpjGvIomEul37J737a4AmUoBQBLW', '2021-10-27 15:08:42', 0, 0, 'a9f03c0f1e757a946d1c3f31f1b90636'),
-(20, 'Ngô Đức Tâm', '123@gmail.com', '$2y$10$cMPyQnPegdF7kXommXUaK.egvFBDmPnWR3EAgEnNtihZ1mssuyZ3.', '2021-10-27 21:50:02', 0, 0, '166baecfa4ada65a7cdb2e02952e0f48'),
-(21, 'ngoductam', '234@gmail.com', '$2y$10$pyLBEz7FKAEx5iJcvWR5ludGdMd3BAy4p2IGNug1bT43Ro9Je.xfu', '2021-10-27 21:51:21', 0, 0, '5181754278ea5a0855a8fdc5a6e35288');
+(30, '1234', '1234', '$2y$10$YvDo31xFwimk/Wvj54DOROcBzvXKyRNhmwDPx4UA6W9635HCH/Un.', '2021-11-18 00:00:00', 1, 1, '58b68ab05d41ce01c94336ae441d7b73'),
+(31, 'Sinhvien', 'abcd@gmail.com', '$2y$10$YvDo31xFwimk/Wvj54DOROcBzvXKyRNhmwDPx4UA6W9635HCH/Un.', '2021-11-01 08:28:07', 1, 2, '58b68ab05d41ce01c94336ae441d7b73'),
+(34, 'Duckien', 'duckien@gmail.com', '$2y$10$aTEJLGLEPPVjMxdhdIneRuPugepMkmJ7c77Gc02yvxPY0fT9SDrjG', '2021-11-02 21:33:41', 0, 0, '9a3d8ec61e0394bb26bc1e4faf6b2628'),
+(35, 'duckien123', 'duckien123@gmail.com', '$2y$10$kxeao0QoyQDqRdaoHQOkteiEDdTAxptRTs5NNbzWjzorpFOms3MOG', '2021-11-02 21:35:09', 0, 1, 'd0672b9574c7b31e3c86ab9bb44cbef2'),
+(37, 'phamquangduong', 'phamquangduong542001@gmail.com', '$2y$10$snVB7ud7Giyf5UGHMFFKueEOAYwY13ZwBx/Df2NPwgnHAuoe5aUyK', '2021-11-02 21:41:28', 0, 1, '045f1b9c25053088df96429349d1a44d');
 
 -- --------------------------------------------------------
 
@@ -83,13 +168,55 @@ CREATE TABLE `db_user_inf` (
   `User_FullName` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
   `User_Position` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
   `User_Phone` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `office_id` int(10) UNSIGNED DEFAULT NULL,
-  `user` int(11) NOT NULL
+  `office_id` int(10) UNSIGNED DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `db_user_inf`
+--
+
+INSERT INTO `db_user_inf` (`ID`, `User_FullName`, `User_Position`, `User_Phone`, `office_id`) VALUES
+(30, 'abc', 'hello\r\n', '123', 1),
+(31, 'abcd', 'hellod\r\n', '1233', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `tbl_comment`
+--
+
+CREATE TABLE `tbl_comment` (
+  `comment_id` int(11) NOT NULL,
+  `parent_comment_id` int(11) DEFAULT NULL,
+  `comment` varchar(200) NOT NULL,
+  `comment_sender_name` varchar(40) NOT NULL,
+  `date` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Đang đổ dữ liệu cho bảng `tbl_comment`
+--
+
+INSERT INTO `tbl_comment` (`comment_id`, `parent_comment_id`, `comment`, `comment_sender_name`, `date`) VALUES
+(31, 0, '  ưqerqwe', 'Phạm Dương', '2021-11-02 11:33:47');
 
 --
 -- Chỉ mục cho các bảng đã đổ
 --
+
+--
+-- Chỉ mục cho bảng `db_doc`
+--
+ALTER TABLE `db_doc`
+  ADD PRIMARY KEY (`doc_ID`),
+  ADD KEY `teach_learn_id` (`teach_learn_id`);
+
+--
+-- Chỉ mục cho bảng `db_note`
+--
+ALTER TABLE `db_note`
+  ADD PRIMARY KEY (`note_id`),
+  ADD KEY `teach_learn_id` (`teach_learn_id`);
 
 --
 -- Chỉ mục cho bảng `db_offices`
@@ -99,12 +226,27 @@ ALTER TABLE `db_offices`
   ADD KEY `office_parent` (`office_parent`);
 
 --
+-- Chỉ mục cho bảng `db_subjects`
+--
+ALTER TABLE `db_subjects`
+  ADD PRIMARY KEY (`sub_id`);
+
+--
+-- Chỉ mục cho bảng `db_teach_learn`
+--
+ALTER TABLE `db_teach_learn`
+  ADD PRIMARY KEY (`teach_learn_id`),
+  ADD KEY `sub_id` (`sub_id`),
+  ADD KEY `user_id` (`user_id_inf`);
+
+--
 -- Chỉ mục cho bảng `db_users`
 --
 ALTER TABLE `db_users`
   ADD PRIMARY KEY (`user_id`),
   ADD UNIQUE KEY `user_name` (`user_name`),
-  ADD UNIQUE KEY `user_email` (`user_email`);
+  ADD UNIQUE KEY `user_email` (`user_email`),
+  ADD UNIQUE KEY `user_name_2` (`user_name`,`user_email`);
 
 --
 -- Chỉ mục cho bảng `db_user_inf`
@@ -114,8 +256,26 @@ ALTER TABLE `db_user_inf`
   ADD KEY `office_id` (`office_id`);
 
 --
+-- Chỉ mục cho bảng `tbl_comment`
+--
+ALTER TABLE `tbl_comment`
+  ADD PRIMARY KEY (`comment_id`);
+
+--
 -- AUTO_INCREMENT cho các bảng đã đổ
 --
+
+--
+-- AUTO_INCREMENT cho bảng `db_doc`
+--
+ALTER TABLE `db_doc`
+  MODIFY `doc_ID` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+
+--
+-- AUTO_INCREMENT cho bảng `db_note`
+--
+ALTER TABLE `db_note`
+  MODIFY `note_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT cho bảng `db_offices`
@@ -124,27 +284,63 @@ ALTER TABLE `db_offices`
   MODIFY `office_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
+-- AUTO_INCREMENT cho bảng `db_subjects`
+--
+ALTER TABLE `db_subjects`
+  MODIFY `sub_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+
+--
+-- AUTO_INCREMENT cho bảng `db_teach_learn`
+--
+ALTER TABLE `db_teach_learn`
+  MODIFY `teach_learn_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT cho bảng `db_users`
 --
 ALTER TABLE `db_users`
-  MODIFY `user_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
-
+  MODIFY `user_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 
 --
 -- AUTO_INCREMENT cho bảng `db_user_inf`
 --
 ALTER TABLE `db_user_inf`
-  MODIFY `ID` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `ID` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+
+--
+-- AUTO_INCREMENT cho bảng `tbl_comment`
+--
+ALTER TABLE `tbl_comment`
+  MODIFY `comment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- Các ràng buộc cho các bảng đã đổ
 --
 
 --
+-- Các ràng buộc cho bảng `db_doc`
+--
+ALTER TABLE `db_doc`
+  ADD CONSTRAINT `db_doc_ibfk_1` FOREIGN KEY (`teach_learn_id`) REFERENCES `db_teach_learn` (`teach_learn_id`);
+
+--
+-- Các ràng buộc cho bảng `db_note`
+--
+ALTER TABLE `db_note`
+  ADD CONSTRAINT `db_note_ibfk_1` FOREIGN KEY (`teach_learn_id`) REFERENCES `db_teach_learn` (`teach_learn_id`);
+
+--
 -- Các ràng buộc cho bảng `db_offices`
 --
 ALTER TABLE `db_offices`
   ADD CONSTRAINT `db_offices_ibfk_1` FOREIGN KEY (`office_parent`) REFERENCES `db_offices` (`office_id`);
+
+--
+-- Các ràng buộc cho bảng `db_teach_learn`
+--
+ALTER TABLE `db_teach_learn`
+  ADD CONSTRAINT `db_teach_learn_ibfk_1` FOREIGN KEY (`sub_id`) REFERENCES `db_subjects` (`sub_id`),
+  ADD CONSTRAINT `db_teach_learn_ibfk_2` FOREIGN KEY (`user_id_inf`) REFERENCES `db_user_inf` (`ID`);
 
 --
 -- Các ràng buộc cho bảng `db_user_inf`
