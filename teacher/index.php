@@ -37,7 +37,7 @@ if (empty($_SESSION['current_user'])) {
                             $sub_id = $row['sub_id'];
                             $teach_learn_id = $row['teach_learn_id'];
 
-                            $sql1 = "SELECT * FROM db_subjects s WHERE s.sub_id = $sub_id"; //Lấy thông tin môn học
+                            $sql1 = "SELECT sub_name FROM db_subjects s, db_teach_learn WHERE s.sub_id = $sub_id AND teach_learn_id = $teach_learn_id"; //Lấy thông tin môn học
                             $result1 = mysqli_query($conn, $sql1);
                             if ($result1->num_rows > 0) {
                                 $STT += 1;
@@ -63,4 +63,5 @@ if (empty($_SESSION['current_user'])) {
 </div>
 <?php
 }
+mysqli_close($conn);
 ?>

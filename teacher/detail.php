@@ -46,26 +46,30 @@
                                     ?>
                             </p>
                         </th>
-                        <th class="col-1">
-                            <a href="" class="btn btn-success">Sửa</a>
-                            <a href="" class="btn btn-success">Xóa</a>
+                        <th class="col-md-1">
+                            <!-- href="./process_edit_note.php?id=</?= $row['note_id'] ?>" -->
+                            <button class="btn btn-success mb-md-0 mb-2" name="process_edit_note">Sửa</button>
+                        </th class="col-md-1">
+                        <th>
+                            <!-- href="./process_delete_note.php?id=</?= $row['note_id'] ?>" -->
+                            <button class="btn btn-success mb-md-0 mb-2" name="process_delete_note">Xóa</button>
                         </th>
-                        <?php
-                                    } else {
-                        ?>
-                        </p>
-                        </th>
-                        <tr>
-                            <th class="col-11">
-                                <input type="text" class="w-100" placertrolder="Thông báo">
-                            </th>
-                            <th class="col">
-                                <a href="" class="btn btn-success">Thêm</a>
-                            </th>
-                        </tr>
+
                         <?php
                                     }
                         ?>
+
+                        <tr>
+                            <form id="form_a">
+                                <th class="col-11">
+                                    <input type="text" name="note_mes" class="text-dark w-100" placeholder="Thông báo">
+                                </th>
+                                <th class="col-1">
+                                    <button type="submit" class="btn btn-success" id="process_add_note"
+                                        name="process_add_note">Thêm</button>
+                                </th>
+                            </form>
+                        </tr>
                     </tbody>
                 </table>
             </div>
@@ -159,5 +163,29 @@
 
 </div>
 
-<?php }
-    include '../reuse/footer.php' ?>
+<?php } ?>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+
+<script>
+$("#form_a").submit(function(event) {
+    event.preventDefault();
+    $.ajax({
+        type: "POST",
+        url: './process_add_note.php',
+        data: $(this).serializeArray(),
+        success: function(response) {
+            response = JSON.parse(response);
+            if (response.status == 0) { // đăng nhập thất bại
+                alert(response.message);
+            } else { // đăng nhập thành công
+                alert(response.message);
+                location.reload();
+            }
+        }
+    })
+});
+</script>
+
+<?php include '../reuse/footer.php' ?>
