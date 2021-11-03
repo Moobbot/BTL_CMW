@@ -81,8 +81,8 @@
     </div>
 </div>
 <div class="row d-flex justify-content-center mt-sm-5 p-0 m-0">
-<title>Comment System using PHP and Ajax</title>
-<script src="jquery-3.2.1.min.js"></script>
+
+<script src="../assets/jquery-3.2.1.min.js"> </script>
 
 <style>
 .comment-form-container {
@@ -181,7 +181,7 @@ span.posted-by {
     </div>
     
     <div id="output"></div>
-    <script src="../assets/jquery-3.2.1.min.js"> </script>
-    <script src="../assets/comment.js"></script>
+    <script src="../assets/js/jquery-3.2.1.min.js"> </script>
+    <script src="../assets/js/comment.js"></script>
 </div>
 <?php include '../reuse/footer.php' ?>
