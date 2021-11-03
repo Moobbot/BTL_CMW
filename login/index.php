@@ -73,9 +73,14 @@ $("#login-form").submit(function(event) {
             response = JSON.parse(response);
             if (response.status == 0) { // đăng nhập thất bại
                 alert(response.message);
-            } else { // đăng nhập thành công
+            }
+            if (response.status == 1) { // đăng nhập thành công
                 alert(response.message);
                 location.reload();
+            }
+            if (response.status == 2){
+                aleart(response.message);
+                window.location.href="../update_info/index.php";
             }
         }
     })
