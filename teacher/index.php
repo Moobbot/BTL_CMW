@@ -47,7 +47,7 @@ if (empty($_SESSION['current_user'])) {
                 <tr>
                     <th scope="row"><?= $STT ?></th>
                     <td><?= $row1['sub_name'] ?></td>
-                    <td><a href="http://localhost/CNW/teacher/detail.php?id= <?= $teach_learn_id ?>">Link</a></td>
+                    <td><a href="http://localhost/BTL_CNW/teacher/detail.php?id= <?= $teach_learn_id ?>">Link</a></td>
 
                     <?php
                             }
