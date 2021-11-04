@@ -14,8 +14,8 @@ if (isset($_POST['signup'])) {
     $pass1 = $_POST['pass1'];
     $pass2 = $_POST['pass2'];
     $phone = $_POST['phone'];
-    $fullname =$_POST['fullname'];
-    $office_id =$_POST['office_id'];
+    $fullname = $_POST['fullname'];
+    $office_id = $_POST['office_id'];
 
     // Kiểm tra Email hoặc Username đã tồn tại chưa?
     //1. Kết nối tới Server
@@ -24,7 +24,7 @@ if (isset($_POST['signup'])) {
     // 2. Truy vấn dữ liệu
     $sql = "SELECT * FROM db_users WHERE user_email='$email' OR user_name='$user' ";
     $result = mysqli_query($conn, $sql);
-    
+
 
     // 3. XỬ lý kết quả
     if (mysqli_num_rows($result) > 0) {
@@ -37,21 +37,21 @@ if (isset($_POST['signup'])) {
 
         $sql_2 = "INSERT INTO db_users  (user_name,user_email, user_pass,user_level,user_code) VALUES ('$user','$email','$pass_hash','$level','$code');";
         $result_2 = mysqli_query($conn, $sql_2);
-       
 
         $sql_4 = "SELECT user_id FROM db_users WHERE  user_name='$user' ";
-        $result_4= mysqli_query($conn, $sql_4);
+        $result_4 = mysqli_query($conn, $sql_4);
         $row = mysqli_fetch_assoc($result_4);
-         $id =$row['user_id'];
+        $id = $row['user_id'];
         $sql_5 = "INSERT INTO `db_user_inf`(`ID` ,`User_FullName`, `User_Position`, `User_Phone`, `office_id`) 
         VALUES ('$id','$fullname','$position','$phone','$office_id')";
-         $result_5 = mysqli_query($conn, $sql_5);
+        $result_5 = mysqli_query($conn, $sql_5);
 
- 
-         $sql_3 = "SELECT * FROM db_users WHERE user_email='$email' OR user_name='$user' ";
-         $result_3 = mysqli_query($conn, $sql_3);
-         $user = mysqli_fetch_assoc($result_3);
+
+        $sql_3 = "SELECT * FROM db_users WHERE user_email='$email' OR user_name='$user' ";
+        $result_3 = mysqli_query($conn, $sql_3);
+        $user = mysqli_fetch_assoc($result_3);
         $_SESSION['signup_user'] = $user;
+
         if ($result_2 > 0) {
             echo 'Gửi thành công!';
         } else {

@@ -29,21 +29,23 @@
 
                         <!-- Tên người đăng nhập -->
                         <?php
-                            $id = $currentUser['user_id'];
-                            include './reuse/config.php';
+                            echo $currentUser['User_FullName'];
 
-                            $sql = "SELECT User_FullName FROM db_user_inf WHERE ID = '$id'";
-                            $result = mysqli_query($conn,$sql);
+                            // $id = $currentUser['user_id'];
+                            // include 'http://localhost/BTL_CNW/reuse/config.php';
 
-                            if(mysqli_num_rows($result) > 0){
-                                $row = mysqli_fetch_assoc($result);
-                                echo $row['User_FullName'];
-                                mysqli_close($conn);
-                            }else{
-                                echo $currentUser['user_name'];
-                                mysqli_close($conn);
-                            }
-                        ?>
+                            // $sql = "SELECT User_FullName FROM db_user_inf WHERE ID = '$id'";
+                            // $result = mysqli_query($conn, $sql);
+
+                            // if (mysqli_num_rows($result) > 0) {
+                            // $row = mysqli_fetch_assoc($result);
+                            // echo $row['User_FullName'];
+                            // mysqli_close($conn);
+                            // } else {
+                            // echo $currentUser['user_name'];
+                            // mysqli_close($conn);
+                            // }
+                            ?>
 
                         <i class="fa fa-user-circle fa-w-16 fa-2x p-2" aria-hidden="true"></i>
                     </button>
