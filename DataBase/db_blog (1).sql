@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th10 03, 2021 lúc 03:06 PM
+-- Thời gian đã tạo: Th10 04, 2021 lúc 04:57 PM
 -- Phiên bản máy phục vụ: 10.4.21-MariaDB
 -- Phiên bản PHP: 8.0.10
 
@@ -157,7 +157,10 @@ INSERT INTO `db_users` (`user_id`, `user_name`, `user_email`, `user_pass`, `user
 (31, 'Sinhvien', 'abcd@gmail.com', '$2y$10$U8k3a101QxJIeEMUI9826OOpdFqeoYDSIUn8w73UNT9VqNp1WqGWm', '2021-11-01 08:28:07', 1, 2, '58b68ab05d41ce01c94336ae441d7b73'),
 (33, 'abc1', 'abc1@gmail.com', '$2y$10$YvDo31xFwimk/Wvj54DOROcBzvXKyRNhmwDPx4UA6W9635HCH/Un.', '2021-11-01 08:28:07', 1, 1, '58b68ab05d41ce01c94336ae441d7b73'),
 (34, 'abc2', 'abc2@gmail.com', '$2y$10$YvDo31xFwimk/Wvj54DOROcBzvXKyRNhmwDPx4UA6W9635HCH/Un.', '2021-11-01 08:28:07', 1, 1, '58b68ab05d41ce01c94336ae441d7b73'),
-(35, 'abc3', 'abc3@gmail.com', '$2y$10$YvDo31xFwimk/Wvj54DOROcBzvXKyRNhmwDPx4UA6W9635HCH/Un.', '2021-11-01 08:28:07', 1, 1, '58b68ab05d41ce01c94336ae441d7b73');
+(35, 'abc3', 'abc3@gmail.com', '$2y$10$YvDo31xFwimk/Wvj54DOROcBzvXKyRNhmwDPx4UA6W9635HCH/Un.', '2021-11-01 08:28:07', 1, 1, '58b68ab05d41ce01c94336ae441d7b73'),
+(36, '123124234234', 'conlonkien@gmail.com', '$2y$10$1hJMmpT/ycV9prtlCNu2b.6r07rmC0.TRL6fHRAo1j0aWsw4eT/.6', '2021-11-03 22:08:06', 0, 1, 'c948cd1eeea7182a960b0be9ceac384f'),
+(37, '1412343241231421312344', 'dungngunua45@gmail.com', '$2y$10$prKEBPaKXeGvJodsITyx/Oqra/xXqIT1NHH4dAiC334XXAzUim6UO', '2021-11-04 13:36:54', 0, 1, '48a4997862ece943424390a00768c375'),
+(38, 'duonghehhe', 'phamquangduong542001@gmail.com', '$2y$10$kUP/PBxCDcBT1KNjHHK5DO.dXJV12X1gtGvmj7yIgkuqubDGJ.zmO', '2021-11-04 19:34:55', 1, 0, '9a9a7e9011d6add8bce86be87f09619d');
 
 -- --------------------------------------------------------
 
@@ -182,7 +185,38 @@ INSERT INTO `db_user_inf` (`ID`, `User_FullName`, `User_Position`, `User_Phone`,
 (31, 'abcd', 'hellod\r\n', '1233', 1),
 (33, 'abc1', 'hello\r\n', '123', 1),
 (34, 'abc2', 'hello\r\n', '123', 1),
-(35, 'abc3', 'hello\r\n', '123', 1);
+(35, 'abc3', 'hello\r\n', '123', 1),
+(36, 'Kiên cute', 'Giảng Viên', '0867856505', 1),
+(37, 'nguyễn minh hiếu', 'Giảng Viên', '0867856505', 1),
+(38, 'Phạm Quang Dương', 'Sinh Viên', '01666249530', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `review_table`
+--
+
+CREATE TABLE `review_table` (
+  `review_id` int(11) NOT NULL,
+  `user_name` varchar(200) NOT NULL,
+  `user_rating` int(1) NOT NULL,
+  `user_review` text NOT NULL,
+  `datetime` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Đang đổ dữ liệu cho bảng `review_table`
+--
+
+INSERT INTO `review_table` (`review_id`, `user_name`, `user_rating`, `user_review`, `datetime`) VALUES
+(6, 'John Smith', 4, 'Nice Product, Value for money', 1621935691),
+(7, 'Peter Parker', 5, 'Nice Product with Good Feature.', 1621939888),
+(8, 'Donna Hubber', 1, 'Worst Product, lost my money.', 1621940010),
+(9, 'phamquangduong', 5, '12134132', 1635994260),
+(10, 'phamquangduong', 5, 'Nice', 1635994269),
+(11, 'phamquangduong', 4, 'Nice', 1636006649),
+(12, 'phamquangduong', 4, '123214', 1636030693),
+(13, 'phamquangduong', 3, '123', 1636037764);
 
 -- --------------------------------------------------------
 
@@ -203,9 +237,18 @@ CREATE TABLE `tbl_comment` (
 --
 
 INSERT INTO `tbl_comment` (`comment_id`, `parent_comment_id`, `comment`, `comment_sender_name`, `date`) VALUES
-(27, 0, '  qưer', 'Phạm Dương', '2021-11-03 08:05:24'),
-(28, 0, '', '', '2021-11-03 08:05:25'),
-(29, 27, '2134', '4123', '2021-11-03 08:05:29');
+(30, 0, '  THầy đẹp trai quá\r\n', 'Phạm Dương', '2021-11-03 09:18:15'),
+(31, 30, 'Ừ cảm ơn em', 'Thầy', '2021-11-03 09:18:26'),
+(32, 31, 'em cũng cảm ơn thầy\r\n', 'DƯơng', '2021-11-03 09:18:40'),
+(33, 0, 'Bài hay quá', 'Phạm Dương', '2021-11-03 09:19:16'),
+(34, 0, '  324321', 'Phạm Dương', '2021-11-03 10:03:26'),
+(35, 0, '  1423', 'Phạm Dương', '2021-11-04 00:34:54'),
+(36, 0, '1234123412341234123', 'Phạm Dương', '2021-11-04 00:35:00'),
+(37, 0, '  321423412', 'Phạm Dương', '2021-11-04 09:38:36'),
+(38, 0, '12341234', 'Phạm Quang Dương', '2021-11-04 09:38:41'),
+(39, 0, 'aaaaaaaaaaaaaaaaaaa', 'Phạm Dương', '2021-11-04 09:38:47'),
+(40, 0, '  r1241231234', 'Phạm Dương', '2021-11-04 09:42:58'),
+(41, 0, '  r1241231234', 'Phạm Dương', '2021-11-04 09:42:58');
 
 --
 -- Chỉ mục cho các bảng đã đổ
@@ -263,6 +306,12 @@ ALTER TABLE `db_user_inf`
   ADD KEY `office_id` (`office_id`);
 
 --
+-- Chỉ mục cho bảng `review_table`
+--
+ALTER TABLE `review_table`
+  ADD PRIMARY KEY (`review_id`);
+
+--
 -- Chỉ mục cho bảng `tbl_comment`
 --
 ALTER TABLE `tbl_comment`
@@ -306,19 +355,19 @@ ALTER TABLE `db_teach_learn`
 -- AUTO_INCREMENT cho bảng `db_users`
 --
 ALTER TABLE `db_users`
-  MODIFY `user_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+  MODIFY `user_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
--- AUTO_INCREMENT cho bảng `db_user_inf`
+-- AUTO_INCREMENT cho bảng `review_table`
 --
-ALTER TABLE `db_user_inf`
-  MODIFY `ID` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+ALTER TABLE `review_table`
+  MODIFY `review_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT cho bảng `tbl_comment`
 --
 ALTER TABLE `tbl_comment`
-  MODIFY `comment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `comment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
 
 --
 -- Các ràng buộc cho các bảng đã đổ
