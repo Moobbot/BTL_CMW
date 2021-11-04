@@ -108,7 +108,10 @@
                 </div>
             </div>
             <!-- Comments của sinh viên-->
-            <?php include './comment.php' ?>
+     <?php  include './comment.php'; ?>
+
+    
+    
         </div>
     </div>
     <!-- END CONTAINER -->
@@ -116,12 +119,13 @@
 
     <!-- BEGIN FOOTER -->
 
-    <?php include '../reuse/footer_body.php' ?>
+   
 
     <!-- END FOOTER -->
 
 </div>
-
+<script src="../assets/js/jquery-3.2.1.min.js"> </script>
+<script src="../assets/js/comment.js"></script>
 <?php } ?>
 
 <?php include '../reuse/footer.php' ?>
