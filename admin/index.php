@@ -16,7 +16,7 @@
             <div class="col-md-12">
                 <h2>THÔNG BÁO</h2>
                 <!-- Button trigger modal -->
-                <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addNote">
                     Thêm
                 </button>
                 <table class="table text-center">
@@ -45,7 +45,7 @@
                     <tbody>
                         <!-- Dữ liệu thay đổi theo CSDL -->
                         <?php
-                                $sql = "SELECT note_id, note_mes, User_FullName, sub_name, note_date FROM db_note, db_user_inf, db_teach_learn, db_subjects WHERE db_note.teach_learn_id = db_teach_learn.teach_learn_id AND db_user_inf.ID = db_teach_learn.user_id_inf AND db_subjects.sub_id = db_teach_learn.sub_id GROUP BY db_teach_learn.teach_learn_id;";
+                                $sql = "SELECT note_id, note_mes, User_FullName, sub_name, note_date FROM db_note, db_user_inf, db_teach_learn, db_subjects WHERE db_note.teach_learn_id = db_teach_learn.teach_learn_id AND db_user_inf.ID = db_teach_learn.user_id_inf AND db_subjects.sub_id = db_teach_learn.sub_id GROUP BY db_note.note_id;";
                                 $result = mysqli_query($conn, $sql);
                                 if (mysqli_num_rows($result) > 0) {
                                     while ($row = mysqli_fetch_assoc($result)) {
@@ -58,7 +58,9 @@
                                         echo 
                                                 '<td>
                                                     <form>
-                                                    <a href="./admin/edit_note.php"><button type="button" class="btn btn-success">Chỉnh sửa</button></a>
+                                                    <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#editNote">
+                                                        Chỉnh sửa
+                                                    </button>
                                                     <a href="./admin/delete_note.php"><button type="button" class="btn btn-danger">Xóa</button></a>
                                                     </form>
                                                 </td>';
@@ -67,8 +69,8 @@
                                 }?>
                     </tbody>
                 </table>
-                <!-- Modal -->
-                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                <!-- Modal thêm note -->
+                <div class="modal fade" id="addNote" tabindex="-1" aria-labelledby="exampleModalLabel"
                     aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">
@@ -106,7 +108,7 @@
                                             while($row = mysqli_fetch_assoc($result2)){
                                                 echo "<option value =".$row["sub_id"].">".$row['sub_name']."</option>";
                                             }
-                                            ?>
+                                        ?>
                                         </select>
                                     </div>
                                 </div>
@@ -120,28 +122,81 @@
                             <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
                             <script>
-                                $("#note-form").submit(function(event) {
-                                    event.preventDefault();
-                                    $.ajax({
-                                        type: "POST",
-                                        url: './admin/process_add_note.php',
-                                        data: $(this).serializeArray(),
-                                        success: function(response) {
-                                            response = JSON.parse(response);
-                                            if (response.status == 0) { // bắt hồi âm chỉ thông báo message
-                                                alert(response.message);
-                                            }
-                                            if (response.status == 1) { // bắt hồi âm có sự thay đổi về giao diện
-                                                alert(response.message);
-                                            }
+                            $("#note-form").submit(function(event) {
+                                event.preventDefault();
+                                $.ajax({
+                                    type: "POST",
+                                    url: 'http://localhost/BTL_CNW/admin/process_add_note.php',
+                                    data: $(this).serializeArray(),
+                                    success: function(response) {
+                                        response = JSON.parse(response);
+                                        if (response.status == 0) { // bắt hồi âm chỉ thông báo
+                                            alert(response.message);
                                         }
-                                    })
-                                });
+                                        if (response.status == 1) { // bắt hồi âm thông báo và reload location
+                                            alert(response.message);
+                                            location.reload();
+                                        }
+                                    }
+                                })
+                            });
                             </script>
-                        
+
                         </div>
                     </div>
                 </div>
+                <!-- Modal cho chỉnh sửa -->
+                <div class="modal fade" id="editNote" tabindex="-1" aria-labelledby="exampleModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Thêm thông báo</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <form id="edit-note-form">
+                                <div class="modal-body">
+                                    <div class="d-flex flex-row align-items-center mb-4">
+                                        <div class="form-outline flex-fill mb-0">
+                                            <input type="text" id="txtNote" class="form-control " name="txtNote"
+                                                placeholder="Note mess" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary"
+                                        data-bs-dismiss="modal">Close</button>
+                                    <button type="submit" class="btn btn-primary">Save changes</button>
+                                </div>
+                            </form>
+
+                            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+                            <script>
+                            $("#edit-note-form").submit(function(event) {
+                                event.preventDefault();
+                                $.ajax({
+                                    type: "POST",
+                                    url: 'http://localhost/BTL_CNW/admin/process_add_note.php',
+                                    data: $(this).serializeArray(),
+                                    success: function(response) {
+                                        response = JSON.parse(response);
+                                        if (response.status == 0) { // bắt hồi âm chỉ thông báo
+                                            alert(response.message);
+                                        }
+                                        if (response.status == 1) { // bắt hồi âm thông báo và reload location
+                                            alert(response.message);
+                                            location.reload();
+                                        }
+                                    }
+                                })
+                            });
+                            </script>
+
+                        </div>
+                    </div>
+                </div>         
             </div>
         </div>
     </div>
@@ -212,47 +267,48 @@
                 </div>
             </div>
         </div>
+    </div>
 
-        <div class="row d-flex justify-content-center mt-sm-5 p-0 m-0">
-            <div class="col-10">
-                <!-- Thông báo -->
-                <div class="row">
-                    <div class="col-md-12">
-                        <h2>TÀI KHOẢN</h2>
-                        <a href="#"><button type="button" class="btn btn-success">Thêm</button></a>
-                        <table class="table text-center">
+    <div class="row d-flex justify-content-center mt-sm-5 p-0 m-0">
+        <div class="col-10">
+            <!-- Thông báo -->
+            <div class="row">
+                <div class="col-md-12">
+                    <h2>TÀI KHOẢN</h2>
+                    <a href="#"><button type="button" class="btn btn-success">Thêm</button></a>
+                    <table class="table text-center">
 
-                            <thead>
-                                <tr>
-                                    <th>
-                                        ID
-                                    </th>
-                                    <th>
-                                        Tên đăng nhập
-                                    </th>
-                                    <th>
-                                        Tên người dùng
-                                    </th>
-                                    <th>
-                                        Email
-                                    </th>
-                                    <th>
-                                        Chức vụ
-                                    </th>
-                                    <th>
-                                        Số điện thoại
-                                    </th>
-                                    <th>
-                                        Khoa
-                                    </th>
-                                    <th>
-                                        Chức năng
-                                    </th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <!-- Dữ liệu thay đổi theo CSDL -->
-                                <?php
+                        <thead>
+                            <tr>
+                                <th>
+                                    ID
+                                </th>
+                                <th>
+                                    Tên đăng nhập
+                                </th>
+                                <th>
+                                    Tên người dùng
+                                </th>
+                                <th>
+                                    Email
+                                </th>
+                                <th>
+                                    Chức vụ
+                                </th>
+                                <th>
+                                    Số điện thoại
+                                </th>
+                                <th>
+                                    Khoa
+                                </th>
+                                <th>
+                                    Chức năng
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Dữ liệu thay đổi theo CSDL -->
+                            <?php
                                 $sql = "SELECT user_id, user_name, User_FullName, User_Position, user_email, User_Phone, office_name FROM db_user_inf, db_users, db_offices, db_subjects WHERE db_users.user_id = db_user_inf.ID AND db_user_inf.office_id = db_offices.office_id GROUP BY db_users.user_id;";
                                 $result = mysqli_query($conn, $sql);
                                 if (mysqli_num_rows($result) > 0) {
@@ -276,8 +332,10 @@
                                         echo    "</tr>";
                                     }
                                 }?>
-                            </tbody>
-                        </table>
-                    </div>
+                        </tbody>
+                    </table>
                 </div>
             </div>
+        </div>
+    </div>
+</div>
