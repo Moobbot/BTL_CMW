@@ -154,7 +154,8 @@
                 
                 <!-- Phần code nút chỉnh sửa note-->
                 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
+                
+                <!-- Bắt đầu script gửi giá trị vào label -->
                 <script>
                 $(".passingID-edit").click(function() {
                     var id = $(this).attr('data-value1');
@@ -164,6 +165,7 @@
                     $("editNote").val('show');
                 });
                 </script>
+                <!-- Kết thúc script gửi giá trị vào label -->
                 <!-- Modal cho chỉnh sửa -->
                 <div class="modal fade" id="editNote" tabindex="-1" aria-labelledby="exampleModalLabel"
                     aria-hidden="true">
@@ -194,7 +196,7 @@
                                     <button type="submit" class="btn btn-primary">Sửa</button>
                                 </div>
                             </form>
-
+                            <!-- Bắt đầu code thay đổi note /script -->
                             <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
                             <script>
@@ -217,41 +219,60 @@
                                 })
                             });
                             </script>
+                            <!-- Kết thúc code thay đổi note/script -->
                         </div>
                     </div>
                 </div>
                 <!-- Kết thúc modal chỉnh sửa note-->
 
+
+
                 <!-- Bắt đầu modal xóa note -->
+
+                <!-- Bắt đầu code gửi giá trị vào button đồng ý -->
+
+                <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+                <script>
+                $(".passingID-delete").click(function() {
+                    var id = $(this).attr('data-value1');
+                    $("#bttAcceptDel").val(id);
+                    $("editNote").val('show');
+                });
+                </script>            
+                <!-- Kết thúc code gửi giá trị vào button đồng ý -->
+
                 <div class="modal fade" id="delNote" tabindex="-1" aria-labelledby="exampleModalLabel"
                     aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">Sửa thông báo</h5>
+                                <h5 class="modal-title" id="exampleModalLabel">Xóa ghi chú</h5>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal"
                                     aria-label="Close"></button>
                             </div>
-                            <form id="edit-note-form">
+                            <form id="delete-note-form">
                                 <div class="modal-body">
-                                   BẠN CÓ MUỐN XÓA
+                                   <h3 class="text-center">Bạn có muốn xóa ?</h3>
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary"
-                                        data-bs-dismiss="modal">Đóng</button>
-                                    <button type="submit" class="btn btn-primary">Sửa</button>
+                                    <button type="button" class="btn btn-danger"
+                                        data-bs-dismiss="modal">Không</button>
+                                    <button type="submit" class="btn btn-success" id="bttAcceptDel" name="bttAcceptDel" value="">Đồng ý</button>
                                 </div>
                             </form>
 
+                            <!-- Bắt đầu code xóa note /script -->
                             <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
                             <script>
-                            $("#edit-note-form").submit(function(event) {
+                            $("#bttAcceptDel").click(function(event) {
                                 event.preventDefault();
+                                var btt_ID = $(this).attr('value');
                                 $.ajax({
                                     type: "POST",
-                                    url: 'http://localhost/BTL_CNW/admin/process_edit_note.php',
-                                    data: $(this).serializeArray(),
+                                    url: 'http://localhost/BTL_CNW/admin/process_delete_note.php',
+                                    data: {ID: btt_ID},
                                     success: function(response) {
                                         response = JSON.parse(response);
                                         if (response.status == 0) { // bắt hồi âm chỉ thông báo
@@ -265,6 +286,7 @@
                                 })
                             });
                             </script>
+                            <!-- Kết thúc code xóa note /script -->
                         </div>
                     </div>
                 </div>
