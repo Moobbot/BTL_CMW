@@ -2,6 +2,7 @@
 <div class="container-fluid px-0">
     <?php
     // BEGIN HEADER
+    include './reuse/config.php';
 
     include './reuse/header_body.php';
 
@@ -27,7 +28,6 @@
                 if ($currentUser['user_level'] == 0) {
                     // Hiện thị body admin
                     include './admin/index.php';
-
                 ?>
 
             <?php

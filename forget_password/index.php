@@ -98,6 +98,10 @@ $("#change-form").submit(function(event) {
                 alert(response.message);
                 location.reload();
             }
+            if (response.status == 2) { // Bắt sự kiện cần điều hướng và in ra aleart
+                alert(response.message);
+                window.location.href="../login/index.php";
+            }
         }
     })
 });

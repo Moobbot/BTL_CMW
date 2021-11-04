@@ -17,12 +17,14 @@ if (mysqli_num_rows($result) > 0) { // vòng if kiểm tra câu lệnh truy vấ
         $user = mysqli_fetch_assoc($result1);
         if ($user['user_status'] > 0) { // Kiểm tra tài khoản xác thực
             $_SESSION['current_user'] = $user;
+            mysqli_close($conn);
             echo json_encode(array(
                 'status' => 1,
                 'message' => 'Đăng nhập thành công'
             ));
             exit;
         } else {
+            mysqli_close($conn);
             echo json_encode(array(
                 'status' => 0,
                 'message' => 'Tài khoản chưa xác thực'
@@ -30,6 +32,7 @@ if (mysqli_num_rows($result) > 0) { // vòng if kiểm tra câu lệnh truy vấ
             exit;
         }
     } else {
+        mysqli_close($conn);
         echo json_encode(array(
             'status' => 0,
             'message' => 'Sai mật khẩu'
@@ -37,11 +40,10 @@ if (mysqli_num_rows($result) > 0) { // vòng if kiểm tra câu lệnh truy vấ
         exit;
     }
 } else {
+    mysqli_close($conn);
     echo json_encode(array(
         'status' => 0,
         'message' => 'Người dùng không tồn tại'
     ));
     exit;
 }
-
-mysqli_close($conn);

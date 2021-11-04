@@ -7,7 +7,7 @@
 
 <?php
 $id = $_GET['id']; //teach_learn_id
-echo $id;
+// echo $id;
 ?>
 
 <div class="container-fluid bg-light h-100 p-0 m-0">
