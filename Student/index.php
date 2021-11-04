@@ -1,7 +1,7 @@
 <!-- Giao diện từng môn học
         Giao diện cho sinh viên
 -->
-<?php include '../reuse/config.php'; ?>
+
 <div class="row">
     <div class="col-md-12">
         <h2>Danh sách Giảng viên</h2>
