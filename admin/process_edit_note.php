@@ -11,16 +11,16 @@
     if(mysqli_num_rows($result) > 0){
         $sql1 = "UPDATE db_note SET note_mes = '$note_mes' WHERE note_id = $id";
         $result1 = mysqli_query($conn,$sql1);
-        if(mysqli_num_rows($result1) > 0){  
+        if($result1 > 0){  
             echo json_encode(array(
-                'status' => 0,
-                'message' => 'Có dữ liệu đấy'
+                'status' => 1,
+                'message' => 'Thay đổi thành công'
             ));
             exit;
         }else{
             echo json_encode(array(
-                'status' => 1,
-                'message' => 'Thay đổi thành công'
+                'status' => 0,
+                'message' => 'Thay đổi thất bại'
             ));
             exit;
         }

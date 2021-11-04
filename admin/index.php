@@ -15,7 +15,7 @@
         <div class="row">
             <div class="col-md-12">
                 <h2>THÔNG BÁO</h2>
-                <!-- Button trigger modal -->
+                <!-- Button trigger modal thêm note-->
                 <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addNote">
                     Thêm
                 </button>
@@ -57,10 +57,12 @@
                                         <td><?php echo $row['sub_name']?></td>
                                         <td>
                                             <form>
-                                            <button type="button" class="btn btn-success passingID" data-bs-toggle="modal" data-bs-target="#editNote" data-value1='<?php echo $row['note_id']?>' data-value2 ='<?php echo $row['note_mes']?>'>
+                                            <button type="button" class="btn btn-success passingID-edit" data-bs-toggle="modal" data-bs-target="#editNote" data-value1='<?php echo $row['note_id']?>' data-value2 ='<?php echo $row['note_mes']?>'>
                                                         Chỉnh sửa
                                             </button>
-                                            <a href="./admin/delete_note.php"><button type="button" class="btn btn-danger">Xóa</button></a>
+                                            <button type="button" class="btn btn-danger passingID-delete" data-bs-toggle="modal" data-bs-target="#delNote" data-value1='<?php echo $row['note_id']?>'>
+                                                        Xóa
+                                            </button>
                                             </form>
                                         </td>
                                         </tr>
@@ -70,6 +72,7 @@
                             ?>
                     </tbody>
                 </table>
+                <!-- Phần code nút thêm note -->
                 <!-- Modal thêm note -->
                 <div class="modal fade" id="addNote" tabindex="-1" aria-labelledby="exampleModalLabel"
                     aria-hidden="true">
@@ -147,11 +150,13 @@
                         </div>
                     </div>
                 </div>
-
+                <!-- Kết thúc modal thêm note -->
+                
+                <!-- Phần code nút chỉnh sửa note-->
                 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
                 <script>
-                $(".passingID").click(function() {
+                $(".passingID-edit").click(function() {
                     var id = $(this).attr('data-value1');
                     var note = $(this).attr('data-value2')
                     $("#txtNoteEditCode").val(id);
@@ -204,8 +209,55 @@
                                         if (response.status == 0) { // bắt hồi âm chỉ thông báo
                                             alert(response.message);
                                         }
-                                        if (response.status ==
-                                            1) { // bắt hồi âm thông báo và reload location
+                                        if (response.status == 1) { // bắt hồi âm thông báo và reload location
+                                            alert(response.message);
+                                            location.reload();
+                                        }
+                                    }
+                                })
+                            });
+                            </script>
+                        </div>
+                    </div>
+                </div>
+                <!-- Kết thúc modal chỉnh sửa note-->
+
+                <!-- Bắt đầu modal xóa note -->
+                <div class="modal fade" id="delNote" tabindex="-1" aria-labelledby="exampleModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Sửa thông báo</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <form id="edit-note-form">
+                                <div class="modal-body">
+                                   BẠN CÓ MUỐN XÓA
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary"
+                                        data-bs-dismiss="modal">Đóng</button>
+                                    <button type="submit" class="btn btn-primary">Sửa</button>
+                                </div>
+                            </form>
+
+                            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+                            <script>
+                            $("#edit-note-form").submit(function(event) {
+                                event.preventDefault();
+                                $.ajax({
+                                    type: "POST",
+                                    url: 'http://localhost/BTL_CNW/admin/process_edit_note.php',
+                                    data: $(this).serializeArray(),
+                                    success: function(response) {
+                                        response = JSON.parse(response);
+                                        if (response.status == 0) { // bắt hồi âm chỉ thông báo
+                                            alert(response.message);
+                                        }
+                                        if (response.status == 1) { // bắt hồi âm thông báo và reload location
                                             alert(response.message);
                                             location.reload();
                                         }
@@ -229,7 +281,9 @@
             <div class="row">
                 <div class="col-md-12">
                     <h2>TÀI LIỆU</h2>
-                    <a href="#"><button type="button" class="btn btn-success">Thêm</button></a>
+                    <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addDoc">
+                    Thêm
+                    </button>
                     <table class="table text-center">
 
                         <thead>
