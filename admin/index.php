@@ -48,25 +48,26 @@
                                 $sql = "SELECT note_id, note_mes, User_FullName, sub_name, note_date FROM db_note, db_user_inf, db_teach_learn, db_subjects WHERE db_note.teach_learn_id = db_teach_learn.teach_learn_id AND db_user_inf.ID = db_teach_learn.user_id_inf AND db_subjects.sub_id = db_teach_learn.sub_id GROUP BY db_note.note_id;";
                                 $result = mysqli_query($conn, $sql);
                                 if (mysqli_num_rows($result) > 0) {
-                                    while ($row = mysqli_fetch_assoc($result)) {
-                                        echo    "<tr>";
-                                        echo    "<td>".$row['note_id']."</td>";
-                                        echo    "<td>".$row['User_FullName']."</td>";
-                                        echo    "<td>".$row['note_mes']."</td>";
-                                        echo    "<td>".$row['note_date']."</td>";
-                                        echo    "<td>".$row['sub_name']."</td>";
-                                        echo 
-                                                '<td>
-                                                    <form>
-                                                    <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#editNote">
+                                    while ($row = mysqli_fetch_assoc($result)) {?>
+                                        <tr>
+                                        <td><?php echo $row['note_id'] ?></td>
+                                        <td><?php echo $row['User_FullName']?></td>
+                                        <td><?php echo $row['note_mes']?></td>
+                                        <td><?php echo $row['note_date']?></td>
+                                        <td><?php echo $row['sub_name']?></td>
+                                        <td>
+                                            <form>
+                                            <button type="button" class="btn btn-success passingID" data-bs-toggle="modal" data-bs-target="#editNote" data-value1='<?php echo $row['note_id']?>' data-value2 ='<?php echo $row['note_mes']?>'>
                                                         Chỉnh sửa
-                                                    </button>
-                                                    <a href="./admin/delete_note.php"><button type="button" class="btn btn-danger">Xóa</button></a>
-                                                    </form>
-                                                </td>';
-                                        echo    "</tr>";
+                                            </button>
+                                            <a href="./admin/delete_note.php"><button type="button" class="btn btn-danger">Xóa</button></a>
+                                            </form>
+                                        </td>
+                                        </tr>
+                            <?php
+                                        }
                                     }
-                                }?>
+                            ?>
                     </tbody>
                 </table>
                 <!-- Modal thêm note -->
@@ -114,8 +115,8 @@
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary"
-                                        data-bs-dismiss="modal">Close</button>
-                                    <button type="submit" class="btn btn-primary">Save changes</button>
+                                        data-bs-dismiss="modal">Đóng</button>
+                                    <button type="submit" class="btn btn-primary">Thêm</button>
                                 </div>
                             </form>
 
@@ -133,7 +134,8 @@
                                         if (response.status == 0) { // bắt hồi âm chỉ thông báo
                                             alert(response.message);
                                         }
-                                        if (response.status == 1) { // bắt hồi âm thông báo và reload location
+                                        if (response.status ==
+                                            1) { // bắt hồi âm thông báo và reload location
                                             alert(response.message);
                                             location.reload();
                                         }
@@ -145,13 +147,25 @@
                         </div>
                     </div>
                 </div>
+
+                <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+                <script>
+                $(".passingID").click(function() {
+                    var id = $(this).attr('data-value1');
+                    var note = $(this).attr('data-value2')
+                    $("#txtNoteEditCode").val(id);
+                    $('#txtNoteEdit').val(note);
+                    $("editNote").val('show');
+                });
+                </script>
                 <!-- Modal cho chỉnh sửa -->
                 <div class="modal fade" id="editNote" tabindex="-1" aria-labelledby="exampleModalLabel"
                     aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">Thêm thông báo</h5>
+                                <h5 class="modal-title" id="exampleModalLabel">Sửa thông báo</h5>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal"
                                     aria-label="Close"></button>
                             </div>
@@ -159,15 +173,20 @@
                                 <div class="modal-body">
                                     <div class="d-flex flex-row align-items-center mb-4">
                                         <div class="form-outline flex-fill mb-0">
-                                            <input type="text" id="txtNote" class="form-control " name="txtNote"
-                                                placeholder="Note mess" />
+                                            <input type="text" id="txtNoteEditCode" class="form-control "
+                                                name="txtNoteEditCode" placeholder="Note mess" readonly />
                                         </div>
+                                    </div>
+
+                                    <div class="form-outline flex-fill mb-0">
+                                        <input type="text" id="txtNoteEdit" class="form-control " name="txtNoteEdit"
+                                            placeholder="Note mess" value="" />
                                     </div>
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary"
-                                        data-bs-dismiss="modal">Close</button>
-                                    <button type="submit" class="btn btn-primary">Save changes</button>
+                                        data-bs-dismiss="modal">Đóng</button>
+                                    <button type="submit" class="btn btn-primary">Sửa</button>
                                 </div>
                             </form>
 
@@ -178,14 +197,15 @@
                                 event.preventDefault();
                                 $.ajax({
                                     type: "POST",
-                                    url: 'http://localhost/BTL_CNW/admin/process_add_note.php',
+                                    url: 'http://localhost/BTL_CNW/admin/process_edit_note.php',
                                     data: $(this).serializeArray(),
                                     success: function(response) {
                                         response = JSON.parse(response);
                                         if (response.status == 0) { // bắt hồi âm chỉ thông báo
                                             alert(response.message);
                                         }
-                                        if (response.status == 1) { // bắt hồi âm thông báo và reload location
+                                        if (response.status ==
+                                            1) { // bắt hồi âm thông báo và reload location
                                             alert(response.message);
                                             location.reload();
                                         }
@@ -193,10 +213,9 @@
                                 })
                             });
                             </script>
-
                         </div>
                     </div>
-                </div>         
+                </div>
             </div>
         </div>
     </div>
