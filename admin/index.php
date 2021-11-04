@@ -9,6 +9,7 @@
     <h1 class="text-center">Quản trị viên</h1>
 </div>
 
+<!-- Bắt đầu bảng thông báo -->
 <div class="row d-flex justify-content-center mt-sm-5 p-0 m-0">
     <div class="col-10">
         <!-- Thông báo -->
@@ -49,24 +50,27 @@
                                 $result = mysqli_query($conn, $sql);
                                 if (mysqli_num_rows($result) > 0) {
                                     while ($row = mysqli_fetch_assoc($result)) {?>
-                                        <tr>
-                                        <td><?php echo $row['note_id'] ?></td>
-                                        <td><?php echo $row['User_FullName']?></td>
-                                        <td><?php echo $row['note_mes']?></td>
-                                        <td><?php echo $row['note_date']?></td>
-                                        <td><?php echo $row['sub_name']?></td>
-                                        <td>
-                                            <form>
-                                            <button type="button" class="btn btn-success passingID-edit" data-bs-toggle="modal" data-bs-target="#editNote" data-value1='<?php echo $row['note_id']?>' data-value2 ='<?php echo $row['note_mes']?>'>
-                                                        Chỉnh sửa
-                                            </button>
-                                            <button type="button" class="btn btn-danger passingID-delete" data-bs-toggle="modal" data-bs-target="#delNote" data-value1='<?php echo $row['note_id']?>'>
-                                                        Xóa
-                                            </button>
-                                            </form>
-                                        </td>
-                                        </tr>
-                            <?php
+                        <tr>
+                            <td><?php echo $row['note_id'] ?></td>
+                            <td><?php echo $row['User_FullName']?></td>
+                            <td><?php echo $row['note_mes']?></td>
+                            <td><?php echo $row['note_date']?></td>
+                            <td><?php echo $row['sub_name']?></td>
+                            <td>
+                                <form>
+                                    <button type="button" class="btn btn-success passingID-edit" data-bs-toggle="modal"
+                                        data-bs-target="#editNote" data-value1='<?php echo $row['note_id']?>'
+                                        data-value2='<?php echo $row['note_mes']?>'>
+                                        Chỉnh sửa
+                                    </button>
+                                    <button type="button" class="btn btn-danger passingID-delete" data-bs-toggle="modal"
+                                        data-bs-target="#delNote" data-value1='<?php echo $row['note_id']?>'>
+                                        Xóa
+                                    </button>
+                                </form>
+                            </td>
+                        </tr>
+                        <?php
                                         }
                                     }
                             ?>
@@ -122,7 +126,7 @@
                                     <button type="submit" class="btn btn-primary">Thêm</button>
                                 </div>
                             </form>
-
+                            <!-- Bắt đầu script thêm -->
                             <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
                             <script>
@@ -137,8 +141,7 @@
                                         if (response.status == 0) { // bắt hồi âm chỉ thông báo
                                             alert(response.message);
                                         }
-                                        if (response.status ==
-                                            1) { // bắt hồi âm thông báo và reload location
+                                        if (response.status == 1) { // bắt hồi âm thông báo và reload location
                                             alert(response.message);
                                             location.reload();
                                         }
@@ -146,15 +149,15 @@
                                 })
                             });
                             </script>
-
+                            <!-- Kết thúc script thêm -->
                         </div>
                     </div>
                 </div>
                 <!-- Kết thúc modal thêm note -->
-                
+
                 <!-- Phần code nút chỉnh sửa note-->
                 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-                
+
                 <!-- Bắt đầu script gửi giá trị vào label -->
                 <script>
                 $(".passingID-edit").click(function() {
@@ -211,7 +214,8 @@
                                         if (response.status == 0) { // bắt hồi âm chỉ thông báo
                                             alert(response.message);
                                         }
-                                        if (response.status == 1) { // bắt hồi âm thông báo và reload location
+                                        if (response.status ==
+                                            1) { // bắt hồi âm thông báo và reload location
                                             alert(response.message);
                                             location.reload();
                                         }
@@ -239,7 +243,7 @@
                     $("#bttAcceptDel").val(id);
                     $("editNote").val('show');
                 });
-                </script>            
+                </script>
                 <!-- Kết thúc code gửi giá trị vào button đồng ý -->
 
                 <div class="modal fade" id="delNote" tabindex="-1" aria-labelledby="exampleModalLabel"
@@ -253,12 +257,12 @@
                             </div>
                             <form id="delete-note-form">
                                 <div class="modal-body">
-                                   <h3 class="text-center">Bạn có muốn xóa ?</h3>
+                                    <h3 class="text-center">Bạn có muốn xóa ?</h3>
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-danger"
-                                        data-bs-dismiss="modal">Không</button>
-                                    <button type="submit" class="btn btn-success" id="bttAcceptDel" name="bttAcceptDel" value="">Đồng ý</button>
+                                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Không</button>
+                                    <button type="submit" class="btn btn-success" id="bttAcceptDel" name="bttAcceptDel"
+                                        value="">Đồng ý</button>
                                 </div>
                             </form>
 
@@ -272,7 +276,9 @@
                                 $.ajax({
                                     type: "POST",
                                     url: 'http://localhost/BTL_CNW/admin/process_delete_note.php',
-                                    data: {ID: btt_ID},
+                                    data: {
+                                        ID: btt_ID
+                                    },
                                     success: function(response) {
                                         response = JSON.parse(response);
                                         if (response.status == 0) { // bắt hồi âm chỉ thông báo
@@ -296,7 +302,7 @@
 
 
 
-
+<!-- Bắt đầu bảng tài liệu -->
     <div class="row d-flex justify-content-center mt-sm-5 p-0 m-0">
         <div class="col-10">
             <!-- Thông báo -->
@@ -304,7 +310,7 @@
                 <div class="col-md-12">
                     <h2>TÀI LIỆU</h2>
                     <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addDoc">
-                    Thêm
+                        Thêm
                     </button>
                     <table class="table text-center">
 
@@ -364,13 +370,91 @@
         </div>
     </div>
 
+<!-- Bắt đầu modal thêm tài liệu -->
+    <div class="modal fade" id="addDoc" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Thêm tài liệu</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form id="doc-form">
+                    <div class="modal-body">
+                        <div class="d-flex flex-row align-items-center mb-4">
+                            <div class="form-outline flex-fill mb-0">
+                                <input type="text" id="txtDocName" class="form-control " name="txtDocName"
+                                    placeholder="Doc name" />
+                            </div>
+                        </div>
+                        <div class="d-flex flex-row align-items-center mb-4">
+                            <div class="form-outline flex-fill mb-0">
+                                <input type="text" id="txtLink" class="form-control " name="txtLink"
+                                    placeholder="Doc link" />
+                            </div>
+                        </div>
+                        <div class="d-flex align-items-center mb-4">
+                            <label>Tên giáo viên</label>
+                            <select name="teach-learn-id">
+                                <?php
+                                            $sql1 = "SELECT ID, User_FullName FROM db_user_inf";
+                                            $result1 = mysqli_query($conn,$sql1);
+                                            while($row = mysqli_fetch_assoc($result1)){
+                                                echo "<option value =".$row["ID"].">".$row['User_FullName']."</option>";
+                                            }
+                                        ?>
+                            </select>
+                        </div>
+                        <div class="d-flex align-items-center mb-4">
+                            <label>Môn học</label>
+                            <select name="subject-id">
+                                <?php
+                                            $sql2 = "SELECT sub_id, sub_name FROM db_subjects";
+                                            $result2 = mysqli_query($conn,$sql2);
+                                            while($row = mysqli_fetch_assoc($result2)){
+                                                echo "<option value =".$row["sub_id"].">".$row['sub_name']."</option>";
+                                            }
+                                        ?>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+                        <button type="submit" class="btn btn-primary">Thêm</button>
+                    </div>
+                </form>
+                <!-- Bắt đầu script thêm -->
+                <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+                <script>
+                $("#doc-form").submit(function(event) {
+                    event.preventDefault();
+                    $.ajax({
+                        type: "POST",
+                        url: 'http://localhost/BTL_CNW/admin/process_add_doc.php',
+                        data: $(this).serializeArray(),
+                        success: function(response) {
+                            response = JSON.parse(response);
+                            if (response.status == 0) { // bắt hồi âm chỉ thông báo
+                                alert(response.message);
+                            }
+                            if (response.status == 1) { // bắt hồi âm thông báo và reload location
+                                alert(response.message);
+                                location.reload();
+                            }
+                        }
+                    })
+                });
+                </script>
+                <!-- Kết thúc script thêm -->
+            </div>
+        </div>
+    </div>
     <div class="row d-flex justify-content-center mt-sm-5 p-0 m-0">
         <div class="col-10">
             <!-- Thông báo -->
             <div class="row">
                 <div class="col-md-12">
                     <h2>TÀI KHOẢN</h2>
-                    <a href="#"><button type="button" class="btn btn-success">Thêm</button></a>
                     <table class="table text-center">
 
                         <thead>
@@ -379,13 +463,7 @@
                                     ID
                                 </th>
                                 <th>
-                                    Tên đăng nhập
-                                </th>
-                                <th>
                                     Tên người dùng
-                                </th>
-                                <th>
-                                    Email
                                 </th>
                                 <th>
                                     Chức vụ
@@ -408,25 +486,24 @@
                                 $result = mysqli_query($conn, $sql);
                                 if (mysqli_num_rows($result) > 0) {
                                     while ($row = mysqli_fetch_assoc($result)) {
-                                        echo    '<tr>';
-                                        echo    '<td>'.$row['user_id'].'</td>';
-                                        echo    '<td>'.$row['user_name'].'</td>';
-                                        echo    '<td>'.$row['User_FullName'].'</td>';
-                                        echo    '<td>'.$row['user_email'].'</td>';
-                                        echo    '<td>'.$row['User_Position'].'</td>';
-                                        echo    '<td>'.$row['User_Phone'].'</td>';
-                                        echo    '<td>'.$row['office_name'].'</td>';
-                                        echo 
-                                                '<td>
-                                                    <form>
-                                                    <a href="./admin/edit_account.php"><button type="button" class="btn btn-success">Chỉnh sửa</button></a>
-                                                    <a href="./admin/delete_account.php"><button type="button" class="btn btn-danger">Xóa</button></a>
-                                                    <a href="#"><button type="button" class="btn btn-warning">Đổi mật khẩu</button></a>
-                                                    </form>
-                                                </td>';
-                                        echo    "</tr>";
+                            ?>
+                                        <tr>
+                                        <td><?php echo $row['user_id']?></td>
+                                        <td><?php echo $row['User_FullName']?></td>
+                                        <td><?php echo $row['User_Position']?></td>
+                                        <td><?php echo $row['User_Phone']?></td>
+                                        <td><?php echo $row['office_name']?></td>
+                                        <td>
+                                            <form>
+                                            <a href="./admin/edit_account.php"><button type="button" class="btn btn-success">Xem chi tiết</button></a>
+                                            <a href="./admin/delete_account.php"><button type="button" class="btn btn-danger">Xóa</button></a>
+                                            </form>
+                                        </td>
+                                        </tr>  
+                                <?php
                                     }
-                                }?>
+                                }
+                                ?>
                         </tbody>
                     </table>
                 </div>
