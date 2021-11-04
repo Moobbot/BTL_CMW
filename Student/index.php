@@ -1,4 +1,4 @@
-<?php include '../reuse/header.php' ?>
+
 <!-- <link rel="stylesheet" href="./style.css"> -->
 <div class="row d-flex justify-content-center mt-sm-5 p-0 m-0">
     <div class="col-10">
@@ -184,4 +184,3 @@ span.posted-by {
     <script src="../assets/js/jquery-3.2.1.min.js"> </script>
     <script src="../assets/js/comment.js"></script>
 </div>
-<?php include '../reuse/footer.php' ?>

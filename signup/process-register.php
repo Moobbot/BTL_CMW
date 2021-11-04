@@ -6,9 +6,9 @@ if (isset($_POST['signup'])) {
     $user  = $_POST['username'];
     $position = $_POST['position'];
     if ($position == "Giảng Viên") {
-        $level = true; // trả về là 1 
+        $level = 1; // trả về là 1 
     } else {
-        $level = false; // trả về là 0
+        $level = 2; // trả về là 0
     }
     $email = $_POST['email'];
     $pass1 = $_POST['pass1'];

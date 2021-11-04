@@ -1,6 +1,6 @@
 function postReply(commentId) {
     $('#commentId').val(commentId);
-    $("#name").focus();
+    $("#name").focus();   
 }
 
 $("#submitButton").click(function () {

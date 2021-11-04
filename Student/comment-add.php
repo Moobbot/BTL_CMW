@@ -1,6 +1,6 @@
 <?php
 require_once ("../reuse/config.php");
-$commentId = isset($_POST['comment_id']) ? $_POST['comment_id'] : "";
+$commentId = isset($_POST['comment_id']) ? $_POST['comment_id'] : "";  //Xác định xem một biến được khai báo 
 $comment = isset($_POST['comment']) ? $_POST['comment'] : "";
 $commentSenderName = isset($_POST['name']) ? $_POST['name'] : "";
 $date = date('Y-m-d H:i:s');
