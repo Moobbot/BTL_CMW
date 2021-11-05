@@ -1,6 +1,3 @@
-<!-- Giao diện từng môn học
-        Giao diện cho Giảng viên
--->
 <?php include '../reuse/header.php' ?>
 
 <?php include '../reuse/config.php' ?>

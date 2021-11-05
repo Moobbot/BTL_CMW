@@ -41,7 +41,7 @@ if(isset($_POST["action"]))
 	$review_content = array();
 
 	$query = "
-	SELECT * FROM review_table 
+    SELECT * FROM review_table 
 	ORDER BY review_id DESC
 	";
 
