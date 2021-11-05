@@ -38,8 +38,8 @@
                     <td><?= $row['date_sub'] ?></td>
                     <td><?= $row['status'] ?></td>
                     <td>
-                        <button type="button" class="btn btn-success w-100 btn_delete_note"
-                            value="<?= $row['note_id'] ?>"> Xóa
+                        <button type="button" class="btn btn-success w-100 btn_delete_doc"
+                            value="<?= $row['doc_ID'] ?>"> Xóa
                         </button>
                     </td>
                 </tr>
@@ -52,19 +52,16 @@
                         <?= $STT += 1 ?>
                     </th>
                     <td>
-                        <input type="text" id="" placeholder="Tên tài liệu" class="text-center mb-2">
-                        <input type="text" id="" placeholder="Link tài liệu" class="text-center">
+                        <input type="text" id="doc_name" placeholder="Tên tài liệu" class="text-center mb-2">
+                        <input type="link" id="doc_link" placeholder="Link tài liệu" class="text-center">
                     </td>
+                    <td>Là ngày thêm</td>
                     <td>
-                        <input type="text" id="" placeholder="Là ngày thêm" disabled class="text-center">
-                    </td>
-                    <td>
-                        <input type="text" id="" placeholder="Ghi chú" class="text-center">
-
+                        <input type="text" id="status" placeholder="Ghi chú" class="text-center">
                     </td>
                     <th>
                         <button type="button" id="btn_add_doc" value="<?php echo $id ?>"
-                            class="btn btn-success">Thêm</button>
+                            class="btn btn-success w-100">Thêm</button>
                     </th>
                 </tr>
             </tbody>

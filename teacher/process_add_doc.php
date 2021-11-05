@@ -6,37 +6,41 @@ include '../reuse/config.php';
 // Thêm note
 
 // Kiểm tra Có điền thông báo chưa?
-if (isset($_POST['teach_learn_id']) and isset($_POST['note_mes'])) {
+// if (isset($_POST['teach_learn_id']) and isset($_POST['doc_n'])) {
 
-    $teach_learn_id = $_POST['teach_learn_id'];
-    $note_mes = $_POST['note_mes'];
+$teach_learn_id = $_POST['teach_learn_id'];
 
-    //1. Kết nối tới Servers
+$doc_name = $_POST['doc_name'];
+$doc_link = $_POST['doc_link'];
+$status = $_POST['status'];
 
-    // //2. Truy vấn cơ sở dữ liệu
+//1. Kết nối tới Servers
 
-    $sql = "INSERT INTO db_note (teach_learn_id, note_mes) VALUES ('$teach_learn_id', '$note_mes');";
-    $result = mysqli_query($conn, $sql);
-    //3. Xử lý kết quả
+// //2. Truy vấn cơ sở dữ liệu
 
-    if ($result) {
-        echo json_encode(array(
-            'status' => 1,
-            'message' => 'Thêm thành công!'
-        ));
-        exit;
-    } else {
-        echo json_encode(array(
-            'status' => 0,
-            'message' => 'Thêm thất bại!'
-        ));
-        exit;
-    }
-    // mysqli_close($conn);
+$sql = "INSERT INTO db_doc (teach_learn_id, doc_name, doc_link, `status`)
+    VALUES ('$teach_learn_id', '$doc_name', '$doc_link', '$status');";
+$result = mysqli_query($conn, $sql);
+//3. Xử lý kết quả
+
+if ($result) {
+    echo json_encode(array(
+        'status' => 1,
+        'message' => 'Thêm thành công!'
+    ));
+    exit;
 } else {
     echo json_encode(array(
         'status' => 0,
-        'message' => 'Chưa điền thông báo!'
+        'message' => 'Thêm thất bại!'
     ));
     exit;
 }
+    // mysqli_close($conn);
+// } else {
+//     echo json_encode(array(
+//         'status' => 0,
+//         'message' => 'Chưa điền thông báo!'
+//     ));
+//     exit;
+// }
