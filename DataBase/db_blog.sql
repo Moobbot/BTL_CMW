@@ -2,10 +2,10 @@
 -- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
--- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th10 04, 2021 lúc 04:57 PM
--- Phiên bản máy phục vụ: 10.4.21-MariaDB
--- Phiên bản PHP: 8.0.10
+-- Host: 127.0.0.1
+-- Generation Time: Nov 05, 2021 at 07:18 AM
+-- Server version: 10.4.21-MariaDB
+-- PHP Version: 8.0.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,57 +18,55 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Cơ sở dữ liệu: `db_blog`
+-- Database: `db_blog`
 --
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `db_doc`
+-- Table structure for table `db_doc`
 --
 
 CREATE TABLE `db_doc` (
   `doc_ID` int(10) UNSIGNED NOT NULL,
   `doc_name` varchar(100) NOT NULL,
-  `doc_link` varchar(100) NOT NULL,
+  `doc_link` varchar(1000) NOT NULL,
   `date_sub` date NOT NULL DEFAULT current_timestamp(),
-  `status` varchar(10000) DEFAULT NULL,
+  `status` text DEFAULT NULL,
   `teach_learn_id` int(10) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Đang đổ dữ liệu cho bảng `db_doc`
+-- Dumping data for table `db_doc`
 --
 
 INSERT INTO `db_doc` (`doc_ID`, `doc_name`, `doc_link`, `date_sub`, `status`, `teach_learn_id`) VALUES
-(15, 'Test1', 'https://www.facebook.com/', '2021-11-01', 'Thử nghiệm 1', 1),
-(16, 'Test2', 'http://localhost/phpmyadmin/index.php', '2021-11-01', 'Thử nghiệm 2', 1);
+(21, 'Helloword', 'https://vi.wikipedia.org/wiki/Hello_World_(phim)', '2021-11-05', NULL, 6);
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `db_note`
+-- Table structure for table `db_note`
 --
 
 CREATE TABLE `db_note` (
   `note_id` int(10) UNSIGNED NOT NULL,
-  `note_mes` varchar(5000) DEFAULT NULL,
+  `note_mes` text DEFAULT NULL,
   `teach_learn_id` int(10) UNSIGNED NOT NULL,
   `node_date` date NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Đang đổ dữ liệu cho bảng `db_note`
+-- Dumping data for table `db_note`
 --
 
 INSERT INTO `db_note` (`note_id`, `note_mes`, `teach_learn_id`, `node_date`) VALUES
-(2, 'Xin chào', 1, '2021-11-03'),
-(3, 'Đi đi', 2, '2021-11-03');
+(11, 'Hello word', 5, '2021-11-05');
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `db_offices`
+-- Table structure for table `db_offices`
 --
 
 CREATE TABLE `db_offices` (
@@ -82,7 +80,7 @@ CREATE TABLE `db_offices` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `db_offices`
+-- Dumping data for table `db_offices`
 --
 
 INSERT INTO `db_offices` (`office_id`, `office_name`, `office_phone`, `office_email`, `office_website`, `office_address`, `office_parent`) VALUES
@@ -93,7 +91,7 @@ INSERT INTO `db_offices` (`office_id`, `office_name`, `office_phone`, `office_em
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `db_subjects`
+-- Table structure for table `db_subjects`
 --
 
 CREATE TABLE `db_subjects` (
@@ -102,7 +100,7 @@ CREATE TABLE `db_subjects` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Đang đổ dữ liệu cho bảng `db_subjects`
+-- Dumping data for table `db_subjects`
 --
 
 INSERT INTO `db_subjects` (`sub_id`, `sub_name`) VALUES
@@ -114,7 +112,7 @@ INSERT INTO `db_subjects` (`sub_id`, `sub_name`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `db_teach_learn`
+-- Table structure for table `db_teach_learn`
 --
 
 CREATE TABLE `db_teach_learn` (
@@ -124,17 +122,18 @@ CREATE TABLE `db_teach_learn` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Đang đổ dữ liệu cho bảng `db_teach_learn`
+-- Dumping data for table `db_teach_learn`
 --
 
 INSERT INTO `db_teach_learn` (`teach_learn_id`, `user_id_inf`, `sub_id`) VALUES
-(1, 30, 1),
-(2, 30, 10);
+(4, 51, 2),
+(5, 31, 2),
+(6, 31, 1);
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `db_users`
+-- Table structure for table `db_users`
 --
 
 CREATE TABLE `db_users` (
@@ -149,23 +148,18 @@ CREATE TABLE `db_users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `db_users`
+-- Dumping data for table `db_users`
 --
 
 INSERT INTO `db_users` (`user_id`, `user_name`, `user_email`, `user_pass`, `user_regis_date`, `user_status`, `user_level`, `user_code`) VALUES
-(30, 'abc', 'abc@gmail.com', '$2y$10$YvDo31xFwimk/Wvj54DOROcBzvXKyRNhmwDPx4UA6W9635HCH/Un.', '2021-11-01 08:28:07', 1, 1, '58b68ab05d41ce01c94336ae441d7b73'),
+(30, 'admin', 'abc@gmail.com', '$2y$10$YvDo31xFwimk/Wvj54DOROcBzvXKyRNhmwDPx4UA6W9635HCH/Un.', '2021-11-01 08:28:07', 1, 0, '58b68ab05d41ce01c94336ae441d7b73'),
 (31, 'Sinhvien', 'abcd@gmail.com', '$2y$10$U8k3a101QxJIeEMUI9826OOpdFqeoYDSIUn8w73UNT9VqNp1WqGWm', '2021-11-01 08:28:07', 1, 2, '58b68ab05d41ce01c94336ae441d7b73'),
-(33, 'abc1', 'abc1@gmail.com', '$2y$10$YvDo31xFwimk/Wvj54DOROcBzvXKyRNhmwDPx4UA6W9635HCH/Un.', '2021-11-01 08:28:07', 1, 1, '58b68ab05d41ce01c94336ae441d7b73'),
-(34, 'abc2', 'abc2@gmail.com', '$2y$10$YvDo31xFwimk/Wvj54DOROcBzvXKyRNhmwDPx4UA6W9635HCH/Un.', '2021-11-01 08:28:07', 1, 1, '58b68ab05d41ce01c94336ae441d7b73'),
-(35, 'abc3', 'abc3@gmail.com', '$2y$10$YvDo31xFwimk/Wvj54DOROcBzvXKyRNhmwDPx4UA6W9635HCH/Un.', '2021-11-01 08:28:07', 1, 1, '58b68ab05d41ce01c94336ae441d7b73'),
-(36, '123124234234', 'conlonkien@gmail.com', '$2y$10$1hJMmpT/ycV9prtlCNu2b.6r07rmC0.TRL6fHRAo1j0aWsw4eT/.6', '2021-11-03 22:08:06', 0, 1, 'c948cd1eeea7182a960b0be9ceac384f'),
-(37, '1412343241231421312344', 'dungngunua45@gmail.com', '$2y$10$prKEBPaKXeGvJodsITyx/Oqra/xXqIT1NHH4dAiC334XXAzUim6UO', '2021-11-04 13:36:54', 0, 1, '48a4997862ece943424390a00768c375'),
-(38, 'duonghehhe', 'phamquangduong542001@gmail.com', '$2y$10$kUP/PBxCDcBT1KNjHHK5DO.dXJV12X1gtGvmj7yIgkuqubDGJ.zmO', '2021-11-04 19:34:55', 1, 0, '9a9a7e9011d6add8bce86be87f09619d');
+(51, 'SinhvienA', 'ngotamcv01@gmail.com', '$2y$10$lp3/rGkmXq.hsEwC4Sgp3.yT2lvr/xl1CjqxgLBmRN9OJhkDuCGqu', '2021-11-05 11:41:52', 1, 2, '09dc9e7bb496425042c455c3528db2d4');
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `db_user_inf`
+-- Table structure for table `db_user_inf`
 --
 
 CREATE TABLE `db_user_inf` (
@@ -177,51 +171,18 @@ CREATE TABLE `db_user_inf` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `db_user_inf`
+-- Dumping data for table `db_user_inf`
 --
 
 INSERT INTO `db_user_inf` (`ID`, `User_FullName`, `User_Position`, `User_Phone`, `office_id`) VALUES
-(30, 'abc', 'hello\r\n', '123', 1),
-(31, 'abcd', 'hellod\r\n', '1233', 1),
-(33, 'abc1', 'hello\r\n', '123', 1),
-(34, 'abc2', 'hello\r\n', '123', 1),
-(35, 'abc3', 'hello\r\n', '123', 1),
-(36, 'Kiên cute', 'Giảng Viên', '0867856505', 1),
-(37, 'nguyễn minh hiếu', 'Giảng Viên', '0867856505', 1),
-(38, 'Phạm Quang Dương', 'Sinh Viên', '01666249530', 1);
+(30, 'Tên admin', 'admin\n', '123', 1),
+(31, 'Sinh viên', 'Sinh viên', '1233', 1),
+(51, 'Ngô Đức Tâm', 'Sinh Viên', '0766366726', NULL);
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `review_table`
---
-
-CREATE TABLE `review_table` (
-  `review_id` int(11) NOT NULL,
-  `user_name` varchar(200) NOT NULL,
-  `user_rating` int(1) NOT NULL,
-  `user_review` text NOT NULL,
-  `datetime` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Đang đổ dữ liệu cho bảng `review_table`
---
-
-INSERT INTO `review_table` (`review_id`, `user_name`, `user_rating`, `user_review`, `datetime`) VALUES
-(6, 'John Smith', 4, 'Nice Product, Value for money', 1621935691),
-(7, 'Peter Parker', 5, 'Nice Product with Good Feature.', 1621939888),
-(8, 'Donna Hubber', 1, 'Worst Product, lost my money.', 1621940010),
-(9, 'phamquangduong', 5, '12134132', 1635994260),
-(10, 'phamquangduong', 5, 'Nice', 1635994269),
-(11, 'phamquangduong', 4, 'Nice', 1636006649),
-(12, 'phamquangduong', 4, '123214', 1636030693),
-(13, 'phamquangduong', 3, '123', 1636037764);
-
--- --------------------------------------------------------
-
---
--- Cấu trúc bảng cho bảng `tbl_comment`
+-- Table structure for table `tbl_comment`
 --
 
 CREATE TABLE `tbl_comment` (
@@ -233,56 +194,51 @@ CREATE TABLE `tbl_comment` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `tbl_comment`
+-- Dumping data for table `tbl_comment`
 --
 
 INSERT INTO `tbl_comment` (`comment_id`, `parent_comment_id`, `comment`, `comment_sender_name`, `date`) VALUES
-(30, 0, '  THầy đẹp trai quá\r\n', 'Phạm Dương', '2021-11-03 09:18:15'),
-(31, 30, 'Ừ cảm ơn em', 'Thầy', '2021-11-03 09:18:26'),
-(32, 31, 'em cũng cảm ơn thầy\r\n', 'DƯơng', '2021-11-03 09:18:40'),
-(33, 0, 'Bài hay quá', 'Phạm Dương', '2021-11-03 09:19:16'),
-(34, 0, '  324321', 'Phạm Dương', '2021-11-03 10:03:26'),
-(35, 0, '  1423', 'Phạm Dương', '2021-11-04 00:34:54'),
-(36, 0, '1234123412341234123', 'Phạm Dương', '2021-11-04 00:35:00'),
-(37, 0, '  321423412', 'Phạm Dương', '2021-11-04 09:38:36'),
-(38, 0, '12341234', 'Phạm Quang Dương', '2021-11-04 09:38:41'),
-(39, 0, 'aaaaaaaaaaaaaaaaaaa', 'Phạm Dương', '2021-11-04 09:38:47'),
-(40, 0, '  r1241231234', 'Phạm Dương', '2021-11-04 09:42:58'),
-(41, 0, '  r1241231234', 'Phạm Dương', '2021-11-04 09:42:58');
+(74, 0, '  a', 'Ngô Đức Tâm', '2021-11-04 23:15:45'),
+(75, 0, '  a', 'BTL_CNW', '2021-11-04 23:17:50'),
+(76, 0, '  ádfghj', 'Ngô Đức Tâm', '2021-11-04 23:21:16'),
+(77, 76, 'asdfg\r\n', 'd', '2021-11-04 23:21:30'),
+(78, 0, '  ấ', 's', '2021-11-04 23:23:36'),
+(79, 75, '  a', 's', '2021-11-04 23:41:42'),
+(80, 74, '  ad', 'da', '2021-11-04 23:42:36');
 
 --
--- Chỉ mục cho các bảng đã đổ
+-- Indexes for dumped tables
 --
 
 --
--- Chỉ mục cho bảng `db_doc`
+-- Indexes for table `db_doc`
 --
 ALTER TABLE `db_doc`
   ADD PRIMARY KEY (`doc_ID`),
   ADD KEY `teach_learn_id` (`teach_learn_id`);
 
 --
--- Chỉ mục cho bảng `db_note`
+-- Indexes for table `db_note`
 --
 ALTER TABLE `db_note`
   ADD PRIMARY KEY (`note_id`),
   ADD KEY `teach_learn_id` (`teach_learn_id`);
 
 --
--- Chỉ mục cho bảng `db_offices`
+-- Indexes for table `db_offices`
 --
 ALTER TABLE `db_offices`
   ADD PRIMARY KEY (`office_id`),
   ADD KEY `office_parent` (`office_parent`);
 
 --
--- Chỉ mục cho bảng `db_subjects`
+-- Indexes for table `db_subjects`
 --
 ALTER TABLE `db_subjects`
   ADD PRIMARY KEY (`sub_id`);
 
 --
--- Chỉ mục cho bảng `db_teach_learn`
+-- Indexes for table `db_teach_learn`
 --
 ALTER TABLE `db_teach_learn`
   ADD PRIMARY KEY (`teach_learn_id`),
@@ -290,7 +246,7 @@ ALTER TABLE `db_teach_learn`
   ADD KEY `user_id` (`user_id_inf`);
 
 --
--- Chỉ mục cho bảng `db_users`
+-- Indexes for table `db_users`
 --
 ALTER TABLE `db_users`
   ADD PRIMARY KEY (`user_id`),
@@ -299,107 +255,95 @@ ALTER TABLE `db_users`
   ADD UNIQUE KEY `user_name_2` (`user_name`,`user_email`);
 
 --
--- Chỉ mục cho bảng `db_user_inf`
+-- Indexes for table `db_user_inf`
 --
 ALTER TABLE `db_user_inf`
   ADD PRIMARY KEY (`ID`),
   ADD KEY `office_id` (`office_id`);
 
 --
--- Chỉ mục cho bảng `review_table`
---
-ALTER TABLE `review_table`
-  ADD PRIMARY KEY (`review_id`);
-
---
--- Chỉ mục cho bảng `tbl_comment`
+-- Indexes for table `tbl_comment`
 --
 ALTER TABLE `tbl_comment`
   ADD PRIMARY KEY (`comment_id`);
 
 --
--- AUTO_INCREMENT cho các bảng đã đổ
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT cho bảng `db_doc`
+-- AUTO_INCREMENT for table `db_doc`
 --
 ALTER TABLE `db_doc`
-  MODIFY `doc_ID` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `doc_ID` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
--- AUTO_INCREMENT cho bảng `db_note`
+-- AUTO_INCREMENT for table `db_note`
 --
 ALTER TABLE `db_note`
-  MODIFY `note_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `note_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
--- AUTO_INCREMENT cho bảng `db_offices`
+-- AUTO_INCREMENT for table `db_offices`
 --
 ALTER TABLE `db_offices`
   MODIFY `office_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
--- AUTO_INCREMENT cho bảng `db_subjects`
+-- AUTO_INCREMENT for table `db_subjects`
 --
 ALTER TABLE `db_subjects`
   MODIFY `sub_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
--- AUTO_INCREMENT cho bảng `db_teach_learn`
+-- AUTO_INCREMENT for table `db_teach_learn`
 --
 ALTER TABLE `db_teach_learn`
-  MODIFY `teach_learn_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `teach_learn_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
--- AUTO_INCREMENT cho bảng `db_users`
+-- AUTO_INCREMENT for table `db_users`
 --
 ALTER TABLE `db_users`
-  MODIFY `user_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
+  MODIFY `user_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
 
 --
--- AUTO_INCREMENT cho bảng `review_table`
---
-ALTER TABLE `review_table`
-  MODIFY `review_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
-
---
--- AUTO_INCREMENT cho bảng `tbl_comment`
+-- AUTO_INCREMENT for table `tbl_comment`
 --
 ALTER TABLE `tbl_comment`
-  MODIFY `comment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
+  MODIFY `comment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=81;
 
 --
--- Các ràng buộc cho các bảng đã đổ
+-- Constraints for dumped tables
 --
 
 --
--- Các ràng buộc cho bảng `db_doc`
+-- Constraints for table `db_doc`
 --
 ALTER TABLE `db_doc`
   ADD CONSTRAINT `db_doc_ibfk_1` FOREIGN KEY (`teach_learn_id`) REFERENCES `db_teach_learn` (`teach_learn_id`);
 
 --
--- Các ràng buộc cho bảng `db_note`
+-- Constraints for table `db_note`
 --
 ALTER TABLE `db_note`
   ADD CONSTRAINT `db_note_ibfk_1` FOREIGN KEY (`teach_learn_id`) REFERENCES `db_teach_learn` (`teach_learn_id`);
 
 --
--- Các ràng buộc cho bảng `db_offices`
+-- Constraints for table `db_offices`
 --
 ALTER TABLE `db_offices`
   ADD CONSTRAINT `db_offices_ibfk_1` FOREIGN KEY (`office_parent`) REFERENCES `db_offices` (`office_id`);
 
 --
--- Các ràng buộc cho bảng `db_teach_learn`
+-- Constraints for table `db_teach_learn`
 --
 ALTER TABLE `db_teach_learn`
   ADD CONSTRAINT `db_teach_learn_ibfk_1` FOREIGN KEY (`sub_id`) REFERENCES `db_subjects` (`sub_id`),
   ADD CONSTRAINT `db_teach_learn_ibfk_2` FOREIGN KEY (`user_id_inf`) REFERENCES `db_user_inf` (`ID`);
 
 --
--- Các ràng buộc cho bảng `db_user_inf`
+-- Constraints for table `db_user_inf`
 --
 ALTER TABLE `db_user_inf`
   ADD CONSTRAINT `db_user_inf_ibfk_1` FOREIGN KEY (`office_id`) REFERENCES `db_offices` (`office_id`),
