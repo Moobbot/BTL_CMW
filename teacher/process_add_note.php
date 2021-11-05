@@ -20,12 +20,14 @@ if (isset($_POST['teach_learn_id']) and isset($_POST['note_mes'])) {
     //3. Xử lý kết quả
 
     if ($result) {
+        mysqli_close($conn);
         echo json_encode(array(
             'status' => 1,
             'message' => 'Thêm thành công!'
         ));
         exit;
     } else {
+        mysqli_close($conn);
         echo json_encode(array(
             'status' => 0,
             'message' => 'Thêm thất bại!'
@@ -34,6 +36,8 @@ if (isset($_POST['teach_learn_id']) and isset($_POST['note_mes'])) {
     }
     // mysqli_close($conn);
 } else {
+    mysqli_close($conn);
+
     echo json_encode(array(
         'status' => 0,
         'message' => 'Chưa điền thông báo!'
