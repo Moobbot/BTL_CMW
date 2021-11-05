@@ -679,8 +679,7 @@
                                     </button>
                                     <button type="button" class="btn btn-danger passingID-deleteAcc"
                                         data-bs-toggle="modal" data-bs-target="#delAcc"
-                                        data-value1="<?php echo $row['user_id']?>"
-                                        data-value2="<?php echo $row['sub_id']?>">
+                                        data-value1="<?php echo $row['user_id']?>">
                                         Xóa
                                     </button>
                                 </form>
@@ -789,9 +788,7 @@
                 <script>
                 $(".passingID-deleteAcc").click(function() {
                     var user_id = $(this).attr("data-value1");
-                    var sub_id = $(this).attr("data-value2");
                     $("#acc_user_id").val(user_id);
-                    $("#acc_sub_id").val(sub_id);
                     $("#delAcc").val('show');
                 });
                 </script>
@@ -811,7 +808,6 @@
                                         và
                                         tài liệu liên quan cũng bị xóa?</h4>
                                     <input type="hidden" name="acc_user_id" id="acc_user_id" value="">
-                                    <input type="hidden" name="acc_sub_id" id="acc_sub_id" value="">
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Không</button>
