@@ -61,8 +61,7 @@
                 <div class="col-md-12">
                     <h2>User Information Details</h2>
 
-                    <button type="button" class="btn btn-success" data-bs-toggle="modal"
-                        data-bs-target="#editInfo">
+                    <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#editInfo">
                         Edit
                     </button>
 
@@ -77,7 +76,6 @@
                                 <tr>
                                     <th scope="col">User ID</th>
                                     <th scope="col">User Name</th>
-
                                     <th scope="col">Email</th>
                                     <th scope="col">Register Date</th>
                                     <th scope="col">Full Name</th>
@@ -93,7 +91,7 @@
                                 // Bước 01: Đã tạo sẵn, gọi lại thôi
                                 include '../reuse/config.php';
                                 // Bước 02: Thực hiện TRUY VẤN
-                                $sql = "SELECT db_users.user_id, db_users.user_name, db_users.user_email, db_users.user_regis_date ,db_user_inf.User_FullName, db_user_inf.User_Position,db_user_inf.User_Phone
+                                $sql = "SELECT  db_users.user_id, db_users.user_name, db_users.user_email, db_users.user_regis_date ,db_user_inf.User_FullName, db_user_inf.User_Position,db_user_inf.User_Phone
                                  FROM db_users, db_user_inf WHERE db_users.user_id = db_user_inf.ID AND db_users.user_id = '$ID'";
                                 $result = mysqli_query($conn, $sql); //Lưu kết quả trả về vào result
                                 // Bước 03: Phân tích và xử lý kết quả
@@ -131,21 +129,81 @@
                                     <button type="button" class="btn-close" data-bs-dismiss="modal"
                                         aria-label="Close"></button>
                                 </div>
-                                <div class="modal-body">
-                                    
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary"
-                                        data-bs-dismiss="modal">Close</button>
-                                    <button type="button" class="btn btn-primary">Change</button>
-                                </div>
+                                <form id="editUser">
+                                    <div class="modal-body">
+                                        <?php                                
+                                        $sql = "SELECT db_users.user_id, db_users.user_name, db_users.user_email, db_users.user_regis_date ,db_user_inf.User_FullName, db_user_inf.User_Position,db_user_inf.User_Phone
+                                        FROM db_users, db_user_inf WHERE db_users.user_id = db_user_inf.ID AND db_users.user_id = '$ID'";
+
+                                        $result = mysqli_query($conn, $sql);
+                                        
+                                        if (mysqli_num_rows($result) > 0) {
+                                            while ($row = mysqli_fetch_assoc($result)) {
+                                            ?>
+                                        <div class="d-flex flex-row align-items-center mb-4">
+                                            <div class="form-outline flex-fill mb-0">
+                                                <label>Tên</label>
+                                            </div>
+                                        </div>
+                                        <input type="hidden" name="userID" id="userID" value="<?php echo $ID ?>"/>
+                                        <div class="d-flex flex-row align-items-center mb-4">
+                                            <div class="form-outline flex-fill mb-0">
+                                                <input type="text" id="txtEditUserFullName" class="form-control "
+                                                    name="txtEditUserFullName"
+                                                    value="<?php echo $row['User_FullName']?>" />
+                                            </div>
+                                        </div>
+                                        <div class="d-flex flex-row align-items-center mb-4">
+                                            <div class="form-outline flex-fill mb-0">
+                                                <label>Số điện thoại</label>
+                                            </div>
+                                        </div>
+                                        <div class="d-flex flex-row align-items-center mb-4">
+                                            <div class="form-outline flex-fill mb-0">
+                                                <input type="text" id="txtEditUserPhone" class="form-control "
+                                                    name="txtEditUserPhone" value="<?php echo $row['User_Phone']?>" />
+                                            </div>
+                                        </div>
+                                        <?php
+                                            }
+                                        }
+                                    ?>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary"
+                                            data-bs-dismiss="modal">Close</button>
+                                        <button type="submit" class="btn btn-primary">Change</button>
+                                    </div>
+                                </form>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Bắt đầu script đổ thông tin -->
-                    <!-- Kết thúc script đổ thông tin -->
+
                     <!-- Bắt đầu script update -->
+                    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+                    <script>
+                    $("#editUser").submit(function(event){
+                        event.preventDefault();
+                        $.ajax({
+                                    type: "POST",
+                                    url: 'http://localhost/BTL_CNW/information/process_update.php',
+                                    data: $(this).serializeArray(),
+                                    success: function(response) {
+                                        response = JSON.parse(response);
+                                        if (response.status == 0) { // bắt hồi âm chỉ thông báo
+                                            alert(response.message);
+                                        }
+                                        if (response.status ==
+                                            1) { // bắt hồi âm thông báo và reload location
+                                            alert(response.message);
+                                            location.reload();
+                                        }
+                                    }
+                                })
+                        });
+                    </script>
                     <!-- Kết thúc script update -->
                 </div>
             </div>
