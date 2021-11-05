@@ -53,15 +53,19 @@ try {
         // echo 'Thư đã gửi đi thành công!';
 ?>
 <?php include '../reuse/header.php' ?>
+
 <div class="vh-100"
     style="background: url('http://localhost/BTL_CNW/assets/img/sign_up.jpg') top center / cover repeat">
-    <div class="position-absolute top-50 start-50">
-        <h1>Đã gửi thư kích hoạt tài khoản</h1>
-        <a href="https://mail.google.com/">
-            <h2>Vui lòng vào email để kích hoạt tài khoản</h2>
-        </a>
+    <div class="text-center vh-100">
+        <div class="position-absolute bottom-50" style="clear: both; right: 30% !important;">
+            <h1>Đã gửi thư kích hoạt tài khoản</h1>
+            <a href="https://mail.google.com/">
+                <h2>Vui lòng vào email để kích hoạt tài khoản</h2>
+            </a>
+        </div>
     </div>
 </div>
+
 <?php include './reuse/footer.php' ?>
 
 <?php

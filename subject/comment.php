@@ -1,7 +1,7 @@
 <script src="../assets/js/jquery-3.2.1.min.js"> </script>
 <style>
 .comment-form-container {
-  
+
     background: #F0F0F0;
     border: #e0dfdf 1px solid;
     padding: 20px;
@@ -81,18 +81,18 @@ span.posted-by {
 
 <div class="comment-form-container ">
     <form id="frm-comment">
-        <h1 class="">Comment</h1>
+        <h1 class="">Bình luận</h1>
         <div class="input-row">
             <input type="hidden" name="comment_id" id="commentId" placeholder="Name" /> <input class="input-field"
-                type="text" name="name" id="name" placeholder="Name" />
+                type="text" name="name" id="name" placeholder="Tên" />
         </div>
         <div class="input-row">
             <textarea class="input-field" type="text" name="comment" id="comment"
                 placeholder="Add a Comment">  </textarea>
         </div>
         <div>
-            <input type="button" class="btn-submit" id="submitButton" value="Publish" />
-            <div id="comment-message">Comments Added Successfully!</div>
+            <input type="button" class="btn-submit" id="submitButton" value="Gửi" />
+            <div id="comment-message">Bình luận thành công!</div>
         </div>
 
     </form>

@@ -98,10 +98,9 @@ $(".btn_delete_note").on('click', function() {
 $("#btn_add_doc").on('click', function() {
     var doc_name = $('#doc_name').val();
     var doc_link = $('#doc_link').val();
-    var status = $('#status').val();
     var teach_learn_id = $(this).val();
     event.preventDefault(); // Now nothing will happen // Bây giờ sẽ không có gì xảy ra
-    if (!doc_name || !doc_link || !status) {
+    if (!doc_name || !doc_link) {
         alert("Hãy điền đầy đủ thông tin");
         return false;
     } else {
