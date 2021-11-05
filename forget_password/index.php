@@ -2,7 +2,7 @@
 
 <?php
 session_start();
-if(empty($_SESSION['changepass'])){ // Form nhập email quên mật khẩu
+if (empty($_SESSION['changepass'])) { // Form nhập email quên mật khẩu
 ?>
 <section class="vh-100" style="background-color: #eee;">
     <div class="container h-100">
@@ -35,9 +35,9 @@ if(empty($_SESSION['changepass'])){ // Form nhập email quên mật khẩu
     </div>
 </section>
 <?php
-}else // Sau khi process đã chạy xong và chạy đến send_activation điều kiện hoàn hảo thì thư được gửi và unset cái session để form này ko bị lộ ra
-      // Điều kiện ngoại lệ trường hợp send activation ko hoạt động người dùng có thể đổi mật khẩu ngay tại bước process do vòng lặp đầu đã set session (hiện tại chưa có phương án fix)
-{?>
+} else // Sau khi process đã chạy xong và chạy đến send_activation điều kiện hoàn hảo thì thư được gửi và unset cái session để form này ko bị lộ ra
+// Điều kiện ngoại lệ trường hợp send activation ko hoạt động người dùng có thể đổi mật khẩu ngay tại bước process do vòng lặp đầu đã set session (hiện tại chưa có phương án fix)
+{ ?>
 <section class="vh-100" style="background-color: #eee;">
     <div class="container h-100">
         <div class="row d-flex justify-content-center align-items-center h-100">
@@ -47,7 +47,7 @@ if(empty($_SESSION['changepass'])){ // Form nhập email quên mật khẩu
                         <div class="row justify-content-center">
                             <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
                                 <p class="text-center h3 fw-bold mb-5 mx-1 mx-md-4 mt-4">Change password</p>
-                                <form id="change-form" >
+                                <form id="change-form">
                                     <div class="mx-1 mx-md-4">
                                         <div class="d-flex flex-row align-items-center mb-4">
                                             <div class="form-outline flex-fill mb-0">
@@ -57,8 +57,8 @@ if(empty($_SESSION['changepass'])){ // Form nhập email quên mật khẩu
                                         </div>
                                         <div class="d-flex flex-row align-items-center mb-4">
                                             <div class="form-outline flex-fill mb-0">
-                                                <input type="password" id="txtPass1" class="form-control " name="txtPass1"
-                                                    placeholder="Type your password again" />
+                                                <input type="password" id="txtPass1" class="form-control "
+                                                    name="txtPass1" placeholder="Type your password again" />
                                             </div>
                                         </div>
                                         <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
@@ -74,7 +74,7 @@ if(empty($_SESSION['changepass'])){ // Form nhập email quên mật khẩu
         </div>
     </div>
 </section>
-<?php   
+<?php
 }
 ?>
 
@@ -82,7 +82,7 @@ if(empty($_SESSION['changepass'])){ // Form nhập email quên mật khẩu
 
 
 <script>
-    // Script này sẽ bắt sự kiện submit gửi các biến của change-form đi qua kiểu post và nhận các biến respon trở về
+// Script này sẽ bắt sự kiện submit gửi các biến của change-form đi qua kiểu post và nhận các biến respon trở về
 $("#change-form").submit(function(event) {
     event.preventDefault();
     $.ajax({
@@ -94,13 +94,14 @@ $("#change-form").submit(function(event) {
             if (response.status == 0) { // Bắt các sự kiện chỉ in ra aleart
                 alert(response.message);
             }
-            if (response.status == 1) { // Bắt các sự kiện có thay đổi về form giao diện hiện tại và in ra aleart
+            if (response.status ==
+                1) { // Bắt các sự kiện có thay đổi về form giao diện hiện tại và in ra aleart
                 alert(response.message);
                 location.reload();
             }
             if (response.status == 2) { // Bắt sự kiện cần điều hướng và in ra aleart
                 alert(response.message);
-                window.location.href="../login/index.php";
+                window.location.href = "../login/index.php";
             }
         }
     })

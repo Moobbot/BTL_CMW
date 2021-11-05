@@ -5,7 +5,7 @@ $email =  $_GET['email']; // Lấy email đã gán từ process qua biến sessi
 include '../reuse/config.php';
 
 $sql = "SELECT user_code FROM db_users WHERE user_email = '$email'"; // Câu lệnh lấy code đã cập nhật lần 1 từ process
-$result = mysqli_query($conn,$sql);
+$result = mysqli_query($conn, $sql);
 $code = mysqli_fetch_assoc($result); //Chuyển kết quả dạng cột của result về một biến dạng array với key là tên cột và value là giá trị của cột tương ứng.
 
 use PHPMailer\PHPMailer\PHPMailer;
@@ -46,25 +46,25 @@ try {
 
     // Tiêu đề Email là gì?
     $mail->isHTML(true);   // Set email format to HTML
-    $mail->Subject = '[localhost] Kích hoạt tài khoản';
+    $mail->Subject = '[localhost] Xác thực tài khoản';
     // Nội dung Email
     $mail->Body = 'Sau khi ấn vào link kích hoạt tài khoản của bạn';
     // $mail->Body = 'Mã kích hoạt của bạn: '.$code.'';
     //Gửi link kích hoạt bao gồm 2 biến để get sau là email và code
-    $mail->Body = 'Nhấp vào đây để kích hoạt: <a href="http://localhost/BTL_CNW/forget_password/activation.php?email=' . $email . '&code='.$code['user_code'].'&">Nhấp vào đây</a>';
+    $mail->Body = 'Nhấp vào đây để kích hoạt: <a href="http://localhost/BTL_CNW/forget_password/activation.php?email=' . $email . '&code=' . $code['user_code'] . '&">Nhấp vào đây</a>';
     // Tệp tên đính kèm Email gửi đi
     // $mail->addAttachment('pdf/Giay_bao_mat_sau.pdf'); // Nếu bạn muốn đính kèm tệp tin gửi đi
 
     // Gửi thư
-    if($mail->send()){ //Gửi thành công thì unset session để form  index lại thay đổi theo giá trị của session tương ứng và gửi respon về cho ajax.
+    if ($mail->send()) { //Gửi thành công thì unset session để form  index lại thay đổi theo giá trị của session tương ứng và gửi respon về cho ajax.
         // unset($_SESSION['changepass']);
         echo json_encode(array(
-                'status' => 1,
-                'message' => 'Đã gửi email xác nhận vui lòng kiểm tra hòm thư'
+            'status' => 1,
+            'message' => 'Đã gửi email xác nhận vui lòng kiểm tra hòm thư'
         ));
     }
     // include '../index.php';
-    
+
 } catch (Exception $e) { // bắt ngoại lệ
     echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
 }

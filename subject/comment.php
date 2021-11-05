@@ -6,6 +6,7 @@
     border: #e0dfdf 1px solid;
     padding: 20px;
     border-radius: 2px;
+    /* padding-bottom: 5rem !important; */
 }
 
 .input-row {

@@ -46,36 +46,36 @@
                     <tbody>
                         <!-- Dữ liệu thay đổi theo CSDL -->
                         <?php
-                                $sql = "SELECT note_id, note_mes, User_FullName, sub_name, node_date FROM db_note, db_user_inf, db_teach_learn, db_subjects WHERE db_note.teach_learn_id = db_teach_learn.teach_learn_id AND db_user_inf.ID = db_teach_learn.user_id_inf AND db_subjects.sub_id = db_teach_learn.sub_id GROUP BY db_note.note_id;";
-                                $result = mysqli_query($conn, $sql);
-                                if (mysqli_num_rows($result) > 0) {
-                                    while ($row = mysqli_fetch_assoc($result)) {?>
+                        $sql = "SELECT note_id, note_mes, User_FullName, sub_name, node_date FROM db_note, db_user_inf, db_teach_learn, db_subjects WHERE db_note.teach_learn_id = db_teach_learn.teach_learn_id AND db_user_inf.ID = db_teach_learn.user_id_inf AND db_subjects.sub_id = db_teach_learn.sub_id GROUP BY db_note.note_id;";
+                        $result = mysqli_query($conn, $sql);
+                        if (mysqli_num_rows($result) > 0) {
+                            while ($row = mysqli_fetch_assoc($result)) { ?>
                         <tr>
                             <td><?php echo $row['note_id'] ?></td>
-                            <td><?php echo $row['User_FullName']?></td>
-                            <td><?php echo $row['note_mes']?></td>
-                            <td><?php echo $row['node_date']?></td>
-                            <td><?php echo $row['sub_name']?></td>
+                            <td><?php echo $row['User_FullName'] ?></td>
+                            <td><?php echo $row['note_mes'] ?></td>
+                            <td><?php echo $row['node_date'] ?></td>
+                            <td><?php echo $row['sub_name'] ?></td>
                             <td>
                                 <form>
                                     <button type="button" class="btn btn-success passingID-edit-note"
                                         data-bs-toggle="modal" data-bs-target="#editNote"
-                                        data-value1='<?php echo $row['note_id']?>'
-                                        data-value2='<?php echo $row['note_mes']?>'>
+                                        data-value1='<?php echo $row['note_id'] ?>'
+                                        data-value2='<?php echo $row['note_mes'] ?>'>
                                         Chỉnh sửa
                                     </button>
                                     <button type="button" class="btn btn-danger passingID-delete-note"
                                         data-bs-toggle="modal" data-bs-target="#delNote"
-                                        data-value1='<?php echo $row['note_id']?>'>
+                                        data-value1='<?php echo $row['note_id'] ?>'>
                                         Xóa
                                     </button>
                                 </form>
                             </td>
                         </tr>
                         <?php
-                                        }
-                                    }
-                            ?>
+                            }
+                        }
+                        ?>
                     </tbody>
                 </table>
                 <!-- Phần code nút thêm note -->
@@ -102,11 +102,11 @@
                                         <select name="teach-learn-id">
                                             <?php
                                             $sql1 = "SELECT ID, User_FullName FROM db_user_inf";
-                                            $result1 = mysqli_query($conn,$sql1);
-                                            while($row = mysqli_fetch_assoc($result1)){
-                                                echo "<option value =".$row["ID"].">".$row['User_FullName']."</option>";
+                                            $result1 = mysqli_query($conn, $sql1);
+                                            while ($row = mysqli_fetch_assoc($result1)) {
+                                                echo "<option value =" . $row["ID"] . ">" . $row['User_FullName'] . "</option>";
                                             }
-                                        ?>
+                                            ?>
                                         </select>
                                     </div>
                                     <div class="d-flex align-items-center mb-4">
@@ -114,11 +114,11 @@
                                         <select name="subject-id">
                                             <?php
                                             $sql2 = "SELECT sub_id, sub_name FROM db_subjects";
-                                            $result2 = mysqli_query($conn,$sql2);
-                                            while($row = mysqli_fetch_assoc($result2)){
-                                                echo "<option value =".$row["sub_id"].">".$row['sub_name']."</option>";
+                                            $result2 = mysqli_query($conn, $sql2);
+                                            while ($row = mysqli_fetch_assoc($result2)) {
+                                                echo "<option value =" . $row["sub_id"] . ">" . $row['sub_name'] . "</option>";
                                             }
-                                        ?>
+                                            ?>
                                         </select>
                                     </div>
                                 </div>
@@ -357,35 +357,35 @@
                     <tbody>
                         <!-- Dữ liệu thay đổi theo CSDL -->
                         <?php
-                                $sql = "SELECT doc_ID, doc_name, doc_link, date_sub, User_FullName, sub_name FROM db_doc, db_user_inf, db_teach_learn, db_subjects WHERE db_doc.teach_learn_id = db_teach_learn.teach_learn_id AND db_user_inf.ID = db_teach_learn.user_id_inf AND db_subjects.sub_id = db_teach_learn.sub_id GROUP BY db_doc.doc_ID";
-                                $result = mysqli_query($conn, $sql);
-                                if (mysqli_num_rows($result) > 0) {
-                                    while ($row = mysqli_fetch_assoc($result)) {
-                                    ?>
+                        $sql = "SELECT doc_ID, doc_name, doc_link, date_sub, User_FullName, sub_name FROM db_doc, db_user_inf, db_teach_learn, db_subjects WHERE db_doc.teach_learn_id = db_teach_learn.teach_learn_id AND db_user_inf.ID = db_teach_learn.user_id_inf AND db_subjects.sub_id = db_teach_learn.sub_id GROUP BY db_doc.doc_ID";
+                        $result = mysqli_query($conn, $sql);
+                        if (mysqli_num_rows($result) > 0) {
+                            while ($row = mysqli_fetch_assoc($result)) {
+                        ?>
                         <tr>
                             <td><?php echo $row['doc_ID'] ?></td>
                             <td><?php echo $row['User_FullName'] ?></td>
                             <td><?php echo $row['doc_name'] ?></td>
-                            <td><?php echo '<a href='.$row['doc_link'].'>Tải</a>'?></td>
+                            <td><?php echo '<a href=' . $row['doc_link'] . '>Tải</a>' ?></td>
                             <td><?php echo $row['date_sub'] ?></td>
                             <td><?php echo $row['sub_name'] ?></td>
                             <td>
                                 <button type="button" class="btn btn-success passingID-edit-doc" data-bs-toggle="modal"
-                                    data-bs-target="#editDoc" data-value1='<?php echo $row['doc_ID']?>'
-                                    data-value2='<?php echo $row['doc_name']?>'
-                                    data-value3='<?php echo $row['doc_link']?>'>
+                                    data-bs-target="#editDoc" data-value1='<?php echo $row['doc_ID'] ?>'
+                                    data-value2='<?php echo $row['doc_name'] ?>'
+                                    data-value3='<?php echo $row['doc_link'] ?>'>
                                     Chỉnh sửa
                                 </button>
                                 <button type="button" class="btn btn-danger passingID-delete-doc" data-bs-toggle="modal"
-                                    data-bs-target="#delDoc" data-value1="<?php echo $row['doc_ID']?>">
+                                    data-bs-target="#delDoc" data-value1="<?php echo $row['doc_ID'] ?>">
                                     Xóa
                                 </button>
                             </td>
                         </tr>
-                        <?php  
-                                    }
-                                }
-                            ?>
+                        <?php
+                            }
+                        }
+                        ?>
                     </tbody>
                 </table>
 
@@ -479,11 +479,11 @@
                                         <select name="teach-learn-id">
                                             <?php
                                             $sql1 = "SELECT ID, User_FullName FROM db_user_inf";
-                                            $result1 = mysqli_query($conn,$sql1);
-                                            while($row = mysqli_fetch_assoc($result1)){
-                                                echo "<option value =".$row["ID"].">".$row['User_FullName']."</option>";
+                                            $result1 = mysqli_query($conn, $sql1);
+                                            while ($row = mysqli_fetch_assoc($result1)) {
+                                                echo "<option value =" . $row["ID"] . ">" . $row['User_FullName'] . "</option>";
                                             }
-                                        ?>
+                                            ?>
                                         </select>
                                     </div>
                                     <div class="d-flex align-items-center mb-4">
@@ -491,11 +491,11 @@
                                         <select name="subject-id">
                                             <?php
                                             $sql2 = "SELECT sub_id, sub_name FROM db_subjects";
-                                            $result2 = mysqli_query($conn,$sql2);
-                                            while($row = mysqli_fetch_assoc($result2)){
-                                                echo "<option value =".$row["sub_id"].">".$row['sub_name']."</option>";
+                                            $result2 = mysqli_query($conn, $sql2);
+                                            while ($row = mysqli_fetch_assoc($result2)) {
+                                                echo "<option value =" . $row["sub_id"] . ">" . $row['sub_name'] . "</option>";
                                             }
-                                        ?>
+                                            ?>
                                         </select>
                                     </div>
                                 </div>
@@ -659,35 +659,35 @@
                     <tbody>
                         <!-- Dữ liệu thay đổi theo CSDL -->
                         <?php
-                                $sql = "SELECT user_id, user_name, User_FullName, User_Position, user_email, User_Phone, office_name, sub_id FROM db_user_inf, db_users, db_offices, db_subjects WHERE db_users.user_id = db_user_inf.ID AND db_user_inf.office_id = db_offices.office_id GROUP BY db_users.user_id;";
-                                $result = mysqli_query($conn, $sql);
-                                if (mysqli_num_rows($result) > 0) {
-                                    while ($row = mysqli_fetch_assoc($result)) {
+                        $sql = "SELECT user_id, user_name, User_FullName, User_Position, user_email, User_Phone, office_name, sub_id FROM db_user_inf, db_users, db_offices, db_subjects WHERE db_users.user_id = db_user_inf.ID AND db_user_inf.office_id = db_offices.office_id GROUP BY db_users.user_id;";
+                        $result = mysqli_query($conn, $sql);
+                        if (mysqli_num_rows($result) > 0) {
+                            while ($row = mysqli_fetch_assoc($result)) {
                         ?>
                         <tr>
-                            <td><?php echo $row['user_id']?></td>
-                            <td><?php echo $row['User_FullName']?></td>
+                            <td><?php echo $row['user_id'] ?></td>
+                            <td><?php echo $row['User_FullName'] ?></td>
                             <td>
                                 <form>
                                     <button type="button" class="btn btn-primary passingDataInfo" data-bs-toggle="modal"
-                                        data-bs-target="#UserInfoModal" data-value1="<?php echo $row['user_name']?>"
-                                        data-value2="<?php echo $row['user_email']?>"
-                                        data-value3="<?php echo $row['User_Phone']?>"
-                                        data-value4="<?php echo $row['User_Position']?>"
-                                        data-value5="<?php echo $row['office_name']?>">
+                                        data-bs-target="#UserInfoModal" data-value1="<?php echo $row['user_name'] ?>"
+                                        data-value2="<?php echo $row['user_email'] ?>"
+                                        data-value3="<?php echo $row['User_Phone'] ?>"
+                                        data-value4="<?php echo $row['User_Position'] ?>"
+                                        data-value5="<?php echo $row['office_name'] ?>">
                                         Xem chi tiết
                                     </button>
                                     <button type="button" class="btn btn-danger passingID-deleteAcc"
                                         data-bs-toggle="modal" data-bs-target="#delAcc"
-                                        data-value1="<?php echo $row['user_id']?>">
+                                        data-value1="<?php echo $row['user_id'] ?>">
                                         Xóa
                                     </button>
                                 </form>
                             </td>
                         </tr>
                         <?php
-                                    }
-                                }
+                            }
+                        }
                         ?>
                     </tbody>
                 </table>

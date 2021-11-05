@@ -9,7 +9,7 @@
     $result = mysqli_query($conn,$sql);
 
     if(mysqli_num_rows($result) > 0){
-        $sql1 = "UPDATE db_doc SET doc_name = '$doc_name' WHERE doc_ID = $doc_id";
+        $sql1 = "UPDATE db_doc, db_link SET doc_name = '$doc_name' WHERE doc_ID = $doc_id";
         $result1 = mysqli_query($conn,$sql1);
         if($result1 > 0){  
             echo json_encode(array(
@@ -31,4 +31,3 @@
         ));
         exit;
     }
-?>
