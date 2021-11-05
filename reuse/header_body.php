@@ -50,7 +50,7 @@
                         <i class="fa fa-user-circle fa-w-16 fa-2x p-2" aria-hidden="true"></i>
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                        <li><a class="dropdown-item" href="#">Thông tin tài khoản</a></li>
+                        <li><a class="dropdown-item" href="http://localhost/BTL_CNW/information/information.php">Thông tin tài khoản</a></li>
                         <li><a class="dropdown-item" href="http://localhost/BTL_CNW/change_password/index.php">Đổi mật
                                 khẩu</a></li>
                         <li><a class="dropdown-item" href="http://localhost/BTL_CNW/logout/index.php">Đăng xuất</a></li>
