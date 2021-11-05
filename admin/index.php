@@ -46,7 +46,7 @@
                     <tbody>
                         <!-- Dữ liệu thay đổi theo CSDL -->
                         <?php
-                                $sql = "SELECT note_id, note_mes, User_FullName, sub_name, note_date FROM db_note, db_user_inf, db_teach_learn, db_subjects WHERE db_note.teach_learn_id = db_teach_learn.teach_learn_id AND db_user_inf.ID = db_teach_learn.user_id_inf AND db_subjects.sub_id = db_teach_learn.sub_id GROUP BY db_note.note_id;";
+                                $sql = "SELECT note_id, note_mes, User_FullName, sub_name, node_date FROM db_note, db_user_inf, db_teach_learn, db_subjects WHERE db_note.teach_learn_id = db_teach_learn.teach_learn_id AND db_user_inf.ID = db_teach_learn.user_id_inf AND db_subjects.sub_id = db_teach_learn.sub_id GROUP BY db_note.note_id;";
                                 $result = mysqli_query($conn, $sql);
                                 if (mysqli_num_rows($result) > 0) {
                                     while ($row = mysqli_fetch_assoc($result)) {?>
@@ -54,7 +54,7 @@
                             <td><?php echo $row['note_id'] ?></td>
                             <td><?php echo $row['User_FullName']?></td>
                             <td><?php echo $row['note_mes']?></td>
-                            <td><?php echo $row['note_date']?></td>
+                            <td><?php echo $row['node_date']?></td>
                             <td><?php echo $row['sub_name']?></td>
                             <td>
                                 <form>
@@ -635,7 +635,7 @@
 
 
 <!-- Bảng người dùng -->
-<div class="row d-flex justify-content-center mt-sm-5 p-0 m-0">
+<div class="row d-flex justify-content-center mt-sm-5 p-0 m-0 vh-100">
     <div class="col-10">
         <!-- Thông báo -->
         <div class="row">
@@ -659,11 +659,11 @@
                     <tbody>
                         <!-- Dữ liệu thay đổi theo CSDL -->
                         <?php
-                                $sql = "SELECT user_id, user_name, User_FullName, User_Position, user_email, User_Phone, office_name FROM db_user_inf, db_users, db_offices, db_subjects WHERE db_users.user_id = db_user_inf.ID AND db_user_inf.office_id = db_offices.office_id GROUP BY db_users.user_id;";
+                                $sql = "SELECT user_id, user_name, User_FullName, User_Position, user_email, User_Phone, office_name, sub_id FROM db_user_inf, db_users, db_offices, db_subjects WHERE db_users.user_id = db_user_inf.ID AND db_user_inf.office_id = db_offices.office_id GROUP BY db_users.user_id;";
                                 $result = mysqli_query($conn, $sql);
                                 if (mysqli_num_rows($result) > 0) {
                                     while ($row = mysqli_fetch_assoc($result)) {
-                            ?>
+                        ?>
                         <tr>
                             <td><?php echo $row['user_id']?></td>
                             <td><?php echo $row['User_FullName']?></td>
@@ -677,8 +677,12 @@
                                         data-value5="<?php echo $row['office_name']?>">
                                         Xem chi tiết
                                     </button>
-                                    <a href="./admin/delete_account.php"><button type="button"
-                                            class="btn btn-danger">Xóa</button></a>
+                                    <button type="button" class="btn btn-danger passingID-deleteAcc"
+                                        data-bs-toggle="modal" data-bs-target="#delAcc"
+                                        data-value1="<?php echo $row['user_id']?>"
+                                        data-value2="<?php echo $row['sub_id']?>">
+                                        Xóa
+                                    </button>
                                 </form>
                             </td>
                         </tr>
@@ -724,7 +728,7 @@
                                 <div class="d-flex flex-row align-items-center mb-4">
                                     <div class="form-outline flex-fill mb-0">
                                         <input type="text" id="txtUserNameInfo" class="form-control "
-                                            name="txtUserNameInfo" placeholder="Note mess" value="" readonly/>
+                                            name="txtUserNameInfo" placeholder="Note mess" value="" readonly />
                                     </div>
                                 </div>
                                 <div class="d-flex flex-row align-items-center mb-4">
@@ -735,7 +739,7 @@
                                 <div class="d-flex flex-row align-items-center mb-4">
                                     <div class="form-outline flex-fill mb-0">
                                         <input type="text" id="txtUserEmailInfo" class="form-control "
-                                            name="txtUserEmailInfo" placeholder="Note mess" value="" readonly/>
+                                            name="txtUserEmailInfo" placeholder="Note mess" value="" readonly />
                                     </div>
                                 </div>
                                 <div class="d-flex flex-row align-items-center mb-4">
@@ -746,7 +750,7 @@
                                 <div class="d-flex flex-row align-items-center mb-4">
                                     <div class="form-outline flex-fill mb-0">
                                         <input type="text" id="txtUserPositionInfo" class="form-control "
-                                            name="txtUserPositionInfo" placeholder="Note mess" value="" readonly/>
+                                            name="txtUserPositionInfo" placeholder="Note mess" value="" readonly />
                                     </div>
                                 </div>
                                 <div class="d-flex flex-row align-items-center mb-4">
@@ -757,7 +761,7 @@
                                 <div class="d-flex flex-row align-items-center mb-4">
                                     <div class="form-outline flex-fill mb-0">
                                         <input type="text" id="txtUserPhoneInfo" class="form-control "
-                                            name="txtUserPhoneInfo" placeholder="Note mess" value="" readonly/>
+                                            name="txtUserPhoneInfo" placeholder="Note mess" value="" readonly />
                                     </div>
                                 </div>
                                 <div class="d-flex flex-row align-items-center mb-4">
@@ -767,8 +771,8 @@
                                 </div>
                                 <div class="d-flex flex-row align-items-center mb-4">
                                     <div class="form-outline flex-fill mb-0">
-                                        <input type="text" id="txtOfficeInfo" class="form-control "
-                                            name="txtOfficeInfo" placeholder="Note mess" value="" readonly/>
+                                        <input type="text" id="txtOfficeInfo" class="form-control " name="txtOfficeInfo"
+                                            placeholder="Note mess" value="" readonly />
                                     </div>
                                 </div>
                             </div>
@@ -780,6 +784,67 @@
                     </div>
                 </div>
                 <!-- Kết thúc code mở bảng xem chi tiết -->
+                <!-- Bắt đầu code mở bảng xóa người dùng-->
+                <!-- Truyền dữ liệu vào nút xóa -->
+                <script>
+                $(".passingID-deleteAcc").click(function() {
+                    var user_id = $(this).attr("data-value1");
+                    var sub_id = $(this).attr("data-value2");
+                    $("#acc_user_id").val(user_id);
+                    $("#acc_sub_id").val(sub_id);
+                    $("#delAcc").val('show');
+                });
+                </script>
+                <!-- Kết thúc script truyền dữ liệu -->
+                <div class="modal fade" id="delAcc" tabindex="-1" aria-labelledby="exampleModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Xóa tài khoản</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <form id="acc_del_id">
+                                <div class="modal-body">
+                                    <h4 class="text-center">Bạn có muốn xóa? Nếu tài khoản bạn bị xóa tất cả thông báo
+                                        và
+                                        tài liệu liên quan cũng bị xóa?</h4>
+                                    <input type="hidden" name="acc_user_id" id="acc_user_id" value="">
+                                    <input type="hidden" name="acc_sub_id" id="acc_sub_id" value="">
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Không</button>
+                                    <button type="submit" class="btn btn-success">Đồng ý</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <!-- script xóa người dùng -->
+                <script>
+                $("#acc_del_id").submit(function(event) {
+                    event.preventDefault();
+                    $.ajax({
+                        type: "POST",
+                        url: 'http://localhost/BTL_CNW/admin/process_delete_account.php',
+                        data: $(this).serializeArray(),
+                        success: function(response) {
+                            response = JSON.parse(response);
+                            if (response.status == 0) { // bắt hồi âm chỉ thông báo
+                                alert(response.message);
+                            }
+                            if (response.status ==
+                                1) { // bắt hồi âm thông báo và reload location
+                                alert(response.message);
+                                location.reload();
+                            }
+                        }
+                    })
+                });
+                </script>
+                <!-- script xóa người dùng kết thúc -->
+                <!-- Kết thúc code mở bảng xóa người dùng-->
             </div>
         </div>
     </div>
