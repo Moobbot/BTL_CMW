@@ -6,7 +6,9 @@
 <?php include '../reuse/config.php' ?>
 
 <?php
-$id = $_GET['id']; //teach_learn_id
+$data = $_GET['data']; //teach_learn_id
+$id = explode(',', $data)[0];
+$sub_name = explode(',', $data)[1];
 // echo $id;
 ?>
 
@@ -29,14 +31,16 @@ $id = $_GET['id']; //teach_learn_id
     } else {
         $currentUser = $_SESSION['current_user'];
     ?>
-    <div class="row d-flex justify-content-center mt-sm-5 p-0 m-0">
+    <div class="row d-flex justify-content-center p-0 m-0">
+        <div class="col-12 text-center justify-content-center p-2">
+            <h1><?= $sub_name ?></h1>
+        </div>
         <div class="col-lg-10 col-12">
             <!-- Thông báo -->
             <div class="row bg-warning">
-
-                <table class="table mb-0">
+                <table class="table table-bordered mb-0">
                     <thead>
-                        <h2 class="text-center">Thông báo</h2>
+                        <h2 class="text-center">Thông báo</h2><span id="noti"></span>
                     </thead>
                     <tbody>
                         <form method="POST" id="process_note">
@@ -47,34 +51,43 @@ $id = $_GET['id']; //teach_learn_id
                                 $result = mysqli_query($conn, $sql);
                                 if ($result->num_rows > 0) {
                                     while ($row = $result->fetch_assoc()) {
-                                        echo '<tr>';
-                                        echo '<th>';
-                                        echo $row['note_mes'];
-                                        echo '</th>';
-                                ?>
-
-                            <th class="col-md-1">
-                                <!-- href="./process_edit_note.php?id=</?= $row['note_id'] ?>" -->
-                                <button class="btn btn-success mb-md-0 mb-2" id="process_edit_note">Sửa</button>
-                            </th class="col-md-1">
-                            <th>
-                                <!-- href="./process_delete_note.php?id=</?= $row['note_id'] ?>" -->
-                                <button class="btn btn-success mb-md-0 mb-2" id="process_delete_note">Xóa</button>
-                            </th>
-                            <?php
-                                    }
-                                    echo '</tr>';
-                                }
                                 ?>
 
                             <tr>
                                 <th class="col-11">
+                                    <input type="text" class="txt_note_mes w-100" data-id="<?= $row['note_id'] ?>"
+                                        value="<?= $row['note_mes'] ?>">
+
+                                </th>
+
+                                <!-- <input type="hidden" id="note_id" value=""> -->
+                                <!-- href="./process_edit_note.php?id=</?= $row['note_id'] ?>" -->
+                                <!-- <th scope="col">
+                                    <button type="button" class="btn btn-success mb-2 btn_edit_note"
+                                        value="</?= $row['note_id'] ?>, </?= $row['note_mes'] ?>"> Sửa
+                                    </button>
+                                </th> -->
+
+                                <th class="col-1 justify-content-center">
+                                    <!-- href=" ./process_delete_note.php?id=</?=$row['note_id'] ?>" -->
+                                    <button type="button" class="btn btn-success w-100 btn_delete_note"
+                                        value="<?= $row['note_id'] ?>"> Xóa
+                                    </button>
+                                </th>
+                            </tr>
+                            <?php
+                                    }
+                                }
+                                ?>
+
+                            <tr>
+                                <th scope="col-11">
                                     <input type="text" id="note_mes" class="w-100" placeholder="Thông báo">
                                 </th>
-                                <th class="col-1">
-                                    <input type="hidden" id="t_learn_id" value="<?php echo $id ?>">
-                                    <input type="button" name="process_add_note" id="process_add_note" value="Insert"
-                                        class="btn btn-success"></input>
+                                <th>
+                                    <!-- <input type="hidden" id="t_learn_id" value=""> -->
+                                    <button type="button" id="btn_add_note" value="<?php echo $id ?>"
+                                        class="btn btn-success w-100">Thêm</button>
                                 </th>
                             </tr>
                         </form>
@@ -83,84 +96,20 @@ $id = $_GET['id']; //teach_learn_id
             </div>
 
             <!-- Bảng thông tin tài liệu -->
-            <div class="row px-0 mx-0 mt-4">
-                <div class="col-12">
-                    <h2 class=" text-center">Tài liệu môn học</h2>
-                    <table class="table text-center">
-                        <thead>
-                            <tr>
-                                <th class="col">
-                                    STT
-                                </th>
-                                <th class="col">
-                                    Tên tài liệu
-                                </th>
-                                <th class="col">
-                                    Ngày đăng
-                                </th>
-                                <th class="col">
-                                    Status
-                                </th>
-                                <th class="col"></th>
-                                <th class="col"></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <!-- Dữ liệu thay đổi theo CSDL -->
-                            <?php
-                                $id = $_GET['id'];
-                                $sql = "SELECT `doc_ID`, `doc_name`, `doc_link`, `date_sub`, `status` FROM `db_doc` WHERE teach_learn_id = '$id'";
-                                $result = mysqli_query($conn, $sql);
-                                $STT = 0;
-                                if ($result->num_rows > 0) {
-                                    while ($row = $result->fetch_assoc()) {
-                                        $STT += 1;
-                                        echo '<tr>';
-                                        echo '<th scope="row">' . $STT . '</th>';
-                                        echo '<td>' . '<a href="' . $row['doc_link'] . '">' . $row['doc_name'] . '</a>' . '</td>';
-                                        echo '<td>' . $row['date_sub'] . '</td>';
-                                        echo '<td>' . $row['status'] . '</td>';
-                                        echo '<td>' . '<a href="' . '" class="btn btn-success">Sửa</a>' . '</td>';
-                                        echo '<td>' . '<a href="' . '" class="btn btn-success">Xóa</a>' . '</td>';
-                                        echo '</tr>';
-                                    }
-                                }
-                                ?>
-                            <tr>
-                                <th>
-                                    <?= $STT += 1 ?>
-                                </th>
-                                <td>
-                                    <input type="text" id="" placeholder="Tên tài liệu" class="text-center mb-2">
-                                    <input type="text" id="" placeholder="Link tài liệu" class="text-center">
-                                </td>
-                                <td>
-                                    <input type="text" id="" placeholder="Là ngày thêm" disabled class="text-center">
-                                </td>
-                                <td>
-                                    <input type="text" id="" placeholder="Ghi chú" class="text-center">
-
-                                </td>
-                                <th>
-                                    <a href="" class="btn btn-success">Thêm</a>
-                                </th>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
+            <?php include './doc.php' ?>
             <!-- Comments của sinh viên-->
             <div class="row">
-                <div class="col-md-12 flex-column m-md-5">
+                <div class="col-md-12 flex-column my-md-5">
                     <h2>Comments</h2>
                     <input type="text" class="w-75 p-5">
-                    <input type="submit" value="Gửi" class="btn btn-success ps-4 pe-4 pt-2 pb-2">
+                    <input type="submit" value="Gửi" class="btn btn-success px-4 pt-2 pb-2 ms-4">
                 </div>
             </div>
         </div>
     </div>
     <!-- END CONTAINER -->
 
+    <!-- Button trigger modal -->
 
     <!-- BEGIN FOOTER -->
 
