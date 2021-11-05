@@ -2,8 +2,8 @@
         Giao diện cho sinh viên
 -->
 
-<div class="row">
-    <div class="col-md-12">
+<div class="row justify-content-center">
+    <div class="col-md-10 col-12">
         <h2>Danh sách Giảng viên</h2>
         <table class="table text-center">
             <thead>
@@ -48,6 +48,6 @@
                 </tr>
             </tbody>
         </table>
-        
+
     </div>
 </div>

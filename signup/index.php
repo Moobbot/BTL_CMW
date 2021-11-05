@@ -12,7 +12,7 @@ session_start(); // bắt đầu session cho người đăng nhập
                         <div class="row justify-content-center">
                             <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
 
-                                <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Sign up</p>
+                                <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Đăng ký</p>
 
                                 <div class="mx-1 mx-md-4 signup-form">
 
@@ -20,7 +20,7 @@ session_start(); // bắt đầu session cho người đăng nhập
                                         <i class="fas fa-user fa-lg me-3 fa-fw"></i>
                                         <div class="form-outline flex-fill mb-0">
                                             <input type="text" id="txtUser" class="form-control " name="txtUser"
-                                                placeholder="User Name" />
+                                                placeholder="Tên tài khoản" />
 
                                         </div>
                                     </div>
@@ -51,7 +51,7 @@ session_start(); // bắt đầu session cho người đăng nhập
                                         <i class="fas fa-lock fa-lg me-3 fa-fw"></i>
                                         <div class="form-outline flex-fill mb-0">
                                             <input type="password" id="txtPass1" class="form-control" name="txtPass1"
-                                                placeholder="Your Password" />
+                                                placeholder="Mật khẩu" />
 
                                         </div>
                                     </div>
@@ -60,7 +60,7 @@ session_start(); // bắt đầu session cho người đăng nhập
                                         <i class="fas fa-key fa-lg me-3 fa-fw"></i>
                                         <div class="form-outline flex-fill mb-0">
                                             <input type="password" id="txtPass2" class="form-control" name="txtPass2"
-                                                placeholder="Repeat Your Password" />
+                                                placeholder="Nhập lại mật khẩu" />
 
                                         </div>
                                     </div>
@@ -68,7 +68,7 @@ session_start(); // bắt đầu session cho người đăng nhập
                                         <i class="fas fa-user-tie fa-lg me-3 fa-fw"></i>
                                         <div class="form-outline flex-fill mb-0">
                                             <input type="text" id="fullname" class="form-control " name="fullname"
-                                                placeholder="Full Name" />
+                                                placeholder="Họ tên" />
 
                                         </div>
                                     </div>
@@ -78,7 +78,7 @@ session_start(); // bắt đầu session cho người đăng nhập
                                         <i class="fas fa-phone-alt fa-lg me-3 fa-fw"></i>
                                         <div class="form-outline flex-fill mb-0">
                                             <input type="phone" id="phone" class="form-control" name="phone"
-                                                placeholder="Your Phone" />
+                                                placeholder="Số điện thoại" />
 
                                         </div>
                                     </div>
@@ -95,11 +95,10 @@ session_start(); // bắt đầu session cho người đăng nhập
 
                                     <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
                                         <button type="submit" class="btn btn-primary btn-lg submit"
-                                            name="sbmRegister">Register</button>
+                                            name="sbmRegister">Đăng ký</button>
                                     </div>
 
-                                    <a href="../login/index.php" class="text-center">If you have account, please
-                                        login</a>
+                                    <a href="../login/index.php" class="text-center">Đã có tài khoản?</a>
                                 </div>
 
                             </div>

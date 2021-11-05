@@ -12,14 +12,13 @@ $teach_learn_id = $_POST['teach_learn_id'];
 
 $doc_name = $_POST['doc_name'];
 $doc_link = $_POST['doc_link'];
-$status = $_POST['status'];
 
 //1. Kết nối tới Servers
 
 // //2. Truy vấn cơ sở dữ liệu
 
-$sql = "INSERT INTO db_doc (teach_learn_id, doc_name, doc_link, `status`)
-    VALUES ('$teach_learn_id', '$doc_name', '$doc_link', '$status');";
+$sql = "INSERT INTO db_doc (teach_learn_id, doc_name, doc_link)
+    VALUES ('$teach_learn_id', '$doc_name', '$doc_link');";
 $result = mysqli_query($conn, $sql);
 //3. Xử lý kết quả
 

@@ -55,7 +55,7 @@
                             <td class="col-1"><?php echo $row['note_id'] ?></td>
                             <td class="col-1"><?php echo $row['User_FullName'] ?></td>
                             <td class="col"><?php echo $row['note_mes'] ?></td>
-                            <td class="col-2"><?php echo $row['node_date'] ?></td>
+                            <td class="col-1"><?php echo $row['node_date'] ?></td>
                             <td class="col-1"><?php echo $row['sub_name'] ?></td>
                             <td class="col-1">
                                 <form>
@@ -99,7 +99,7 @@
                                         </div>
                                     </div>
                                     <div class="d-flex align-items-center mb-4">
-                                        <label>Tên giáo viên</label>
+                                        <label class="me-2 w-25">Tên giáo viên</label>
                                         <select name="teach-learn-id">
                                             <?php
                                             $sql1 = "SELECT ID, User_FullName FROM db_user_inf";
@@ -111,7 +111,7 @@
                                         </select>
                                     </div>
                                     <div class="d-flex align-items-center mb-4">
-                                        <label>Môn học</label>
+                                        <label class="me-2 w-25">Môn học</label>
                                         <select name="subject-id">
                                             <?php
                                             $sql2 = "SELECT sub_id, sub_name FROM db_subjects";
@@ -185,17 +185,12 @@
                             </div>
                             <form id="edit-note-form">
                                 <div class="modal-body">
-                                    <div class="d-flex flex-row align-items-center mb-4">
-                                        <div class="form-outline flex-fill mb-0">
-                                            <label>ID</label>
-                                        </div>
-                                    </div>
-                                    <div class="d-flex flex-row align-items-center mb-4">
-                                        <div class="form-outline flex-fill mb-0">
-                                            <input type="text" id="txtNoteEditCode" class="form-control "
-                                                name="txtNoteEditCode" placeholder="Note mess" readonly />
-                                        </div>
-                                    </div>
+                                    <!-- <div class="d-flex flex-row align-items-center mb-4">
+                                        <div class="form-outline flex-fill mb-0"> -->
+                                    <input type="hidden" id="txtNoteEditCode" class="form-control "
+                                        name="txtNoteEditCode" placeholder="Note mess" readonly />
+                                    <!-- </div>
+                                    </div> -->
                                     <div class="d-flex flex-row align-items-center mb-4">
                                         <div class="form-outline flex-fill mb-0">
                                             <label>Nội dung</label>
@@ -476,7 +471,7 @@
                                         </div>
                                     </div>
                                     <div class="d-flex align-items-center mb-4">
-                                        <label>Tên giáo viên</label>
+                                        <label class="me-2 w-25">Tên giáo viên</label>
                                         <select name="teach-learn-id">
                                             <?php
                                             $sql1 = "SELECT ID, User_FullName FROM db_user_inf";
@@ -488,7 +483,7 @@
                                         </select>
                                     </div>
                                     <div class="d-flex align-items-center mb-4">
-                                        <label>Môn học</label>
+                                        <label class="me-2 w-25">Môn học</label>
                                         <select name="subject-id">
                                             <?php
                                             $sql2 = "SELECT sub_id, sub_name FROM db_subjects";
@@ -561,17 +556,9 @@
                             </div>
                             <form id="edit-doc-form">
                                 <div class="modal-body">
-                                    <div class="d-flex flex-row align-items-center mb-4">
-                                        <div class="form-outline flex-fill mb-0">
-                                            <label>ID</label>
-                                        </div>
-                                    </div>
-                                    <div class="d-flex flex-row align-items-center mb-4">
-                                        <div class="form-outline flex-fill mb-0">
-                                            <input type="text" id="txtDocEditCode" class="form-control "
-                                                name="txtDocEditCode" placeholder="Note mess" readonly />
-                                        </div>
-                                    </div>
+                                    <input type="hidden" id="txtDocEditCode" class="form-control " name="txtDocEditCode"
+                                        placeholder="Note mess" readonly />
+
                                     <div class="d-flex flex-row align-items-center mb-4">
                                         <div class="form-outline flex-fill mb-0">
                                             <label>Tên tài liệu</label>

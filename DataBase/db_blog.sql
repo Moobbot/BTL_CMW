@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 05, 2021 at 07:18 AM
+-- Generation Time: Nov 05, 2021 at 04:26 PM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.10
 
@@ -32,7 +32,6 @@ CREATE TABLE `db_doc` (
   `doc_name` varchar(100) NOT NULL,
   `doc_link` varchar(1000) NOT NULL,
   `date_sub` date NOT NULL DEFAULT current_timestamp(),
-  `status` text DEFAULT NULL,
   `teach_learn_id` int(10) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -40,8 +39,9 @@ CREATE TABLE `db_doc` (
 -- Dumping data for table `db_doc`
 --
 
-INSERT INTO `db_doc` (`doc_ID`, `doc_name`, `doc_link`, `date_sub`, `status`, `teach_learn_id`) VALUES
-(21, 'Helloword', 'https://vi.wikipedia.org/wiki/Hello_World_(phim)', '2021-11-05', NULL, 6);
+INSERT INTO `db_doc` (`doc_ID`, `doc_name`, `doc_link`, `date_sub`, `teach_learn_id`) VALUES
+(21, 'Helloword', 'https://vi.wikipedia.org/wiki/Hello_World_(phim)', '2021-11-05', 6),
+(22, 'Giới thiệu TLU', 'http://www.tlu.edu.vn/tin-tuc/nu-sinh-nganh-cong-nghe-sinh-hoc-vua-14919', '2021-11-05', 5);
 
 -- --------------------------------------------------------
 
@@ -61,7 +61,10 @@ CREATE TABLE `db_note` (
 --
 
 INSERT INTO `db_note` (`note_id`, `note_mes`, `teach_learn_id`, `node_date`) VALUES
-(11, 'Hello word', 5, '2021-11-05');
+(12, 'Hello Word', 6, '2021-11-05'),
+(16, 'Với vai trò là lớp phó học tập của lớp 60SH, Thúy Hiền đã nhận được học bổng khuyến khích học tập trong 5 kỳ liên tiếp. Trong kỳ 2 năm học 2020-2021, Hiền cùng ba bạn sinh viên trong lớp tham gia Cuộc thi Sinh viên Nghiên cứu khoa học về \"Thích ứng với Biến đổi khí hậu” do Đại sứ quán Hà Lan tổ chức và vinh dự đạt giải Ba Chung cuộc.', 5, '2021-11-05'),
+(17, 'Trường Đại học Thủy lợi là trường đại học công lập đào tạo đa ngành, đa lĩnh vực, nằm ở trung tâm thành phố Hà Nội, có quy mô rộng lớn, cảnh quan tươi đẹp như lá phổi xanh giữa lòng Thủ đô', 5, '2021-11-05'),
+(20, 'Ngày mai thi', 6, '2021-11-05');
 
 -- --------------------------------------------------------
 
@@ -153,8 +156,9 @@ CREATE TABLE `db_users` (
 
 INSERT INTO `db_users` (`user_id`, `user_name`, `user_email`, `user_pass`, `user_regis_date`, `user_status`, `user_level`, `user_code`) VALUES
 (30, 'admin', 'abc@gmail.com', '$2y$10$YvDo31xFwimk/Wvj54DOROcBzvXKyRNhmwDPx4UA6W9635HCH/Un.', '2021-11-01 08:28:07', 1, 0, '58b68ab05d41ce01c94336ae441d7b73'),
-(31, 'Sinhvien', 'abcd@gmail.com', '$2y$10$U8k3a101QxJIeEMUI9826OOpdFqeoYDSIUn8w73UNT9VqNp1WqGWm', '2021-11-01 08:28:07', 1, 2, '58b68ab05d41ce01c94336ae441d7b73'),
-(51, 'SinhvienA', 'ngotamcv01@gmail.com', '$2y$10$lp3/rGkmXq.hsEwC4Sgp3.yT2lvr/xl1CjqxgLBmRN9OJhkDuCGqu', '2021-11-05 11:41:52', 1, 2, '09dc9e7bb496425042c455c3528db2d4');
+(31, 'Giaovien', 'abcd@gmail.com', '$2y$10$j64QtrKJGWvvqzcXmAIYreahTviC58WJu0D4PuIJZNGKgQ5NUTNRm', '2021-11-01 08:28:07', 1, 1, '58b68ab05d41ce01c94336ae441d7b73'),
+(51, 'SinhvienA', 'ngo@gmail.com', '$2y$10$lDDsa.RsHcc39fZpeSsWtebtlNYOATIF.1E8WqjWTjNLJ4YOcwLZ2', '2021-11-05 11:41:52', 1, 2, '2d0329a30928bbb064a50f467d807751'),
+(52, 'Sinhvien', 'ngotamcv01@gmail.com', '$2y$10$Q79Jx3x1gre.2IqK9y6aoOrmo4AmKKzSZhqvaAxzxIoXPbp1rXTdC', '2021-11-05 21:01:36', 1, 2, 'def87683524a943027dcc9fc5fe3b002');
 
 -- --------------------------------------------------------
 
@@ -175,9 +179,10 @@ CREATE TABLE `db_user_inf` (
 --
 
 INSERT INTO `db_user_inf` (`ID`, `User_FullName`, `User_Position`, `User_Phone`, `office_id`) VALUES
-(30, 'Tên admin', 'admin\n', '123', 1),
-(31, 'Sinh viên', 'Sinh viên', '1233', 1),
-(51, 'Ngô Đức Tâm', 'Sinh Viên', '0766366726', NULL);
+(30, 'Admin Sever', 'admin\n', '119', 1),
+(31, 'Giáo viên', 'Giáo viên', '1233', 1),
+(51, 'Ngô Đức Tâm', 'Sinh Viên', '0766366726', NULL),
+(52, 'Phạm Quang Dương', 'Sinh Viên', '1145', NULL);
 
 -- --------------------------------------------------------
 
@@ -198,13 +203,12 @@ CREATE TABLE `tbl_comment` (
 --
 
 INSERT INTO `tbl_comment` (`comment_id`, `parent_comment_id`, `comment`, `comment_sender_name`, `date`) VALUES
-(74, 0, '  a', 'Ngô Đức Tâm', '2021-11-04 23:15:45'),
-(75, 0, '  a', 'BTL_CNW', '2021-11-04 23:17:50'),
-(76, 0, '  ádfghj', 'Ngô Đức Tâm', '2021-11-04 23:21:16'),
-(77, 76, 'asdfg\r\n', 'd', '2021-11-04 23:21:30'),
-(78, 0, '  ấ', 's', '2021-11-04 23:23:36'),
-(79, 75, '  a', 's', '2021-11-04 23:41:42'),
-(80, 74, '  ad', 'da', '2021-11-04 23:42:36');
+(81, 0, '  123', 'Hello', '2021-11-05 08:22:15'),
+(82, 81, '456', 'Hi', '2021-11-05 08:22:26'),
+(83, 0, '  Hay.', 'Ngô Đức Tâm', '2021-11-05 08:38:41'),
+(84, 0, '  Hay.', 'Ngô Đức Tâm', '2021-11-05 08:38:41'),
+(85, 84, 'Ừ', 'Dương', '2021-11-05 08:38:56'),
+(86, 84, 'Ừ', 'Dương', '2021-11-05 08:38:56');
 
 --
 -- Indexes for dumped tables
@@ -275,13 +279,13 @@ ALTER TABLE `tbl_comment`
 -- AUTO_INCREMENT for table `db_doc`
 --
 ALTER TABLE `db_doc`
-  MODIFY `doc_ID` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `doc_ID` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT for table `db_note`
 --
 ALTER TABLE `db_note`
-  MODIFY `note_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `note_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `db_offices`
@@ -305,13 +309,13 @@ ALTER TABLE `db_teach_learn`
 -- AUTO_INCREMENT for table `db_users`
 --
 ALTER TABLE `db_users`
-  MODIFY `user_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
+  MODIFY `user_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
 
 --
 -- AUTO_INCREMENT for table `tbl_comment`
 --
 ALTER TABLE `tbl_comment`
-  MODIFY `comment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=81;
+  MODIFY `comment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=87;
 
 --
 -- Constraints for dumped tables

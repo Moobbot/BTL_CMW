@@ -12,7 +12,7 @@ if (empty($_SESSION['changepass'])) { // Form nhập email quên mật khẩu
                     <div class="card-body p-md-5">
                         <div class="row justify-content-center">
                             <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
-                                <p class="text-center h3 fw-bold mb-5 mx-1 mx-md-4 mt-4">Change password</p>
+                                <p class="text-center h3 fw-bold mb-5 mx-1 mx-md-4 mt-4">Lấy lại mật khẩu</p>
                                 <div class="mx-1 mx-md-4">
                                     <form id="change-form">
                                         <div class="d-flex flex-row align-items-center mb-4">
@@ -22,7 +22,7 @@ if (empty($_SESSION['changepass'])) { // Form nhập email quên mật khẩu
                                             </div>
                                         </div>
                                         <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
-                                            <button type="submit" class="btn btn-primary btn-lg">Submit</button>
+                                            <button type="submit" class="btn btn-primary btn-lg">Xác nhận</button>
                                         </div>
                                     </form>
                                 </div>
@@ -46,23 +46,23 @@ if (empty($_SESSION['changepass'])) { // Form nhập email quên mật khẩu
                     <div class="card-body p-md-5">
                         <div class="row justify-content-center">
                             <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
-                                <p class="text-center h3 fw-bold mb-5 mx-1 mx-md-4 mt-4">Change password</p>
+                                <p class="text-center h3 fw-bold mb-5 mx-1 mx-md-4 mt-4">Đổi mật khẩu</p>
                                 <form id="change-form">
                                     <div class="mx-1 mx-md-4">
                                         <div class="d-flex flex-row align-items-center mb-4">
                                             <div class="form-outline flex-fill mb-0">
                                                 <input type="password" id="txtPass" class="form-control " name="txtPass"
-                                                    placeholder="New password" />
+                                                    placeholder="Mật khẩu mới" />
                                             </div>
                                         </div>
                                         <div class="d-flex flex-row align-items-center mb-4">
                                             <div class="form-outline flex-fill mb-0">
                                                 <input type="password" id="txtPass1" class="form-control "
-                                                    name="txtPass1" placeholder="Type your password again" />
+                                                    name="txtPass1" placeholder="Nhập lại mật khẩu" />
                                             </div>
                                         </div>
                                         <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
-                                            <button type="submit" class="btn btn-primary btn-lg">Confirm</button>
+                                            <button type="submit" class="btn btn-primary btn-lg">Xác nhận</button>
                                         </div>
                                     </div>
                                 </form>
