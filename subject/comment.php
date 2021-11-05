@@ -1,7 +1,7 @@
 <script src="../assets/js/jquery-3.2.1.min.js"> </script>
 <style>
 .comment-form-container {
-    width: 60% !important;
+  
     background: #F0F0F0;
     border: #e0dfdf 1px solid;
     padding: 20px;
@@ -19,9 +19,7 @@
     border: #e0dfdf 1px solid;
 }
 
-div#output {
-    width: 60% !important;
-}
+
 
 .btn-submit {
     padding: 10px 20px;
@@ -80,7 +78,7 @@ span.posted-by {
 }
 </style>
 
-<div class="comment-form-container my-5">
+<div class="comment-form-container ">
     <form id="frm-comment">
         <h1 class="">Comment</h1>
         <div class="input-row">

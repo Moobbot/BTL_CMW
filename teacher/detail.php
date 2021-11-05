@@ -156,8 +156,80 @@ $id = $_GET['id']; //teach_learn_id
       
     
     <!-- END CONTAINER -->
+    
+    <div class="container ">
+    <h2 class="my-5" >Rating and review</h2>
+    	<div class="card my-5">
+    		
+    		<div class="card-body">
+    			<div class="row">
+    				<div class="col-sm-4 text-center">
+    					<h1 class="text-warning mt-4 mb-4">
+    						<b><span id="average_rating">0.0</span> / 5</b>
+    					</h1>
+    					<div class="mb-3">
+    						<i class="fas fa-star star-light mr-1 main_star"></i>
+                            <i class="fas fa-star star-light mr-1 main_star"></i>
+                            <i class="fas fa-star star-light mr-1 main_star"></i>
+                            <i class="fas fa-star star-light mr-1 main_star"></i>
+                            <i class="fas fa-star star-light mr-1 main_star"></i>
+	    				</div>
+    					<h3><span id="total_review">0</span> Review</h3>
+    				</div>
+    				<div class="col-sm-4">
+    					<p>
+                            <div class="progress-label-left"><b>5</b> <i class="fas fa-star text-warning"></i></div>
 
-    <?php include '../subject/comment.php' ?>
+                            <div class="progress-label-right">(<span id="total_five_star_review">0</span>)</div>
+                            <div class="progress">
+                                <div class="progress-bar bg-warning" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" id="five_star_progress"></div>
+                            </div>
+                        </p>
+    					<p>
+                            <div class="progress-label-left"><b>4</b> <i class="fas fa-star text-warning"></i></div>
+                            
+                            <div class="progress-label-right">(<span id="total_four_star_review">0</span>)</div>
+                            <div class="progress">
+                                <div class="progress-bar bg-warning" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" id="four_star_progress"></div>
+                            </div>               
+                        </p>
+    					<p>
+                            <div class="progress-label-left"><b>3</b> <i class="fas fa-star text-warning"></i></div>
+                            
+                            <div class="progress-label-right">(<span id="total_three_star_review">0</span>)</div>
+                            <div class="progress">
+                                <div class="progress-bar bg-warning" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" id="three_star_progress"></div>
+                            </div>               
+                        </p>
+    					<p>
+                            <div class="progress-label-left"><b>2</b> <i class="fas fa-star text-warning"></i></div>
+                            
+                            <div class="progress-label-right">(<span id="total_two_star_review">0</span>)</div>
+                            <div class="progress">
+                                <div class="progress-bar bg-warning" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" id="two_star_progress"></div>
+                            </div>               
+                        </p>
+    					<p>
+                            <div class="progress-label-left"><b>1</b> <i class="fas fa-star text-warning"></i></div>
+                            
+                            <div class="progress-label-right">(<span id="total_one_star_review">0</span>)</div>
+                            <div class="progress">
+                                <div class="progress-bar bg-warning" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" id="one_star_progress"></div>
+                            </div>               
+                        </p>
+    				</div>
+    				<div class="col-sm-4 text-center">
+    					<h3 class="mt-4 mb-3">Write Review Here</h3>
+    					<button type="button" name="add_review" id="add_review" class="btn btn-primary">Review</button>
+    				</div>
+    			</div>
+    		</div>
+    	</div>
+    	<div class="mt-5" id="review_content"></div>
+        <?php include '../subject/comment.php' ?>
+    </div>
+   
+  
     <!-- BEGIN FOOTER -->
 
     <?php include '../reuse/footer_body.php' ?>
