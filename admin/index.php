@@ -17,10 +17,11 @@
             <div class="col-md-12">
                 <h2>THÔNG BÁO</h2>
                 <!-- Button trigger modal thêm note-->
-                <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addNote">
+                <button type="button" class="btn btn-success mb-1" data-bs-toggle="modal" data-bs-target="#addNote">
                     Thêm
                 </button>
-                <table class="table text-center">
+
+                <table class="table table-bordered text-center" id="tb_note">
                     <thead>
                         <tr>
                             <th>
@@ -43,7 +44,7 @@
                             </th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody style="text-align: justify;">
                         <!-- Dữ liệu thay đổi theo CSDL -->
                         <?php
                         $sql = "SELECT note_id, note_mes, User_FullName, sub_name, node_date FROM db_note, db_user_inf, db_teach_learn, db_subjects WHERE db_note.teach_learn_id = db_teach_learn.teach_learn_id AND db_user_inf.ID = db_teach_learn.user_id_inf AND db_subjects.sub_id = db_teach_learn.sub_id GROUP BY db_note.note_id;";
@@ -51,21 +52,21 @@
                         if (mysqli_num_rows($result) > 0) {
                             while ($row = mysqli_fetch_assoc($result)) { ?>
                         <tr>
-                            <td><?php echo $row['note_id'] ?></td>
-                            <td><?php echo $row['User_FullName'] ?></td>
-                            <td><?php echo $row['note_mes'] ?></td>
-                            <td><?php echo $row['node_date'] ?></td>
-                            <td><?php echo $row['sub_name'] ?></td>
-                            <td>
+                            <td class="col-1"><?php echo $row['note_id'] ?></td>
+                            <td class="col-1"><?php echo $row['User_FullName'] ?></td>
+                            <td class="col"><?php echo $row['note_mes'] ?></td>
+                            <td class="col-2"><?php echo $row['node_date'] ?></td>
+                            <td class="col-1"><?php echo $row['sub_name'] ?></td>
+                            <td class="col-1">
                                 <form>
-                                    <button type="button" class="btn btn-success passingID-edit-note"
-                                        data-bs-toggle="modal" data-bs-target="#editNote"
+                                    <button type="button" class="btn btn-success mb-1 passingID-edit-note"
+                                        style="width: 100px;" data-bs-toggle="modal" data-bs-target="#editNote"
                                         data-value1='<?php echo $row['note_id'] ?>'
                                         data-value2='<?php echo $row['note_mes'] ?>'>
                                         Chỉnh sửa
                                     </button>
                                     <button type="button" class="btn btn-danger passingID-delete-note"
-                                        data-bs-toggle="modal" data-bs-target="#delNote"
+                                        style="width: 100px;" data-bs-toggle="modal" data-bs-target="#delNote"
                                         data-value1='<?php echo $row['note_id'] ?>'>
                                         Xóa
                                     </button>
@@ -160,8 +161,8 @@
 
                 <!-- Phần code nút chỉnh sửa note-->
 
-
                 <!-- Bắt đầu script gửi giá trị vào label -->
+
                 <script>
                 $(".passingID-edit-note").click(function() {
                     var id = $(this).attr('data-value1');
@@ -320,14 +321,14 @@
 <!-- Bắt đầu bảng tài liệu -->
 <div class="row d-flex justify-content-center mt-sm-5 p-0 m-0">
     <div class="col-10">
-        <!-- Thông báo -->
+        <!-- Tài liệu -->
         <div class="row">
             <div class="col-md-12">
                 <h2>TÀI LIỆU</h2>
-                <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addDoc">
+                <button type="button" class="btn btn-success mb-1" data-bs-toggle="modal" data-bs-target="#addDoc">
                     Thêm
                 </button>
-                <table class="table text-center">
+                <table class="table table-bordered text-center">
 
                     <thead>
                         <tr>
@@ -637,11 +638,11 @@
 <!-- Bảng người dùng -->
 <div class="row d-flex justify-content-center mt-sm-5 p-0 m-0 vh-100">
     <div class="col-10">
-        <!-- Thông báo -->
+        <!-- Người dùng -->
         <div class="row">
             <div class="col-md-12">
                 <h2>TÀI KHOẢN</h2>
-                <table class="table text-center">
+                <table class="table table-bordered text-center">
 
                     <thead>
                         <tr>

@@ -35,63 +35,70 @@ $sub_name = explode(',', $data)[1];
             <h1><?= $sub_name ?></h1>
         </div>
         <div class="col-lg-10 col-12">
+
             <!-- Thông báo -->
-            <div class="row bg-warning">
-                <table class="table table-bordered mb-0">
-                    <thead>
-                        <h2 class="text-center">Thông báo</h2><span id="noti"></span>
-                    </thead>
-                    <tbody>
-                        <form method="POST" id="process_note">
-                            <!-- Dữ liệu thay đổi theo CSDL -->
+            <!-- style="background-color: #99FFFF;" -->
+            <div class="row">
+                <h2 class="display-6 text-center">Thông báo</h2><span id="noti"></span>
+                <div style="height: 16em; overflow-y:auto">
 
-                            <?php
-                                $sql = "SELECT `note_id`, `note_mes` FROM db_note WHERE teach_learn_id = '$id'";
-                                $result = mysqli_query($conn, $sql);
-                                if ($result->num_rows > 0) {
-                                    while ($row = $result->fetch_assoc()) {
-                                ?>
+                    <table class="table table-bordered border-1 mb-0">
+                        <thead>
+                        </thead>
+                        <tbody>
+                            <form method="POST" id="process_note">
 
-                            <tr>
-                                <th class="col-11">
-                                    <input type="text" class="txt_note_mes w-100" data-id="<?= $row['note_id'] ?>"
-                                        value="<?= $row['note_mes'] ?>">
+                                <tr>
+                                    <th class="col-11">
+                                        <input type="text" id="note_mes" class="w-100" style="height: 40px;"
+                                            placeholder="Thông báo">
+                                    </th>
+                                    <th class="col-1">
+                                        <!-- <input type="hidden" id="t_learn_id" value=""> -->
+                                        <button type="button" id="btn_add_note" value="<?php echo $id ?>"
+                                            class="btn btn-success w-100">Thêm</button>
+                                    </th>
+                                </tr>
 
-                                </th>
+                                <!-- Dữ liệu thay đổi theo CSDL -->
 
-                                <!-- <input type="hidden" id="note_id" value=""> -->
-                                <!-- href="./process_edit_note.php?id=</?= $row['note_id'] ?>" -->
-                                <!-- <th scope="col">
+                                <?php
+                                    $sql = "SELECT `note_id`, `note_mes` FROM db_note WHERE teach_learn_id = '$id'";
+                                    $result = mysqli_query($conn, $sql);
+                                    if ($result->num_rows > 0) {
+                                        while ($row = $result->fetch_assoc()) {
+                                    ?>
+
+                                <tr>
+                                    <th class="col-11">
+                                        <input type="text" class="txt_note_mes w-100" style="height: 40px;"
+                                            data-id="<?= $row['note_id'] ?>" value="<?= $row['note_mes'] ?>">
+
+                                    </th>
+
+                                    <!-- <input type="hidden" id="note_id" value=""> -->
+                                    <!-- href="./process_edit_note.php?id=</?= $row['note_id'] ?>" -->
+                                    <!-- <th scope="col">
                                     <button type="button" class="btn btn-success mb-2 btn_edit_note"
                                         value="</?= $row['note_id'] ?>, </?= $row['note_mes'] ?>"> Sửa
                                     </button>
                                 </th> -->
 
-                                <th class="col-1 justify-content-center">
-                                    <!-- href=" ./process_delete_note.php?id=</?=$row['note_id'] ?>" -->
-                                    <button type="button" class="btn btn-success w-100 btn_delete_note"
-                                        value="<?= $row['note_id'] ?>"> Xóa
-                                    </button>
-                                </th>
-                            </tr>
-                            <?php
+                                    <th class="col-1 justify-content-center">
+                                        <!-- href=" ./process_delete_note.php?id=</?=$row['note_id'] ?>" -->
+                                        <button type="button" class="btn btn-success w-100 btn_delete_note"
+                                            value="<?= $row['note_id'] ?>"> Xóa
+                                        </button>
+                                    </th>
+                                </tr>
+                                <?php
+                                        }
                                     }
-                                }
-                                ?>
-
-                            <tr>
-                                <th class="col-11">
-                                    <input type="text" id="note_mes" class="w-100" placeholder="Thông báo">
-                                </th>
-                                <th class="col-1">
-                                    <!-- <input type="hidden" id="t_learn_id" value=""> -->
-                                    <button type="button" id="btn_add_note" value="<?php echo $id ?>"
-                                        class="btn btn-success w-100">Thêm</button>
-                                </th>
-                            </tr>
-                        </form>
-                    </tbody>
-                </table>
+                                    ?>
+                            </form>
+                        </tbody>
+                    </table>
+                </div>
             </div>
 
             <!-- Bảng thông tin tài liệu -->
@@ -269,5 +276,6 @@ $sub_name = explode(',', $data)[1];
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 <script src='../assets/js/process_teacher.js'> </script>
+
 
 <?php include '../reuse/footer.php' ?>

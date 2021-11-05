@@ -19,53 +19,58 @@
     <?php
     } else {
         $currentUser = $_SESSION['current_user'];
-        $id = $_GET['id']; //$teach_learn_id;
+
+        $data = $_GET['data']; //teach_learn_id
+        $id = explode(',', $data)[0];
+        $sub_name = explode(',', $data)[1];
     ?>
     <!-- BEGIN CONTAINER -->
 
     <div class="row d-flex justify-content-center mt-sm-5 p-0 m-0">
         <div class="col-10">
 
+            <div class="col-12 text-center justify-content-center p-2">
+                <h1><?= $sub_name ?></h1>
+            </div>
+
             <!-- Thông báo -->
-            <div class="row bg-warning">
-                <table class="table table-bordered mb-0">
+            <div class="row">
+                <h2 class="text-center">Thông báo</h2><span id="noti"></span>
+                <!-- <div style="height: 10em; overflow-y:auto"> -->
+
+                <table class="table table-bordered border-dark mt-2" id="tb_note">
                     <thead>
-                        <h2 class="text-center">Thông báo</h2><span id="noti"></span>
+                        <tr class="text-center">
+                            <th>
+                                Note
+                            </th>
+                        </tr>
                     </thead>
                     <tbody>
-                        <form method="POST" id="process_note">
-                            <!-- Dữ liệu thay đổi theo CSDL -->
-
-                            <?php
-                                $sql = "SELECT `note_id`, `note_mes` FROM db_note WHERE teach_learn_id = '$id'";
-                                $result = mysqli_query($conn, $sql);
-                                if ($result->num_rows > 0) {
-                                    while ($row = $result->fetch_assoc()) {
-                                ?>
-
-                            <tr>
-                                <th class="col-11">
-                                    <?= $row['note_mes'] ?>
-
-                                </th>
-
-                                <!-- <input type="hidden" id="note_id" value=""> -->
-                                <!-- href="./process_edit_note.php?id=</?= $row['note_id'] ?>" -->
-                                <!-- <th scope="col">
-                                    <button type="button" class="btn btn-success mb-2 btn_edit_note"
-                                        value="</?= $row['note_id'] ?>, </?= $row['note_mes'] ?>"> Sửa
-                                    </button>
-                                </th> -->
-                            </tr>
-                            <?php
-                                    }
+                        <?php
+                            $sql = "SELECT `note_mes` FROM db_note WHERE teach_learn_id = '$id'";
+                            $result = mysqli_query($conn, $sql);
+                            if ($result->num_rows > 0) {
+                                while ($row = $result->fetch_assoc()) {
+                            ?>
+                        <tr>
+                            <td> <?= $row['note_mes'] ?> </td>
+                        </tr>
+                        <?php
                                 }
-                                ?>
-                            <tr>
-                            </tr>
-                        </form>
+                            }
+                            ?>
                     </tbody>
                 </table>
+
+                <!-- Tìm kiếm thông báo -->
+                <!-- <script>
+                $(document).ready(function() {
+                    $('#tb_note').DataTable();
+                });
+                </script> -->
+
+                <!-- </div> -->
             </div>
 
             <!-- Bảng thông tin tài liệu -->
@@ -95,18 +100,25 @@
                                 $sql = "SELECT `doc_ID`, `doc_name`, `doc_link`, `date_sub`, `status` FROM `db_doc` WHERE teach_learn_id = '$id'";
                                 $result = mysqli_query($conn, $sql);
                                 $STT = 0;
-                                if ($result->num_rows > 0) {
-                                    while ($row = $result->fetch_assoc()) {
-                                        $STT += 1;
-                                        echo '<tr>';
-                                        echo '<th scope="row">' . $STT . '</th>';
-                                        echo '<td>' . '<a href="' . $row['doc_link'] . '">' . $row['doc_name'] . '</a>' . '</td>';
-                                        echo '<td>' . $row['date_sub'] . '</td>';
-                                        echo '<td>' . $row['status'] . '</td>';
-                                        echo '</tr>';
-                                    }
-                                }
                                 ?>
+                            <tr>
+                                <?php
+                                    if ($result->num_rows > 0) {
+                                        while ($row = $result->fetch_assoc()) {
+                                            $STT += 1;
+                                    ?>
+
+                                <th scope="row"> <?= $STT ?></th>
+                                <td><a href="<?= $row['doc_link'] ?>"><?= $row['doc_name'] ?> </a></td>
+                                <td><?= $row['date_sub'] ?></td>
+                                <td><?= $row['status'] ?></td>
+                                <?php
+                                        }
+                                    } else {
+                                        echo '<td>Không có tài liệu nào!</td>';
+                                    }
+                                    ?>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
