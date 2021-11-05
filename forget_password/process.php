@@ -37,36 +37,45 @@ if (empty($_SESSION['changepass'])) { // Kiểm tra nếu session mang tên có 
     $email = $user['email'];
     $sql = "SELECT * FROM db_users WHERE user_code = '$code'";
     $result = mysqli_query($conn, $sql);
+    
+        if (mysqli_num_rows($result) > 0) { // Kiểm tra code kích hoạt có tồn tại trong bảng db_users ko 
+            $password_hash = password_hash($pass, PASSWORD_DEFAULT);
+                if($pass == '' || $pass1 == ''){        
+                    echo json_encode(array(
+                        'status' => 0,
+                        'message' => 'Vui lòng nhập mật khẩu'
+                    ));
+                    exit;
+                }else{
+                    if ($pass == $pass1) {
+                        $sql1 = "UPDATE db_users SET user_pass = '$password_hash' WHERE user_email = '$email'"; // Thay đổi mật khẩu
+                        $result1 = mysqli_query($conn, $sql1);
 
-    if (mysqli_num_rows($result) > 0) { // Kiểm tra code kích hoạt có tồn tại trong bảng db_users ko 
-        $password_hash = password_hash($pass, PASSWORD_DEFAULT);
-        if ($pass == $pass1) {
-            $sql1 = "UPDATE db_users SET user_pass = '$password_hash' WHERE user_email = '$email'"; // Thay đổi mật khẩu
-            $result1 = mysqli_query($conn, $sql1);
+                        $newcode = md5(uniqid(rand(), true)); //tạo ra một code mới coi như chấm dứt việc vòng lặp sử dụng link cũ mà vẫn đổi mật khẩu ms 
+                        $sql2 = "UPDATE db_users SET user_code = '$newcode' WHERE user_email = '$email'";
+                        $result2 = mysqli_query($conn, $sql2);
 
-            $newcode = md5(uniqid(rand(), true)); //tạo ra một code mới coi như chấm dứt việc vòng lặp sử dụng link cũ mà vẫn đổi mật khẩu ms 
-            $sql2 = "UPDATE db_users SET user_code = '$newcode' WHERE user_email = '$email'";
-            $result2 = mysqli_query($conn, $sql2);
-
+                        unset($_SESSION['changepass']);
+                        echo json_encode(array(
+                            'status' => 2,
+                            'message' => 'Thay đổi thành công'
+                        ));
+                        exit;
+                    } else {
+                        echo json_encode(array(
+                            'status' => 0,
+                            'message' => 'Mật khẩu nhập lại không chính xác'
+                        ));
+                        exit;
+                    }
+                }
+        } else { // Nếu code ko tồn tại thì mặc định đã được sử dụng vì sau khi thay đổi mật khẩu code sẽ lại được thay đổi lần nữa để tránh việc sử dụng lại các link đã gửi
             unset($_SESSION['changepass']);
             echo json_encode(array(
-                'status' => 2,
-                'message' => 'Thay đổi thành công'
-            ));
-            exit;
-        } else {
-            echo json_encode(array(
-                'status' => 0,
-                'message' => 'Mật khẩu nhập lại không chính xác'
+                'status' => 1,
+                'message' => 'Đường link đã hết hạn, vui lòng nhập lại email để nhận lại tin nhắn kích hoạt'
             ));
             exit;
         }
-    } else { // Nếu code ko tồn tại thì mặc định đã được sử dụng vì sau khi thay đổi mật khẩu code sẽ lại được thay đổi lần nữa để tránh việc sử dụng lại các link đã gửi
-        unset($_SESSION['changepass']);
-        echo json_encode(array(
-            'status' => 1,
-            'message' => 'Đường link đã hết hạn, vui lòng nhập lại email để nhận lại tin nhắn kích hoạt'
-        ));
-        exit;
-    }
+    
 }
