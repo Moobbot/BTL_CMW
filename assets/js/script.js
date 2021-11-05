@@ -5,10 +5,9 @@ $(document).ready(function() {
         $pass2 = $("#txtPass2").val();
         $position = $("#txtPosition").val();
         $email = $("#txtEmail").val();
-        $phone =$("#phone").val();
-        $office_id = $("#office_id").val();
+        $phone = $("#phone").val();
         $fullname = $("#fullname").val();
-        if ($userName == "" || $pass1 == "" || $pass2 == "" || $position == "" || $email == ""||$fullname =="" || $office_id == ""|| $phone=="") {
+        if ($userName == "" || $pass1 == "" || $pass2 == "" || $position == "" || $email == "" || $fullname == "" || $phone == "") {
             alert("Vui lòng nhập đầy đủ thông tin đăng kí của bạn");
             return false;
         } else {
@@ -23,10 +22,8 @@ $(document).ready(function() {
                     pass2: $pass2,
                     username: $userName,
                     position: $position,
-                    phone : $phone,
-                    fullname:$fullname,
-                    office_id:$office_id
-
+                    phone: $phone,
+                    fullname: $fullname
                 },
                 success: function(response) {
                     if (response == "Wrong") {

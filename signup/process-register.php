@@ -15,7 +15,6 @@ if (isset($_POST['signup'])) {
     $pass2 = $_POST['pass2'];
     $phone = $_POST['phone'];
     $fullname = $_POST['fullname'];
-    $office_id = $_POST['office_id'];
 
     // Kiểm tra Email hoặc Username đã tồn tại chưa?
     //1. Kết nối tới Server
@@ -42,8 +41,8 @@ if (isset($_POST['signup'])) {
         $result_4 = mysqli_query($conn, $sql_4);
         $row = mysqli_fetch_assoc($result_4);
         $id = $row['user_id'];
-        $sql_5 = "INSERT INTO `db_user_inf`(`ID` ,`User_FullName`, `User_Position`, `User_Phone`, `office_id`) 
-        VALUES ('$id','$fullname','$position','$phone','$office_id')";
+        $sql_5 = "INSERT INTO `db_user_inf`(`ID` ,`User_FullName`, `User_Position`, `User_Phone`) 
+        VALUES ('$id','$fullname','$position','$phone')";
         $result_5 = mysqli_query($conn, $sql_5);
 
 

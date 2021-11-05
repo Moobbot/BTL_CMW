@@ -1,13 +1,17 @@
 <?php
 session_start();
+
+include '../reuse/config.php';
+
+// Thêm note
+
 // Kiểm tra Có điền thông báo chưa?
-if (isset($_POST['teach_learn_id'])) {
+if (isset($_POST['teach_learn_id']) and isset($_POST['note_mes'])) {
 
     $teach_learn_id = $_POST['teach_learn_id'];
     $note_mes = $_POST['note_mes'];
 
     //1. Kết nối tới Servers
-    include '../reuse/config.php';
 
     // //2. Truy vấn cơ sở dữ liệu
 

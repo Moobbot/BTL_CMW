@@ -2,7 +2,7 @@
 
 <?php include '../reuse/config.php' ?>
 
-<div class="container-fluid bg-light h-100 p-0 m-0">
+<div class="container-fluid bg-light p-0 m-0">
     <?php
     // BEGIN HEADER
 
@@ -28,41 +28,48 @@
 
             <!-- Thông báo -->
             <div class="row bg-warning">
-                <table class="table">
+                <table class="table table-bordered mb-0">
                     <thead>
-                        <h2 class="text-center">Thông báo</h2>
+                        <h2 class="text-center">Thông báo</h2><span id="noti"></span>
                     </thead>
                     <tbody>
-                        <!-- Dữ liệu thay đổi theo CSDL -->
-                        <th class="col">
-                            <p class="">
-                                <?php
+                        <form method="POST" id="process_note">
+                            <!-- Dữ liệu thay đổi theo CSDL -->
 
-                                    $sql = "SELECT `note_id`, `note_mes`, User_FullName FROM db_note, db_user_inf WHERE db_note.teach_learn_id = '$id' AND db_user_inf.ID = ( SELECT user_id_inf FROM db_teach_learn WHERE teach_learn_id = '$id');";
-                                    // $sql = "SELECT note_id, note_mes, User_FullName, sub_name FROM db_note, db_user_inf, db_teach_learn, db_subjects WHERE db_note.teach_learn_id = db_teach_learn.teach_learn_id AND db_user_inf.ID = db_teach_learn.user_id_inf AND db_subjects.sub_id = db_teach_learn.sub_id;";
-                                    $result = mysqli_query($conn, $sql);
-                                    if (mysqli_num_rows($result) > 0) {
-                                        while ($row = mysqli_fetch_assoc($result)) {
-                                            echo    $row['note_mes'];
-                                        }
-                                    ?>
-                            </p>
-                        </th>
-                        <?php
-                                    } else {
-                        ?>
-                        <th>
-                            <h3>Không có thông báo nào.</h3>
-                        </th>
-                        <?php
+                            <?php
+                                $sql = "SELECT `note_id`, `note_mes` FROM db_note WHERE teach_learn_id = '$id'";
+                                $result = mysqli_query($conn, $sql);
+                                if ($result->num_rows > 0) {
+                                    while ($row = $result->fetch_assoc()) {
+                                ?>
+
+                            <tr>
+                                <th class="col-11">
+                                    <?= $row['note_mes'] ?>
+
+                                </th>
+
+                                <!-- <input type="hidden" id="note_id" value=""> -->
+                                <!-- href="./process_edit_note.php?id=</?= $row['note_id'] ?>" -->
+                                <!-- <th scope="col">
+                                    <button type="button" class="btn btn-success mb-2 btn_edit_note"
+                                        value="</?= $row['note_id'] ?>, </?= $row['note_mes'] ?>"> Sửa
+                                    </button>
+                                </th> -->
+                            </tr>
+                            <?php
                                     }
-                        ?>
+                                }
+                                ?>
+                            <tr>
+                            </tr>
+                        </form>
                     </tbody>
                 </table>
             </div>
 
             <!-- Bảng thông tin tài liệu -->
-            <div class="row">
+            <div class="row mt-4">
                 <div class="col-md-12">
                     <h2>Tài liệu môn học</h2>
                     <table class="table text-center">
@@ -176,7 +183,10 @@
         <?php include './comment.php' ?>
     </div>
             <!-- Comments của sinh viên-->
-           
+
+            <div class="container">
+                <?php include './comment.php' ?>
+            </div>
         </div>
     </div>
     <!-- END CONTAINER -->

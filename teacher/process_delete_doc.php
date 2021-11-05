@@ -3,11 +3,11 @@ session_start();
 
 include '../reuse/config.php';
 
-// Xóa note
+// Xóa doc
 
-if (isset($_POST['note_id'])) {
-    $note_id = $_POST['note_id'];
-    $sql = "DELETE FROM db_note WHERE `note_id`='$note_id'";
+if (isset($_POST['doc_id'])) {
+    $doc_id = $_POST['doc_id'];
+    $sql = "DELETE FROM db_doc WHERE `doc_id`='$doc_id'";
     $result = mysqli_query($conn, $sql);
     if ($result) {
         mysqli_close($conn);
