@@ -38,7 +38,7 @@ $sub_name = explode(',', $data)[1];
 
             <!-- Thông báo -->
             <!-- style="background-color: #99FFFF;" -->
-            <div class="row">
+            <div class="row" id="note">
                 <h2 class="display-6 text-center">Thông báo</h2><span id="noti"></span>
                 <div style="height: 16em; overflow-y:auto">
 
@@ -102,7 +102,7 @@ $sub_name = explode(',', $data)[1];
             </div>
 
             <!-- Bảng thông tin tài liệu -->
-            <div class="row px-0 mx-0 mt-4">
+            <div class="row px-0 mx-0 mt-4" id="doc">
                 <div class="col-12">
                     <h2 class=" text-center">Tài liệu môn học</h2>
                     <table class="table table-bordered table-responsive text-center">
@@ -179,7 +179,7 @@ $sub_name = explode(',', $data)[1];
 
     <!-- END CONTAINER -->
 
-    <div class="container ">
+    <div class="container" id="comment">
         <h2 class="my-5">Đánh giá và phản hồi</h2>
         <div class="card my-5">
 
