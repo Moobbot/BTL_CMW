@@ -6,6 +6,20 @@
                 <img src="http://localhost/BTL_CNW/assets/img/logo.png" alt="" width="40" height="32"
                     class="d-inline-block align-text-top p-0 m-0 me-2">
             </a>
+            <?php
+            session_start();
+            if (empty($_SESSION['current_user'])) {
+            ?>
+
+            <div class="text-end">
+                <a href="http://localhost/BTL_CNW/login/index.php" class="btn btn-outline-light me-2">Đăng nhập</a>
+                <a href="http://localhost/BTL_CNW/signup/index.php" class="btn btn-warning me-2">Đăng ký</a>
+            </div>
+
+            <?php
+            } else {
+                $currentUser = $_SESSION['current_user'];
+            ?>
             <div>
                 <!-- <label> -->
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0 d-inline-block justify-content-evenly">
@@ -21,27 +35,21 @@
                     <li class="nav-item d-inline-block px-3">
                         <a class="nav-link text-uppercase px-2" href="#doc">Tài liệu</a>
                     </li>
-
+                    <?php if ($currentUser['user_level'] == 0) {
+                        ?>
                     <li class="nav-item d-inline-block px-3">
                         <a class="nav-link text-uppercase px-2" href="#user">Tài khoản</a>
                     </li>
+                    <?php
+                        } else { ?>
+                    <li class="nav-item d-inline-block px-3">
+                        <a class="nav-link text-uppercase px-2" href="#comment">Bình luận</a>
+                    </li>
+                    <?php } ?>
+
                 </ul>
                 <!-- </label> -->
             </div>
-            <?php
-            session_start();
-            if (empty($_SESSION['current_user'])) {
-            ?>
-
-            <div class="text-end">
-                <a href="http://localhost/BTL_CNW/login/index.php" class="btn btn-outline-light me-2">Đăng nhập</a>
-                <a href="http://localhost/BTL_CNW/signup/index.php" class="btn btn-warning me-2">Đăng ký</a>
-            </div>
-
-            <?php
-            } else {
-                $currentUser = $_SESSION['current_user'];
-            ?>
             <div class="text-end">
                 <div class="dropdown">
                     <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1"

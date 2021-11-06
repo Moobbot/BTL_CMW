@@ -34,7 +34,7 @@
             </div>
 
             <!-- Thông báo -->
-            <div class="row">
+            <div class="row" id="note">
                 <h2 class="text-center">Thông báo</h2><span id="noti"></span>
                 <!-- <div style="height: 10em; overflow-y:auto"> -->
 
@@ -74,7 +74,7 @@
             </div>
 
             <!-- Bảng thông tin tài liệu -->
-            <div class="row mt-4">
+            <div class="row mt-4 " id="doc">
                 <div class="col-md-12">
                     <h2>Tài liệu môn học</h2>
                     <table class="table text-center">
@@ -119,7 +119,7 @@
                     </table>
                 </div>
             </div>
-            <div class="container">
+            <div class="container" id="comment">
                 <h2 class="my-5">Đánh giá và phản hồi</h2>
                 <div class="card my-5">
 
