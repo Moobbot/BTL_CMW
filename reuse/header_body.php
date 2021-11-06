@@ -1,12 +1,33 @@
 <!-- Header -->
-<header class="bg-dark text-white p-2">
+<header class="bg-dark text-white position-sticky top-0 start-0 end-0">
     <div class="container-fluid p-0 m-0">
         <div class="d-flex flex-wrap align-items-center justify-content-between">
             <a href="http://localhost/BTL_CNW/" class="d-flex align-items-center mb-md-0 text-start">
                 <img src="http://localhost/BTL_CNW/assets/img/logo.png" alt="" width="40" height="32"
                     class="d-inline-block align-text-top p-0 m-0 me-2">
             </a>
+            <div>
+                <!-- <label> -->
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0 d-inline-block justify-content-evenly">
 
+                    <li class="nav-item d-inline-block px-3">
+                        <a class="nav-link text-uppercase px-2 active" aria-current="page" href="#">Home</a>
+                    </li>
+
+                    <li class="nav-item d-inline-block px-3">
+                        <a class="nav-link text-uppercase px-2" href="#note">Thông báo</a>
+                    </li>
+
+                    <li class="nav-item d-inline-block px-3">
+                        <a class="nav-link text-uppercase px-2" href="#doc">Tài liệu</a>
+                    </li>
+
+                    <li class="nav-item d-inline-block px-3">
+                        <a class="nav-link text-uppercase px-2" href="#user">Tài khoản</a>
+                    </li>
+                </ul>
+                <!-- </label> -->
+            </div>
             <?php
             session_start();
             if (empty($_SESSION['current_user'])) {
@@ -21,7 +42,6 @@
             } else {
                 $currentUser = $_SESSION['current_user'];
             ?>
-
             <div class="text-end">
                 <div class="dropdown">
                     <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1"

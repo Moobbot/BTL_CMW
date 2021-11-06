@@ -13,7 +13,7 @@
 <div class="row d-flex justify-content-center mt-sm-5 p-0 m-0">
     <div class="col-10">
         <!-- Thông báo -->
-        <div class="row">
+        <div class="row" id="note">
             <div class="col-md-12">
                 <h2>THÔNG BÁO</h2>
                 <!-- Button trigger modal thêm note-->
@@ -102,7 +102,7 @@
                                         <label class="me-2 w-25">Tên giáo viên</label>
                                         <select name="teach-learn-id">
                                             <?php
-                                            $sql1 = "SELECT ID, User_FullName FROM db_user_inf";
+                                            $sql1 = "SELECT ID, User_FullName FROM db_user_inf WHERE User_Position = 'Giáo viên'";
                                             $result1 = mysqli_query($conn, $sql1);
                                             while ($row = mysqli_fetch_assoc($result1)) {
                                                 echo "<option value =" . $row["ID"] . ">" . $row['User_FullName'] . "</option>";
@@ -315,7 +315,7 @@
 
 <!-- Bắt đầu bảng tài liệu -->
 <div class="row d-flex justify-content-center mt-sm-5 p-0 m-0">
-    <div class="col-10">
+    <div class="col-10" id="doc">
         <!-- Tài liệu -->
         <div class="row">
             <div class="col-md-12">
@@ -474,7 +474,7 @@
                                         <label class="me-2 w-25">Tên giáo viên</label>
                                         <select name="teach-learn-id">
                                             <?php
-                                            $sql1 = "SELECT ID, User_FullName FROM db_user_inf";
+                                            $sql1 = "SELECT ID, User_FullName FROM db_user_inf WHERE User_Position = 'Giáo viên'";
                                             $result1 = mysqli_query($conn, $sql1);
                                             while ($row = mysqli_fetch_assoc($result1)) {
                                                 echo "<option value =" . $row["ID"] . ">" . $row['User_FullName'] . "</option>";
@@ -626,7 +626,7 @@
 <div class="row d-flex justify-content-center mt-sm-5 p-0 m-0 vh-100">
     <div class="col-10">
         <!-- Người dùng -->
-        <div class="row">
+        <div class="row" id="user">
             <div class="col-md-12">
                 <h2>TÀI KHOẢN</h2>
                 <table class="table table-bordered text-center">
